@@ -15,7 +15,6 @@ class User_body_info(serializers.Serializer):
     
     def create(self, request, validated_data):
         instance = {}
-        print(validated_data)
         meals = validated_data["many_meals"]
         cal = Calculation()
         instance["total_data"] = {}
@@ -29,6 +28,7 @@ class User_body_info(serializers.Serializer):
             meals_ratio = [0.6, 0.4]
         else :
             meals_ratio = [0.25, 0.45, 0.3]
+
         for i in range(1, meals + 1) :
             instance["meals"][str(i) + "_meals"] = {}
             instance["meals"][str(i) + "_meals"]["kilo_calorie"] = round(instance["total_data"]["total_kilo_calorie"] * meals_ratio[i-1])
