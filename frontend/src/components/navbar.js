@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function MyNavbar() {
     return (
         <div className="">
-            <nav className="navbar navbar-expand-lg navbar-light p-3">
+            <nav className="navbar navbar-expand-lg p-3" style={{backgroundColor: "#3537af"}}>
                 <div className="container-fluid">
                     {/* 마진 right 28px */}
-                    <a className="navbar-brand" href="#">간단식단</a>
+                    <a className="navbar-brand text-white"  href="#">간단식단</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -15,10 +15,10 @@ function MyNavbar() {
                     <div className=" collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav ">
                             <li className="nav-item">
-                                <a className="nav-link mx-2" href="#">후기</a>
+                                <a className="nav-link mx-2 text-white" href="#">후기</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link mx-2" href="#">글</a>
+                                <a className="nav-link mx-2 text-white" href="#">글</a>
                             </li>
                         </ul>
                     </div>
