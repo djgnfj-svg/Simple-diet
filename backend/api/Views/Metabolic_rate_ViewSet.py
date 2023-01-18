@@ -12,6 +12,7 @@ class Metabolic_rate_ViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             rtn = serializer.create(request, serializer.data)
+            print(rtn)
             return Response(rtn, status=status.HTTP_200_OK)
         print(serializer.errors)
         return Response(error_msg(serializer=serializer), status=status.HTTP_400_BAD_REQUEST)
