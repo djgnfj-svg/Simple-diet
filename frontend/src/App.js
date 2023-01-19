@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from './components/navbar';
 import Input_form from './pages/body_info_input/input_form/input_form';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import Output_form from './pages/body_info_output/bodt_info_output';
+import Output_form from './pages/body_info_output/body_info_output';
 function App() {
   return (
     <div className="app">

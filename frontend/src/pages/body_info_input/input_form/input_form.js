@@ -31,7 +31,15 @@ function Input_form() {
       e.target.classList.remove('notEmpty');
     }
   }
-
+  const navigateToOutput = () => {
+    axios.post("http://127.0.0.1:8000/api/calk_metabolic_rate/", userInput)
+      .then((e) => {
+        navigate('/output', { state: e.data });
+      })
+      .catch(() => {
+        alert("실패")
+      })
+  }
   return (
     <div className="">
 
@@ -42,7 +50,6 @@ function Input_form() {
               <h1>바디 정보</h1>
               <p>기초 대사량을 계산하여 알맞은 식단을 제공합니다.</p>
               <div className="form-container">
-                <form id="signUpForm" data-toggle="validator" data-focus="false">
                   <div>
                     <div className="form-group">
                       <input name='height' onKeyUp={onkeytest} className="form-control-input"
@@ -134,21 +141,11 @@ function Input_form() {
                         <span>3끼</span>
                       </label>
                     </div>
-
-
                   </div>
                   <div className="form-group">
                     <button type="submit" className="form-control-submit-button"
-                      onClick={() => {
-                        axios.post("http://127.0.0.1:8000/api/calk_metabolic_rate/", userInput).then((e) => {
-                          navigate('/output', { state: e.data });
-                        })
-                          .catch(() => {
-                            alert("실패")
-                          })
-                      }}>제출</button>
+                      onClick={navigateToOutput}>제출</button>
                   </div>
-                </form>
               </div>
             </div>
           </div>

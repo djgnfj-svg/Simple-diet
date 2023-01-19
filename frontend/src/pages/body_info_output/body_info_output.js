@@ -5,7 +5,6 @@ import './body_info_output.css';
 
 function Output_form() {
     const { state } = useLocation();
-    let data = state.meals["1_meals"]
     return (
         <section className="section-plans" id="section-plans">
         <div className="u-center-text u-margin-bottom-big">
@@ -24,10 +23,10 @@ function Output_form() {
                 <div className="card__details">
                   <ul>
                     <li>아침</li>
-                    <li>칼로리 : {state.meals["1_meals"].kilo_calorie}</li>
-                    <li>탄수화물 : 35g</li>
-                    <li>단백질 : 20g</li>
-                    <li>지방 : 20g</li>
+                    <li>칼로리 : {state.meals["1_meals"].kilo_calorie}kcal</li>
+                    <li>탄수화물 : {state.meals["1_meals"].carbohydrate}g</li>
+                    <li>단백질 : {state.meals["1_meals"].protein}g</li>
+                    <li>지방 : {state.meals["1_meals"].fat}g</li>
                   </ul>
                 </div>
               </div>
@@ -43,16 +42,19 @@ function Output_form() {
                 <div className="card__details">
                   <ul>
                   <li>점심</li>
-                    <li>칼로리 : 500kcal</li>
-                    <li>탄수화물 : 35g</li>
-                    <li>단백질 : 20g</li>
-                    <li>지방 : 20g</li>
+                  <li>칼로리 : {state.meals["2_meals"].kilo_calorie}kcal</li>
+                    <li>탄수화물 : {state.meals["2_meals"].carbohydrate}g</li>
+                    <li>단백질 : {state.meals["2_meals"].protein}g</li>
+                    <li>지방 : {state.meals["2_meals"].fat}g</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-1-of-3">
+          {
+            Object.keys(state.meals).length==3
+            ?           
+            <div className="col-1-of-3">
             <div className="card">
               <div className="card__side card__side--front-3">
                 <div className="card__title card__title--3">
@@ -62,15 +64,18 @@ function Output_form() {
                 <div className="card__details">
                   <ul>
                   <li>저녁</li>
-                    <li>칼로리 : 500kcal</li>
-                    <li>탄수화물 : 35g</li>
-                    <li>단백질 : 20g</li>
-                    <li>지방 : 20g</li>
+                  <li>칼로리 : {state.meals["3_meals"].kilo_calorie}kcal</li>
+                    <li>탄수화물 : {state.meals["3_meals"].carbohydrate}g</li>
+                    <li>단백질 : {state.meals["3_meals"].protein}g</li>
+                    <li>지방 : {state.meals["3_meals"].fat}g</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+          :
+          null
+          }
         </div>
         <div className="u-center-text u-margin-top-huge">
           {/* todo 추후 쿠팡 식단 계산으로 이동 */}
