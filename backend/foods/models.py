@@ -1,9 +1,14 @@
 from django.db import models
 
 # Create your models here.
+class Meals_fucus(models.IntegerChoices):
+    BREAKFAST = 0, 'Low'
+    LUNCH = 1, 'Normal'
+    DINNER = 2, 'High'
 
 class Food_data(models.Model):
-    fucus = models.CharField(max_length=10)
+    nutrient_fucus = models.CharField(max_length=10)
+    meals_fucus = models.IntegerField(default=Meals_fucus.BREAKFAST, choices=Meals_fucus.choices)
     name = models.CharField(max_length=50)
     kcalorie = models.IntegerField(default=0)
     carbohydrate = models.IntegerField(default=0)
