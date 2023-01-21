@@ -1,0 +1,50 @@
+[
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "nutrient_fucus": "단백질",
+            "meals_fucus": 2,
+            "name": "한끼통살 통살 닭가슴살 허니소이 (냉동)",
+            "kcalorie": 135,
+            "carbohydrate": 9,
+            "protein": 21,
+            "fat": 1.5,
+            "price": 21900,
+            "food_number": 10,
+            "food_gram": 100,
+            "link": "https://www.coupang.com/vp/products/6081081115?itemId=11273250763"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "nutrient_fucus": "단백질",
+            "meals_fucus": 2,
+            "name": "햇살닭 저염훈제닭가슴살 플러스 (냉동)",
+            "kcalorie": 121,
+            "carbohydrate": 2,
+            "protein": 23.3,
+            "fat": 1.5,
+            "price": 39000,
+            "food_number": 10,
+            "food_gram": 100,
+            "link": "https://www.coupang.com/vp/products/1519330646?itemId=5810607566"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "nutrient_fucus": "단백질",
+            "meals_fucus": 2,
+            "name": "햇살닭 흑마늘 수비드 닭가슴살 (냉동)",
+            "kcalorie": 172.5,
+            "carbohydrate": 9,
+            "protein": 31.5,
+            "fat": 2,
+            "price": 24800,
+            "food_number": 8,
+            "food_gram": 150,
+            "link": "https://www.coupang.com/vp/products/4656203901?itemId=5810700340"
+        }
+    }
+]
