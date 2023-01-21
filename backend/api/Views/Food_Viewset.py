@@ -10,9 +10,9 @@ class Food_Viewset(viewsets.ModelViewSet):
     queryset = Food_data.objects.order_by("-id")[:10]
     def list(self, request, *args, **kwargs):
         if request.query_params:
-            fucus = request.query_params.get("fucus",None)
+            fucus = request.query_params.get("nutrient_fucus",None)
             #페이지 네이션해줘야될듯하다
-            self.queryset = Food_data.objects.filter(fucus=fucus).order_by("-id")[:10]
+            self.queryset = Food_data.objects.filter(nutrient_fucus=fucus).order_by("-id")[:10]
         return super().list(request, *args, **kwargs)
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
