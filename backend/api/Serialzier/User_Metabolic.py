@@ -18,12 +18,30 @@ def Classify_data(data):
     return total_data, meal1_data, meal2_data, meal3_data
 
 def Cal_week_data(total_data):
+    # 6일치의 식량을 준다
+    # 7일은 소수여서 나누기 어렵고 일요일은 먹고픈거 먹으라는 깊은뜻
     week_data = {}
     week_data["week_kilo_calorie"] = total_data["total_kilo_calorie"] * 6
     week_data["week_protein"] = total_data["total_protein"] * 6
     week_data["week_fat"] = total_data["total_fat"] * 6
     week_data["week_carbohydrate"] = total_data["total_carbohydrate"] * 6
     return week_data
+
+def Make_week_food_data(total_data):
+
+    '''
+    1. 끼니 데이터를 받는다.
+    2. 음식데이터 중에 아침용을 정렬시킨다.
+    3. 아침 데이터 단 - 지 - 탄 순으로 채운다.
+    4. 오차가 얼마나 있는지 확인하고 각각의 최대치를 넘으면 조정하거나 다음식단의 가중치로 넣는다.
+    5. 점심과 저녁데이터를 위와같이 진행한다.
+        a. 만약 대용량일경우 1/2 1/3 을넣으면서 테스트 한다.
+            대용량 -> 1개이면서 500g 이상
+    6. 최종데이터를 점검한다.
+    '''
+    return 
+
+
 class User_body_info_SZ(serializers.Serializer):
     data = serializers.JSONField()
     def create(self,request, validated_data):
@@ -33,45 +51,17 @@ class User_body_info_SZ(serializers.Serializer):
         1. 토탈데이터와 끼니데이터 나누기 o
         2. 토탈데이터로 주간 데이터 구하기 o
         3. 주간데이터를 통해서 먹어야하는 주간음식데이터를 만든다
-            음식데이터 모델을 만든다. o
-            음식을 추가하는 API를 만든다.o
-            음식을 추가할때 검증해야 하는 부분을 만든다 (링크중에 마지막넘버가 같으게 있으면 업데이트 창으로 간다거나)
-                ex)
-                주간 단백질 1000g
-                우선순위에 따라서 측정하자 결국 DB Food 테이블에 우선순위는 존재해야한다.
-                아니면 내가 그냥 가격순으로 정렬해 버리든가.
-
-                여러개의 종목이 있는 품목에 대하여
-                - 각각 더해서 평균을 정하는게 편할 듯 하다.
-                그래
-                - 주먹밥
-                - 핫도그
-                추가하자
-               # 나중에 커스텀으로 식이섬유를 챙기시겠습니가?
-                # 장점
-                # 똥 굳
-                # 단점
-                # 가격, 보관
-                분류를 따로 만들어야 하나?
-                나중에 200개정도 됬을때 만들자
-                그러면 저녁에 150이고 딱나누어 떨어지지 않으니까 200그람으로 나눈다
-                월 저녁 200g ~~
-                화 저녁 200g ~~
-
-                이렇게 채우면 다른 음식을 넣든지 해야된다.
-                큰거 해치우고 잔잔바리들 넣어야지
-                메뉴는 3가지를 미만으로 한다.
-
-
+            주간 음식 데이터 만들기
         4. 나온 주간음식데이터를 일간으로 나눈다.
             큰용량은 2, 3으로 나눈다.
 
         5. 일간으로 나눈 음식데이터를 끼니별로 나눈다.
         6. 리턴한다리~
         ''' 
+        print(validated_data)
         total_data, meal1_data, meal2_data, meal3_data = Classify_data(validated_data["data"])
         week_data = Cal_week_data(total_data)
 
-        print(week_data)
+        week_food_data = Make_week_food_data(total_data)
         instance = week_data
         return instance
