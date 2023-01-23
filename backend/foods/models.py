@@ -3,11 +3,6 @@ from django.utils.translation import gettext_lazy as _
 import json
 
 # Create your models here.
-class Meals_fucus(models.IntegerChoices):
-    BREAKFAST = 0, '아침'
-    LUNCH = 1, '점심'
-    DINNER = 2, '저녁'
-
 
 class Food_data(models.Model):
     class Nutrint(models.TextChoices):
@@ -17,8 +12,13 @@ class Food_data(models.Model):
 
     # 분류
     nutrient_fucus = models.CharField(max_length=2,choices=Nutrint.choices,default=Nutrint.PROTEIN,)
-    meals_fucus = models.IntegerField(default=Meals_fucus.BREAKFAST, choices=Meals_fucus.choices)
     
+    meals_fucus = models.JSONField()
+    def set_foo(self, value):
+        self.meals_fucus = json.dumps(value)
+
+    def get_meals_fucus(self):
+        return json.loads(self.meals_fucus)
     # 정보
     name = models.CharField(max_length=50)
     kcalorie = models.IntegerField(default=0)

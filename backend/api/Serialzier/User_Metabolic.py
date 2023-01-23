@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from foods.models import Food_data
+
 # 유저에게 제공되는 식단을 저장할 것인가?
 # 추세를 알기위해서 필요할 듯하다
 # 나중에 알러지 같은 커스텀한 요소가 나온다면
@@ -27,11 +29,11 @@ def Cal_week_data(total_data):
     week_data["week_carbohydrate"] = total_data["total_carbohydrate"] * 6
     return week_data
 
-def Make_week_food_data(total_data):
+def Make_week_food_data(total_data, breakfast, lunch, dinner):
 
     '''
-    1. 끼니 데이터를 받는다.
-    2. 음식데이터 중에 아침용을 정렬시킨다.
+    1. 끼니 데이터를 받는다.o
+    2. 음식데이터 중에 아침용을 정렬시킨다. o
     3. 아침 데이터 단 - 지 - 탄 순으로 채운다.
     4. 오차가 얼마나 있는지 확인하고 각각의 최대치를 넘으면 조정하거나 다음식단의 가중치로 넣는다.
     5. 점심과 저녁데이터를 위와같이 진행한다.
@@ -39,7 +41,21 @@ def Make_week_food_data(total_data):
             대용량 -> 1개이면서 500g 이상
     6. 최종데이터를 점검한다.
     '''
-    return 
+
+    data = Food_data.objects.filter(meals_fucus=0)
+    protein_data = data.filter(nutrient_fucus="P").order_by("-id")
+    print((Food_data.objects.get(id=21).meals_fucus))
+    for data in protein_data:
+        # if check_protein():
+        #     break
+        # 대용량인지 판단
+        # 1/3 으로 진행
+        # 
+        if data.food_gram > 500:
+            print("대용량입니다. 용량은 1/3로 영양소는 영양소 * (500//3) 으로")
+        
+    instance = 0
+    return instance
 
 
 class User_body_info_SZ(serializers.Serializer):
@@ -58,10 +74,9 @@ class User_body_info_SZ(serializers.Serializer):
         5. 일간으로 나눈 음식데이터를 끼니별로 나눈다.
         6. 리턴한다리~
         ''' 
-        print(validated_data)
-        total_data, meal1_data, meal2_data, meal3_data = Classify_data(validated_data["data"])
+        total_data, breakfast, lunch, dinner = Classify_data(validated_data["data"])
         week_data = Cal_week_data(total_data)
 
-        week_food_data = Make_week_food_data(total_data)
+        week_food_data = Make_week_food_data(total_data, breakfast, lunch, dinner)
         instance = week_data
         return instance

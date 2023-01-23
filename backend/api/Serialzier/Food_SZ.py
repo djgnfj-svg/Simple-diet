@@ -3,13 +3,14 @@ from rest_framework.exceptions import ValidationError
 from foods.models import Food_data
 
 NUTRIENT=(
-        ('P', '단백질'),
-        ('F', '지방'),
-        ('C', '탄수화물'),
+    ('P', '단백질'),
+    ('F', '지방'),
+    ('C', '탄수화물'),
 )
 
 MEALS = (
     (0, "아침"),
+    ((0,1), "아침2"),
     (1, "점심"),
     (2, "저녁"),
 )
@@ -39,3 +40,7 @@ class Food_SZ(serializers.ModelSerializer):
     #         if value not in MEALS:
     #             ValidationError("입력데이터가 잘못되었습니다.")
     #     return values
+
+    def create(self, validated_data):
+        
+        return super().create(validated_data)

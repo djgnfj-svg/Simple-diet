@@ -2,8 +2,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [0],
+            "nutrient_fucus": "P",
+            "meals_fucus": 0,
             "name": "한끼통살 통살 닭가슴살 허니소이 (냉동)",
             "kcalorie": 135,
             "carbohydrate": 9,
@@ -18,8 +18,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [0],
+            "nutrient_fucus": "P",
+            "meals_fucus": 0,
             "name": "햇살닭 저염훈제닭가슴살 플러스 (냉동)",
             "kcalorie": 121,
             "carbohydrate": 2,
@@ -34,8 +34,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [0],
+            "nutrient_fucus": "P",
+            "meals_fucus": 0,
             "name": "햇살닭 흑마늘 수비드 닭가슴살 (냉동)",
             "kcalorie": 172.5,
             "carbohydrate": 9,
@@ -50,8 +50,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [2],
+            "nutrient_fucus": "P",
+            "meals_fucus": 2,
             "name": "곰곰 납작한 떡갈비 (냉동)",
             "kcalorie": 220,
             "carbohydrate": 9,
@@ -66,8 +66,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [3],
+            "nutrient_fucus": "C",
+            "meals_fucus": 2,
             "name": "곰곰 동그랑땡 (냉동)",
             "kcalorie": 194,
             "carbohydrate": 15,
@@ -82,8 +82,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "지방",
-            "meals_fucus": [3],
+            "nutrient_fucus": "F",
+            "meals_fucus": 2,
             "name": "하림 치킨너겟 (냉동)",
             "kcalorie": 226,
             "carbohydrate": 9,
@@ -98,8 +98,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "지방",
-            "meals_fucus": [2],
+            "nutrient_fucus": "F",
+            "meals_fucus": 2,
             "name": "곰곰 한입 돈까스 (냉동)",
             "kcalorie": 372,
             "carbohydrate": 9,
@@ -114,8 +114,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [0],
+            "nutrient_fucus": "C",
+            "meals_fucus": 0,
             "name": "라이틀리 곤약즉석밥 현미퀴노아",
             "kcalorie": 90,
             "carbohydrate": 21,
@@ -130,11 +130,11 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "지방",
-            "meals_fucus": [2],
+            "nutrient_fucus": "F",
+            "meals_fucus": 2,
             "name": "청정원 리치부어스트",
             "kcalorie": 325,
-            "carbohydrate": 3,
+            "carbohydrate": 2,
             "protein": 15,
             "fat": 28,
             "price": 14250,
@@ -146,8 +146,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "지방",
-            "meals_fucus": [2],
+            "nutrient_fucus": "F",
+            "meals_fucus": 2,
             "name": "동원 통그릴 비엔나(100g기준)",
             "kcalorie": 280,
             "carbohydrate": 1.6,
@@ -162,13 +162,13 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [0],
+            "nutrient_fucus": "P",
+            "meals_fucus": 0,
             "name": "목우촌 닭가슴살 스테이크 구운갈릭 (냉동)",
             "kcalorie": 142,
             "carbohydrate": 10,
             "protein": 19,
-            "fat": 3,
+            "fat": 2,
             "price": 23980,
             "food_number": 10,
             "food_gram": 100,
@@ -178,8 +178,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [0],
+            "nutrient_fucus": "P",
+            "meals_fucus": 0,
             "name": "곰곰 흑미 닭가슴살 스테이크",
             "kcalorie": 155,
             "carbohydrate": 10,
@@ -194,8 +194,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "단백질",
-            "meals_fucus": [1],
+            "nutrient_fucus": "P",
+            "meals_fucus": 1,
             "name": "곰곰 프랑크 닭가슴살 소시지 꼬치형 (냉동)",
             "kcalorie": 122,
             "carbohydrate": 7,
@@ -210,8 +210,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "곰곰 새우 볶음밥 (냉동)",
             "kcalorie": 492,
             "carbohydrate": 86,
@@ -226,8 +226,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "곰곰 닭갈비볶음밥 (냉동)",
             "kcalorie": 520,
             "carbohydrate": 91,
@@ -242,8 +242,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -258,8 +258,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -274,8 +274,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -290,8 +290,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [0],
+            "nutrient_fucus": "C",
+            "meals_fucus": 0,
             "name": "한우물 김치치즈 구운주먹밥 10개입 (냉동)",
             "kcalorie": 165,
             "carbohydrate": 31,
@@ -306,8 +306,8 @@
     {
         "model": "foods.Food_data",
         "fields": {
-            "nutrient_fucus": "탄수화물",
-            "meals_fucus": [1],
+            "nutrient_fucus": "C",
+            "meals_fucus": 1,
             "name": "하림 닭가슴살 핫도그 8개입 (냉동)",
             "kcalorie": 235,
             "carbohydrate": 27,
