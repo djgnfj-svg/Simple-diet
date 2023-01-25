@@ -9,10 +9,13 @@ NUTRIENT=(
 )
 
 MEALS = (
-    (0, "아침"),
-    ((0,1), "아침2"),
-    (1, "점심"),
-    (2, "저녁"),
+    ((0), "아침"),
+    ((1), "점심"),
+    ((2), "저녁"),
+    ((0,1), "아침, 점심"),
+    ((0,2), "아침, 저녁"),
+    ((1,2), "점심, 저녁"),
+    ((0,1,2), "전부"),
 )
 
 
@@ -44,3 +47,7 @@ class Food_SZ(serializers.ModelSerializer):
     def create(self, validated_data):
         
         return super().create(validated_data)
+    def validate_meals_fucus(self, value):
+        if isinstance(value, int):
+            return [value]
+        return value

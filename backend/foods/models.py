@@ -14,10 +14,12 @@ class Food_data(models.Model):
     nutrient_fucus = models.CharField(max_length=2,choices=Nutrint.choices,default=Nutrint.PROTEIN,)
     
     meals_fucus = models.JSONField()
-    def set_foo(self, value):
+    def set_meals_fucus(self, value):
+        print("set_meals : ", value)
         self.meals_fucus = json.dumps(value)
 
     def get_meals_fucus(self):
+        print("get_meals : ", self.meals_fucus)
         return json.loads(self.meals_fucus)
     # 정보
     name = models.CharField(max_length=50)
@@ -31,7 +33,3 @@ class Food_data(models.Model):
     # 끼니
     food_number = models.IntegerField()
     food_gram = models.IntegerField()
-
-
-    # def validate_meals_fucus(vlaue):
-    #     return
