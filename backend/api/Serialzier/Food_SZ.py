@@ -20,9 +20,11 @@ MEALS = (
 
 
 class Food_SZ(serializers.ModelSerializer):
+    # 분류
     meals_fucus = serializers.ChoiceField(choices=MEALS)
     nutrient_fucus = serializers.ChoiceField(choices=NUTRIENT)
 
+    # 정보
     name = serializers.CharField(max_length=50)
     kcalorie = serializers.IntegerField(default=0)
     carbohydrate = serializers.FloatField(default=0)
@@ -30,7 +32,7 @@ class Food_SZ(serializers.ModelSerializer):
     fat = serializers.FloatField(default=0)
     price = serializers.IntegerField()
     link = serializers.URLField(max_length=200)
-
+    # 끼니
     food_number = serializers.IntegerField()
     food_gram = serializers.IntegerField()
     
@@ -38,15 +40,6 @@ class Food_SZ(serializers.ModelSerializer):
         model = Food_data
         fields = "__all__"
 
-    # def validate_meals_fucus(self, values):
-    #     for value in values:
-    #         if value not in MEALS:
-    #             ValidationError("입력데이터가 잘못되었습니다.")
-    #     return values
-
-    def create(self, validated_data):
-        
-        return super().create(validated_data)
     def validate_meals_fucus(self, value):
         if isinstance(value, int):
             return [value]
