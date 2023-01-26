@@ -1,4 +1,8 @@
 class Calculation():
+    def __init__(self, protein_base_range=2.0, fat_base_range=0.28) -> None:
+        self.protein_base_range = protein_base_range
+        self.fat_base_range = fat_base_range
+
     def total_kilo_calorie(self,validated_data):
         gender = validated_data["gender"]
         weight = validated_data["weight"]
@@ -26,23 +30,16 @@ class Calculation():
         else :
             return round(total_kilo_calorie)
 
-    def total_protein(self, validated_data):
-        weight = validated_data["weight"]
-        excise_activity =  validated_data["excise_activity"]
-
-        extra_value = 2.0 # 1.6 ~ 2.2 중간값이다.
-
-        if 0.3 <= excise_activity:
-            extra_value = 2.5
-
+    def total_protein(self, weight):
+        extra_value = 1.8 # 1.6 ~ 2.2 중간값이다.
         total_protein = weight * extra_value
         return round(total_protein)
 
     def total_fat(self, total_kilo_calorie):
         # 20% 35% 까지 권장한다 나중에 여부를 확인할 수 있도록 만들자
-        extra_value = 0.3
+        extra_value = 0.
         # if 지방을 선호하지 않으면 ~
-        return round((total_kilo_calorie * extra_value) / 9)
+        return round((total_kilo_calorie * extra_value) // 9)
 
     def total_carbohydrate(self,instance):
         #나머지는 모두 탄수화물로 가야함
