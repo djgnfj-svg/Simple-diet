@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
 from api.Utils.Metabolic_rate_Calk import Calculation
 

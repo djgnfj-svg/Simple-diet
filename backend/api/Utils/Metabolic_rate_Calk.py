@@ -31,14 +31,11 @@ class Calculation():
             return round(total_kilo_calorie)
 
     def total_protein(self, weight):
-        extra_value = 1.8 # 1.6 ~ 2.2 중간값이다.
-        total_protein = weight * extra_value
+        total_protein = weight * self.protein_base_range
         return round(total_protein)
 
     def total_fat(self, total_kilo_calorie):
-        # 20% 35% 까지 권장한다 나중에 여부를 확인할 수 있도록 만들자
-        extra_value = 0.
-        # if 지방을 선호하지 않으면 ~
+        extra_value = self.fat_base_range
         return round((total_kilo_calorie * extra_value) // 9)
 
     def total_carbohydrate(self,instance):
