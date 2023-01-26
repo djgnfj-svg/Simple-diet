@@ -4,6 +4,7 @@ import json
 
 # Create your models here.
 
+#todo 아침데이터중에 지방위주의 음식을 찾기
 class Food_data(models.Model):
     class Nutrint(models.TextChoices):
         PROTEIN = 'P', _('단백질')

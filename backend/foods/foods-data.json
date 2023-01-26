@@ -318,5 +318,21 @@
             "food_gram": 90,
             "link": "https://www.coupang.com/vp/products/242350474"
         }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "nutrient_fucus": "F",
+            "meals_fucus": [0,1],
+            "name": "롯데제과 퀘이커 마시는오트밀 오트&그레인",
+            "kcalorie": 222,
+            "carbohydrate": 29,
+            "protein": 9,
+            "fat": 8,
+            "price": 11680,
+            "food_number": 20,
+            "food_gram": 50,
+            "link": "https://www.coupang.com/vp/products/4971916592"
+        }
     }
 ]

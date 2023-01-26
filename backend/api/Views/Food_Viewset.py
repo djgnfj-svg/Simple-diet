@@ -7,7 +7,7 @@ from foods.models import Food_data
 
 class Food_Viewset(viewsets.ModelViewSet):
     serializer_class = Food_SZ
-    queryset = Food_data.objects.order_by("-id")[:10]
+    queryset = Food_data.objects.order_by("-id")
     def list(self, request, *args, **kwargs):
         if request.query_params:
             fucus = request.query_params.get("nutrient_fucus",None)
