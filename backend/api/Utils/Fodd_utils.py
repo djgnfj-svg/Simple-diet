@@ -39,7 +39,7 @@ def append_food_data(meal_food_data, food_data, food_count):
         else:
             big_size = 2
             food_number = 0.5
-    meal_food_data[str(food_count)]["food_food_number"] = food_number
+    meal_food_data[str(food_count)]["food_number"] = food_number
     return big_size
 
 #meals = 끼니

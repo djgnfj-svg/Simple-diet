@@ -1,7 +1,28 @@
 import "./diet_meal_list.css"
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLocation } from 'react-router';
 function Diet_meal_list() {
+    const { state } = useLocation();
+    const food_list = (e) => {
+        const result = []
+        switch (e) {
+            case "breakfast":
+                for (let i = 1; i < Object.keys(state.breakfast).length; i++) {
+                    result.push(<li><a href={state.breakfast[i].food_name}> {state.breakfast[i].food_name}</a> | {state.breakfast[i].food_number}개</li>)
+                }
+                return result
+            case "lunch":
+                for (let i = 1; i < Object.keys(state.lunch).length; i++) {
+                    result.push(<li><a href={state.lunch[i].food_name}> {state.lunch[i].food_name}</a> | {state.lunch[i].food_number}개</li>)
+                }
+                return result
+            case "dinner":
+                for (let i = 1; i < Object.keys(state.dinner).length; i++) {
+                    result.push(<li><a href={state.dinner[i].food_name}> {state.dinner[i].food_name}</a> | {state.dinner[i].food_number}개</li>)
+                }
+                return result
+        }
+    }
     return (
         <>
             <div className="flip-body">
@@ -12,29 +33,11 @@ function Diet_meal_list() {
                             <figure>
                                 <div className="img-bg" />
                                 <img src="https://cdn.kormedi.com/wp-content/uploads/2021/08/gettyimages-1194703474-580x439.jpg" alt="Brohm Lake" />
-                                <figcaption>Brohm Lake</figcaption>
+                                <figcaption>아침</figcaption>
                             </figure>
                             <ul>
-                                <li>Detail 1</li>
-                                <li>Detail 2</li>
-                                <li>Detail 3</li>
-                                <li>Detail 4</li>
-                                <li>Detail 5</li>
+                                {food_list("breakfast")}
                             </ul>
-                        </div>
-                        <div className="card-back">
-                            <figure>
-                                <div className="img-bg" />
-                                <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake" />
-                            </figure>
-                            <button>Book</button>
-                            <div className="design-container">
-                                <span className="design design--4" />
-                                <span className="design design--5" />
-                                <span className="design design--6" />
-                                <span className="design design--7" />
-                                <span className="design design--8" />
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,32 +49,11 @@ function Diet_meal_list() {
                             <figure>
                                 <div className="img-bg" />
                                 <img src="https://images.unsplash.com/photo-1545436864-cd9bdd1ddebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Image 2" />
-                                <figcaption>Légende</figcaption>
+                                <figcaption>점심</figcaption>
                             </figure>
                             <ul>
-                                <li>Detail 1</li>
-                                <li>Detail 2</li>
-                                <li>Detail 3</li>
-                                <li>Detail 4</li>
-                                <li>Detail 5</li>
+                                {food_list("lunch")}
                             </ul>
-                        </div>
-                        <div className="card-back">
-                            <figure>
-                                <div className="img-bg" />
-                                <img src="https://images.unsplash.com/photo-1545436864-cd9bdd1ddebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image-2" />
-                            </figure>
-                            <button>Book</button>
-                            <div className="design-container">
-                                <span className="design design--1" />
-                                <span className="design design--2" />
-                                <span className="design design--3" />
-                                <span className="design design--4" />
-                                <span className="design design--5" />
-                                <span className="design design--6" />
-                                <span className="design design--7" />
-                                <span className="design design--8" />
-                            </div>
                         </div>
                     </div>
                 </div >
@@ -83,34 +65,11 @@ function Diet_meal_list() {
                             <figure>
                                 <div className="img-bg" />
                                 <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake" />
-                                <figcaption>Brohm Lake</figcaption>
+                                <figcaption>저녁</figcaption>
                             </figure>
                             <ul>
-                                <li>Detail 1</li>
-                                <li>Detail 2</li>
-                                <li>Detail 3</li>
-                                <li>Detail 4</li>
-                                <li>Detail 5</li>
+                                {food_list("dinner")}
                             </ul>
-                        </div>
-                        <div className="card-back">
-                            {/* only if the image is necessary */}
-                            <figure>
-                                <div className="img-bg" />
-                                <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake" />
-                            </figure>
-                            <button>Book</button>
-                            {/* can add svg here and remove these eight spans */}
-                            <div className="design-container">
-                                <span className="design design--1" />
-                                <span className="design design--2" />
-                                <span className="design design--3" />
-                                <span className="design design--4" />
-                                <span className="design design--5" />
-                                <span className="design design--6" />
-                                <span className="design design--7" />
-                                <span className="design design--8" />
-                            </div>
                         </div>
                     </div>
                 </div >

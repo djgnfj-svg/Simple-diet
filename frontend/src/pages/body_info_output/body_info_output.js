@@ -12,7 +12,7 @@ function Output_form() {
   const navigateToOutput = () => {
     axios.post("http://127.0.0.1:8000/api/diet_diet/", _data)
       .then((e) => {
-        navigate('/diet_meal_list', { data: e.data });
+        navigate('/diet_meal_list', { state: e.data });
       })
       .catch(() => {
         alert("실패")
