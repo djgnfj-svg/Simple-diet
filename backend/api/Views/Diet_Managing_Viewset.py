@@ -9,7 +9,6 @@ class Diet_Managing_Viewset(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = User_body_info_SZ
 
     def create(self, request):
-        print(request.data)
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             rtn = serializer.create(request, serializer.data)

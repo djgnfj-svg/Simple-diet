@@ -9,7 +9,6 @@ class User_body_info_SZ(serializers.Serializer):
     general_activities = serializers.FloatField(min_value=1.2, max_value=1.6)
     excise_activity = serializers.FloatField(min_value=0, max_value=0.3)
     age = serializers.IntegerField(min_value=13, max_value=150)
-    many_meals = serializers.IntegerField(min_value=2, max_value=3)
     
     def create(self, request, validated_data):
         instance = {}
@@ -20,8 +19,7 @@ class User_body_info_SZ(serializers.Serializer):
         instance["total_data"]["total_fat"] =  cal.total_fat(instance["total_data"]["total_kilo_calorie"])
         instance["total_data"]["total_carbohydrate"] = cal.total_carbohydrate(instance)
 
-        meals = validated_data["many_meals"]
-        meals_ratio = [0.6, 0.4] if meals==2 else [0.25, 0.45, 0.3]
+        meals_ratio =  [0.25, 0.45, 0.3]
 
         meals_list = ["breakfast", "lunch", "dinner"]
         for i, meal in enumerate(meals_list) :

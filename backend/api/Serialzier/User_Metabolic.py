@@ -24,8 +24,6 @@ class User_body_info_SZ(serializers.Serializer):
     data = serializers.JSONField()
     def create(self, request, validated_data):
         total_data, breakfast, lunch, dinner = Classify_data(validated_data["data"])
-        print(breakfast)
-        week_data = init_week_data(total_data)
 
         day_food_data = Make_week_food_data(total_data, breakfast, lunch, dinner)
         return day_food_data
