@@ -8,7 +8,7 @@ from api.Utils.msg_utils import error_msg
 class Metabolic_rate_ViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = User_body_info_SZ
 
-    def create(self, request, *args, **kwargs):
+    def create(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             rtn = serializer.create(request, serializer.data)
