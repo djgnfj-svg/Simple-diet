@@ -3,12 +3,15 @@ from rest_framework import serializers
 from api.Utils.Metabolic_rate_Calk import Calculation
 
 class User_body_info_SZ(serializers.Serializer):
+    age = serializers.IntegerField(min_value=13, max_value=150)
+    weight = serializers.FloatField(min_value=40, max_value=300)
+    height = serializers.FloatField(min_value=140, max_value=250)
+
     gender = serializers.CharField(max_length=2)
-    weight = serializers.FloatField(max_value=300)
-    height = serializers.FloatField(max_value=200)
     general_activities = serializers.FloatField(min_value=1.2, max_value=1.6)
     excise_activity = serializers.FloatField(min_value=0, max_value=0.3)
-    age = serializers.IntegerField(min_value=13, max_value=150)
+
+    diet_status = serializers.FloatField(min_value=0.8, max_value=1.0)
     
     def create(self, request, validated_data):
         instance = {}

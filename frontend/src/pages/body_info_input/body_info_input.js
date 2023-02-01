@@ -34,8 +34,10 @@ function Body_info_input() {
       .then((e) => {
         navigate('/output', { state: e.data });
       })
-      .catch(() => {
-        alert("실패")
+      .catch((e) => {
+        const error = e.response.data.error_msg
+        alert(e.response.data.error_msg.gender)
+        // if(JSON.parse(e).gender)
       })
   }
   return (
@@ -59,7 +61,7 @@ function Body_info_input() {
                       <input name="weight" onKeyUp={onkeytest} type="text" className="form-control-input"
                         onChange={handleChangeInput} value={weight} required />
                       <label className="label-control" for="sname">몸무게(kg)</label>
-                      <div className="help-block with-errors"></div>
+                      <div on className="help-block with-errors"></div>
                     </div>
                     <div className="form-group">
                       <input name="age" onKeyUp={onkeytest} type="text" className="form-control-input"
@@ -124,6 +126,32 @@ function Body_info_input() {
                       <label for="option-9" class="option option-9">
                         <div class="dot"></div>
                         <span>7+회</span>
+                      </label>
+                    </div>
+                    {/* <label className="label-text" for="gender">끼니</label>
+                    <div class="wrapper">
+                      <input type="radio" name="gender" id="option-1" onChange={handleChangeInput} value={"M"} />
+                      <input type="radio" name="gender" id="option-2" onChange={handleChangeInput} value={"W"} />
+                      <label for="option-1" class="option option-1">
+                        <div class="dot"></div>
+                        <span>2끼</span>
+                      </label>
+                      <label for="option-2" class="option option-2">
+                        <div class="dot"></div>
+                        <span>3끼</span>
+                      </label>
+                    </div> */}
+                    <label className="label-text" for="diet_status">다이어트 여부</label>
+                    <div class="wrapper">
+                      <input type="radio" name="diet_status" id="option-10" onChange={handleChangeInput} value={0.8} />
+                      <input type="radio" name="diet_status" id="option-11" onChange={handleChangeInput} value={1.0} />
+                      <label for="option-10" class="option option-10">
+                        <div class="dot"></div>
+                        <span>다이어트</span>
+                      </label>
+                      <label for="option-11" class="option option-11">
+                        <div class="dot"></div>
+                        <span>유지</span>
                       </label>
                     </div>
                   </div>

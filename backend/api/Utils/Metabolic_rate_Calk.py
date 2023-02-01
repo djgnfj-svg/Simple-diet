@@ -10,9 +10,7 @@ class Calculation():
         general_activities = validated_data["general_activities"]
         excise_activity = validated_data["excise_activity"]
         age = validated_data["age"]
-
-        # 나중에 체중증량을 생각해서 변수를 만들어주었다.
-        is_lose = True
+        diet_staus = validated_data["diet_status"]
 
         # 기초대사량
         if gender == "M":
@@ -22,13 +20,9 @@ class Calculation():
 
         # 활동계수
         activity_coefficient = general_activities + excise_activity
-
         total_kilo_calorie = basal_metabolic_rate * activity_coefficient
 
-        if is_lose :
-            return round(total_kilo_calorie * 0.8)
-        else :
-            return round(total_kilo_calorie)
+        return round(total_kilo_calorie * diet_staus)
 
     def total_protein(self, weight):
         total_protein = weight * self.protein_base_range
@@ -44,7 +38,7 @@ class Calculation():
         total_protein = instance["total_data"]["total_protein"]
         total_fat = instance["total_data"]["total_fat"]
     
-        total_carbohydrate = (total_kilo_calorie - ((total_protein * 4) + (total_fat * 9)))
+        total_carbohydrate_kcal = (total_kilo_calorie - ((total_protein * 4) + (total_fat * 9)))
 
-        total_carbohydrate = total_carbohydrate / 4
-        return round(total_carbohydrate)
+        total_carbohydrate_gram = total_carbohydrate_kcal / 4
+        return round(total_carbohydrate_gram)

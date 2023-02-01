@@ -61,7 +61,6 @@ def Make_week_food_data(total_data, breakfast, lunch, dinner):
             food_data = food_datas[j]
 
             # 2. 음식 추가여부 확인
-            # todo 좀더 우아하게...
             temp = sort_num
             sort_num = check_data(breakfast, meals_data[meals_list[i]], sort_num)
 

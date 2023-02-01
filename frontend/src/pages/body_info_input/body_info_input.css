@@ -199,6 +199,10 @@ input[type="radio"] {
 #option-9:checked:checked~.option-9,
 #option-10:checked:checked~.option-10,
 #option-11:checked:checked~.option-11,
+#option-12:checked:checked~.option-12,
+#option-13:checked:checked~.option-13,
+#option-14:checked:checked~.option-14,
+#option-15:checked:checked~.option-15,
 #option-1:checked:checked~.option-1{
 	border-color: #0069d9;
 	background: #0069d9;
@@ -219,6 +223,10 @@ input[type="radio"] {
 #option-9:checked:checked~.option-9 .dot,
 #option-10:checked:checked~.option-10 .dot,
 #option-11:checked:checked~.option-11 .dot,
+#option-12:checked:checked~.option-12 .dot,
+#option-13:checked:checked~.option-13 .dot,
+#option-14:checked:checked~.option-14 .dot,
+#option-15:checked:checked~.option-15 .dot,
 #option-2:checked:checked~.option-2 .dot {
 	background: #fff;
 }
@@ -232,6 +240,10 @@ input[type="radio"] {
 #option-9:checked:checked~.option-9 .dot::before,
 #option-10:checked:checked~.option-10 .dot::before,
 #option-11:checked:checked~.option-11 .dot::before,
+#option-12:checked:checked~.option-12 .dot::before,
+#option-13:checked:checked~.option-13 .dot::before,
+#option-14:checked:checked~.option-14 .dot::before,
+#option-15:checked:checked~.option-15 .dot::before,
 #option-1:checked:checked~.option-1 .dot::before{
 	opacity: 1;
 	transform: scale(1);
@@ -251,11 +263,15 @@ input[type="radio"] {
 #option-9:checked:checked~.option-9 span,
 #option-10:checked:checked~.option-10 span,
 #option-11:checked:checked~.option-11 span,
+#option-12:checked:checked~.option-12 span,
+#option-13:checked:checked~.option-13 span,
+#option-14:checked:checked~.option-14 span,
+#option-15:checked:checked~.option-15 span,
 #option-2:checked:checked~.option-2 span {
 	color: #fff;
 }
 
-/* ---------- */
+/* -------------- */
 
 
 * {
