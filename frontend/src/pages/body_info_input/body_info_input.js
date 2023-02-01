@@ -128,19 +128,6 @@ function Body_info_input() {
                         <span>7+회</span>
                       </label>
                     </div>
-                    {/* <label className="label-text" for="gender">끼니</label>
-                    <div class="wrapper">
-                      <input type="radio" name="gender" id="option-1" onChange={handleChangeInput} value={"M"} />
-                      <input type="radio" name="gender" id="option-2" onChange={handleChangeInput} value={"W"} />
-                      <label for="option-1" class="option option-1">
-                        <div class="dot"></div>
-                        <span>2끼</span>
-                      </label>
-                      <label for="option-2" class="option option-2">
-                        <div class="dot"></div>
-                        <span>3끼</span>
-                      </label>
-                    </div> */}
                     <label className="label-text" for="diet_status">다이어트 여부</label>
                     <div class="wrapper">
                       <input type="radio" name="diet_status" id="option-10" onChange={handleChangeInput} value={0.8} />
@@ -155,6 +142,19 @@ function Body_info_input() {
                       </label>
                     </div>
                   </div>
+                  <label className="label-text" for="many_meals">끼니</label>
+                    <div class="wrapper">
+                      <input type="radio" name="many_meals" id="option-12" onChange={handleChangeInput} value={2} />
+                      <input type="radio" name="many_meals" id="option-13" onChange={handleChangeInput} value={3} />
+                      <label for="option-12" class="option option-12">
+                        <div class="dot"></div>
+                        <span>2끼</span>
+                      </label>
+                      <label for="option-13" class="option option-13">
+                        <div class="dot"></div>
+                        <span>3끼</span>
+                      </label>
+                    </div>
                   <div className="form-group">
                     <button type="submit" className="form-control-submit-button"
                       onClick={navigateToOutput}>제출</button>
