@@ -3,8 +3,8 @@ from rest_framework import serializers
 from api.Utils.Metabolic_rate_Calk import Calculation
 
 class User_body_info_SZ(serializers.Serializer):
-    age = serializers.IntegerField(min_value=13, max_value=150)
-    weight = serializers.FloatField(min_value=40, max_value=300)
+    age = serializers.IntegerField(min_value=20, max_value=100)
+    weight = serializers.FloatField(min_value=40, max_value=250)
     height = serializers.FloatField(min_value=140, max_value=250)
 
     gender = serializers.CharField(max_length=2)
