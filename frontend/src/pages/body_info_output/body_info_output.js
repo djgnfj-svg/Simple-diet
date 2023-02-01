@@ -24,7 +24,7 @@ function Output_form() {
         <h2 className="heading-secondary">
           끼니 정보
         </h2>
-        <span>다이트나 유지를 위해서는 아래정도로 드시는게 좋습니다.</span>
+        <span>{state.diet_status}를 위해서는 아래정도로 드시는게 좋습니다.</span>
       </div>
       <div className="row">
         <div className="col-1-of-3">

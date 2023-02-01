@@ -32,4 +32,5 @@ class User_body_info_SZ(serializers.Serializer):
             instance[meal]["fat"] = round(instance["total_data"]["total_fat"] * meals_ratio[i])
             instance[meal]["carbohydrate"] = round(instance["total_data"]["total_carbohydrate"] * meals_ratio[i])
         
+        instance["diet_status"] = "다이어트" if validated_data["diet_status"] == 0.8 else "유지"
         return instance
