@@ -23,7 +23,7 @@ class Food_data(models.Model):
         print("get_meals : ", self.meals_fucus)
         return json.loads(self.meals_fucus)
     # 정보
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     kcalorie = models.IntegerField(default=0)
     carbohydrate = models.FloatField(default=0)
     protein = models.FloatField(default=0)
