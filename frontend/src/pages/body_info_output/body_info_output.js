@@ -102,10 +102,10 @@ function Output_form() {
       :
       <div className="row">
         <div className="col-1-of-2">
-          {nutrient_list("breakfast")}
+          {nutrient_list("lunch")}
         </div>
         <div className="col-1-of-2">
-          {nutrient_list("lunch")}
+          {nutrient_list("dinner")}
         </div>
       </div>
       }

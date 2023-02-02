@@ -13,6 +13,7 @@ def print_diet(diet_data, meals_data, meal):
     print("==================")
 
 def print_nutrient(diet_data, meals_data, buffer):
-    print("단백질 : ",diet_data["protein"] * buffer," ", meals_data["protein"])
-    print("탄수화물 : ",diet_data["carbohydrate"] * buffer," ", meals_data["carbohydrate"])
-    print("지방 : ",diet_data["fat"] * buffer," ", meals_data["fat"])
+    print("단백질 : {} | {}".format(round(diet_data["protein"] * buffer), meals_data["protein"]))
+    print("탄수화물 : {} | {}".format(round(diet_data["carbohydrate"] * buffer), meals_data["carbohydrate"]))
+    print("지방 : {} | {}".format(round(diet_data["fat"] * buffer), meals_data["fat"]))
+    print("------------------------")

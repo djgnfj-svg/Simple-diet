@@ -83,7 +83,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "F",
-            "meals_fucus": [2],
+            "meals_fucus": [1, 2],
             "name": "하림 치킨너겟 (냉동)",
             "kcalorie": 226,
             "carbohydrate": 9,
@@ -99,7 +99,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "F",
-            "meals_fucus": [2],
+            "meals_fucus": [1, 2],
             "name": "곰곰 한입 돈까스 (냉동)",
             "kcalorie": 372,
             "carbohydrate": 9,
@@ -147,11 +147,11 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "F",
-            "meals_fucus": [2],
-            "name": "동원 통그릴 비엔나(100g기준)",
+            "meals_fucus": [1, 2],
+            "name": "동원 통그릴 비엔나",
             "kcalorie": 280,
-            "carbohydrate": 1.6,
-            "protein": 9.9,
+            "carbohydrate": 1,
+            "protein": 11,
             "fat": 26,
             "price": 11250,
             "food_number": 1,
@@ -211,7 +211,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1],
+            "meals_fucus": [1,2],
             "name": "곰곰 새우 볶음밥 (냉동)",
             "kcalorie": 492,
             "carbohydrate": 86,
@@ -227,7 +227,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1],
+            "meals_fucus": [1, 2],
             "name": "곰곰 닭갈비볶음밥 (냉동)",
             "kcalorie": 520,
             "carbohydrate": 91,
@@ -243,7 +243,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1],
+            "meals_fucus": [1, 2],
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -259,7 +259,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1],
+            "meals_fucus": [1, 2],
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -275,7 +275,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1],
+            "meals_fucus": [1, 2],
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -323,7 +323,7 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "F",
-            "meals_fucus": [0,1],
+            "meals_fucus": [0,1,2],
             "name": "롯데제과 퀘이커 마시는오트밀 오트&그레인",
             "kcalorie": 222,
             "carbohydrate": 29,

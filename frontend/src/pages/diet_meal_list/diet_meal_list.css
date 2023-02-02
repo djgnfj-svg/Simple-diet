@@ -21,10 +21,15 @@ body {
     align-items: center;
 }
 
+.flip_title {
+  color: white;
+  text-align: center;
+}
+
 .flip-card-container {
   color: black;
-  width: 400px;
-  height: 600px;
+  width: 500px;
+  height: 700px;
   margin: 40px;
 
   perspective: 1000px;
@@ -81,7 +86,7 @@ figcaption {
   display: block;
 
   width: auto;
-  margin-top: 12%;
+  /* margin-top: 12%; */
   padding: 8px 22px;
 
   font-weight: bold;
@@ -123,7 +128,6 @@ figcaption {
 .flip-card li {
   width: 120%;
   margin-top: 16px;
-  padding-bottom: 16px;
 
   font-size: 20px;
   text-align: center;
@@ -131,6 +135,9 @@ figcaption {
   position: relative;
   background-color: rgba( 255, 255, 255, 0.2);
 }
+
+
+
 .flip-card li a:hover{
   color : blue
 }

@@ -25,7 +25,7 @@ class User_body_info_SZ(serializers.Serializer):
 
         meals = validated_data["many_meals"]
         meals_ratio =  [0.25, 0.45, 0.3] if meals == 3 else [0.6, 0.4]
-        meals_list = ["breakfast", "lunch", "dinner"] if meals == 3 else ["breakfast", "lunch",]
+        meals_list = ["breakfast", "lunch", "dinner"] if meals == 3 else ["lunch", "dinner",]
         for i, meal in enumerate(meals_list) :
             instance[meal] = {}
             instance[meal]["kilo_calorie"] = round(instance["total_data"]["total_kilo_calorie"] * meals_ratio[i])
