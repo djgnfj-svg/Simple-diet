@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from foods.models import Food_data
 
 from django.db import IntegrityError
+from django.db.models import Q
+
 from api.Serialzier.Food_SZ import Food_SZ
 
 from api.Utils.msg_utils import error_msg
@@ -12,6 +14,26 @@ class Food_Viewset(viewsets.ModelViewSet):
     serializer_class = Food_SZ
     queryset = Food_data.objects.order_by("-id")
     
+    # 음식을 쿼리로 받아서 정렬해서 보년다
+    # 탄단지를 선택해서 정렬을 선택 할 수 있다.
+    def list(self, request, *args, **kwargs):
+        if request.query_params:
+            name = request.query_params.get("name", None)
+            sort_nutrient = request.query_params.get("sort_nutrient", None)
+            
+            q = Q()
+            if name :
+                q &= Q(name__icontains=name)
+        
+            rtn = Food_data.objects.filter(q)    
+            
+            if sort_nutrient:
+                rtn = rtn.order_by(sort_nutrient)
+            print(type((rtn)))
+            return Response(self.get_serializer(rtn, many=True).data, status=status.HTTP_200_OK)
+        
+        return super().list(request, *args, **kwargs)
+
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():

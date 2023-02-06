@@ -1,0 +1,99 @@
+@charset 'utf-8';
+
+/* 노멀라이징 */
+/* 노멀라이징, 전체 초기화 */
+body, a, ul, li, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, li {
+    list-style: none;
+}
+
+.none {
+    display: none !important;
+}
+
+
+
+/* nav */
+nav {
+    padding: 10px;
+}
+nav.pc {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    height: 80px;
+}
+nav img, nav .nav_logo span {
+    width: 35px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+nav.pc .nav_menu ul {
+    display: flex;
+}
+nav.pc .nav_menu ul li a {
+    padding: 10px 20px;
+    width: 70px;
+    text-align: center;
+    display: inline-block;
+}
+
+nav .nav_menu ul li:hover {
+    color: rgb(43, 40, 40);
+    font-weight: bold;
+}
+
+
+nav.m {
+    display: flex;
+    flex-direction: column;
+}
+
+nav.m .top_bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav.m .nav_menu {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+nav.m .nav_menu ul li {
+    width: 120px;
+}
+
+nav.m .nav_menu ul li a {
+    display: block;
+    padding: 10px 20px;
+}
+
+nav.m .nav_toggle:hover {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+  body .m {
+       display: none;
+   }
+}
+
+@media screen and (max-width: 800px) {
+  body  .pc {
+       display: none;
+   }
+
+}

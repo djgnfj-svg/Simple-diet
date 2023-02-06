@@ -13,11 +13,11 @@ function MyNavbar() {
 
                     <div className=" collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav ">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link mx-2 text-white" href="#">후기</a>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
-                                <a className="nav-link mx-2 text-white" href="#">글</a>
+                                <a className="nav-link mx-2 text-white" href="/food_list">음식리스트</a>
                             </li>
                         </ul>
                     </div>

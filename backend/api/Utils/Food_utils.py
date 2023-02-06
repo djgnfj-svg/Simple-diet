@@ -13,20 +13,15 @@ def check_food_double(food_data, nutrient_data, meal_food_data, sort_num):
 def check_nutrient(nutrient_data, meals_data, sort_num):
     buffer = 0.7
     if nutrient_data["protein"] * buffer < meals_data["protein"] and sort_num == 0:
-        print("단백질 졸업")
         return 1
     elif nutrient_data["fat"] * buffer< meals_data["fat"] and sort_num==1:
-        print("지방 졸업")
         return 2
     elif nutrient_data["carbohydrate"] * buffer< meals_data["carbohydrate"] and sort_num==2:
-        print("탄수화물 졸업")
         return 10
     return sort_num
 
 def check_food_data(meal_food_data, food_data, nutrient_data, sort_num):
     buffer = 1.3
-    # 현재값 + 음식값 > 만족값 * 버퍼
-    # 음식을 더했을떄 너무 높으면 거르기 위한 로직
     if sort_num == 0:
         return meal_food_data + food_data.protein > nutrient_data["protein"] * buffer
     elif sort_num == 1:
@@ -81,17 +76,6 @@ def init_meal_food_data():
     return instance
 
 def Make_week_food_data(total_data, breakfast, lunch, dinner):
-    '''
-    목표 : 영양소를 받아서 그것을 만족하는 식단과 식단의 영양소를 리턴
-
-    1. 영양소를 식사별로 나눈다.0
-    2. 식사수 만큼 반복문을돈다.0
-    3. 탄단지 순서로 만족하도록 반복문을 돈다.0
-    4. 음식 리스트를 뽑는다. 0
-    5. 식사에 음식을 추가한다.
-    6. 더 추가해야하는지 체크한다.
-    7. 없다면 3번으로 돌아가고, 탄수화물까지 만족했다면 식사를 저장한다.
-    '''
     instance = {}
     day_food_data = {}
     meal_three = True if breakfast != None else False
@@ -109,6 +93,7 @@ def Make_week_food_data(total_data, breakfast, lunch, dinner):
         while True :
             food_datas = Food_data.objects.filter(meals_fucus__icontains = meal).order_by("-"+sort_list[sort_num])
             food_data = food_datas[j]
+            print(food_data)
             food_double = False
             if food_data.food_gram < 500:
                 meal_food_data[str(food_count)] = init_meal_food_data()
