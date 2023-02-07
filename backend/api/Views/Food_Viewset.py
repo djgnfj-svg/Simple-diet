@@ -20,16 +20,12 @@ class Food_Viewset(viewsets.ModelViewSet):
         if request.query_params:
             name = request.query_params.get("name", None)
             sort_nutrient = request.query_params.get("sort_nutrient", None)
-            
             q = Q()
             if name :
                 q &= Q(name__icontains=name)
-        
             rtn = Food_data.objects.filter(q)    
-            
             if sort_nutrient:
                 rtn = rtn.order_by(sort_nutrient)
-            print(type((rtn)))
             return Response(self.get_serializer(rtn, many=True).data, status=status.HTTP_200_OK)
         
         return super().list(request, *args, **kwargs)

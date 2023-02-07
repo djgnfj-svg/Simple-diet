@@ -259,38 +259,6 @@
         "model": "foods.Food_data",
         "fields": {
             "nutrient_fucus": "C",
-            "meals_fucus": [1, 2],
-            "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
-            "kcalorie": 435,
-            "carbohydrate": 66,
-            "protein": 12,
-            "fat": 14,
-            "price": 10460,
-            "food_number": 4,
-            "food_gram": 210,
-            "link": "https://www.coupang.com/vp/products/1310396687"
-        }
-    },
-    {
-        "model": "foods.Food_data",
-        "fields": {
-            "nutrient_fucus": "C",
-            "meals_fucus": [1, 2],
-            "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
-            "kcalorie": 435,
-            "carbohydrate": 66,
-            "protein": 12,
-            "fat": 14,
-            "price": 10460,
-            "food_number": 4,
-            "food_gram": 210,
-            "link": "https://www.coupang.com/vp/products/1310396687"
-        }
-    },
-    {
-        "model": "foods.Food_data",
-        "fields": {
-            "nutrient_fucus": "C",
             "meals_fucus": [0,1,2],
             "name": "한우물 김치치즈 구운주먹밥 10개입 (냉동)",
             "kcalorie": 165,
