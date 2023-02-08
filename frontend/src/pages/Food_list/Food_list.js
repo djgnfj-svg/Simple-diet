@@ -26,6 +26,7 @@ function Food_list() {
   return (
     <>
       <div className="row">
+        <h1 style={{color : "white"}}>미완입니다.</h1>
         <div className="col-lg-12">
           <div className="form-container">
             <div className="form-group">
@@ -57,16 +58,16 @@ function Food_list() {
       </div>
       <div className="food_list_body">
         <div className="container">
-          <div className="card">
-            <div className="card-body">
+          <div className="food-card">
+            <div className="food-card-body">
             </div>
           </div>
-          <div className="card">
-            <div className="card-body">
+          <div className="food-card">
+            <div className="food-card-body">
             </div>
           </div>
-          <div className="card">
-            <div className="card-body">
+          <div className="food-card">
+            <div className="food-card-body">
             </div>
           </div>
         </div>
