@@ -12,22 +12,44 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os, json, sys
 
 from pathlib import Path
-
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+secret_file = os.path.join(BASE_DIR, '.secrets.json')
 SECRET_BASE_FILE = os.path.join(BASE_DIR, '.secrets.json')
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
 secrets = json.loads(open(SECRET_BASE_FILE).read())
+
+
 for key, value in secrets.items():
     setattr(sys.modules[__name__], key, value)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+def get_secret(setting):
+    """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = get_secret("SECRET_KEY")
+ENV = get_secret("ENV")
+if ENV == 'dev':
+    DEBUG = False
+else:
+    DEBUG = True
+
+if ENV == 'dev':
+#     ALLOWED_HOSTS = ["도메인 적으면됨"]
+# else :
+    ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
