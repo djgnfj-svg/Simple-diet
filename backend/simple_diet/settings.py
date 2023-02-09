@@ -47,7 +47,8 @@ else:
 
 if ENV == 'dev':
 #     ALLOWED_HOSTS = ["도메인 적으면됨"]
-# else :
+    ALLOWED_HOSTS = ["*"]
+else :
     ALLOWED_HOSTS = ["*"]
 
 
