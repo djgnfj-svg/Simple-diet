@@ -1,6 +1,5 @@
 from api.Utils.set_Utils import set_meal_food_data, set_meal_nutrient_data
 
-
 def add_food_data(meal_food_data, food_data, meal_nutrient_data, food_count, food_double:bool):
     double_value = 1
     if food_double:

@@ -4,7 +4,14 @@ import json
 
 # Create your models here.
 
-#todo 아침데이터중에 지방위주의 음식을 찾기
+# todo : 선호를 표시할 수 있는 지표
+class Food_Categories(models.Model):
+    name = models.CharField(max_length=30, null=False)
+    
+    # todo : 통합 클래스로 빼고 상속받는 형태로 만든다
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Food_data(models.Model):
     class Nutrint(models.TextChoices):
         PROTEIN = 'P', _('단백질')
@@ -13,15 +20,8 @@ class Food_data(models.Model):
 
     # 분류
     nutrient_fucus = models.CharField(max_length=2,choices=Nutrint.choices,default=Nutrint.PROTEIN,)
-    
     meals_fucus = models.JSONField()
-    def set_meals_fucus(self, value):
-        print("set_meals : ", value)
-        self.meals_fucus = json.dumps(value)
-
-    def get_meals_fucus(self):
-        print("get_meals : ", self.meals_fucus)
-        return json.loads(self.meals_fucus)
+    
     # 정보
     name = models.CharField(max_length=50, unique=True)
     kcalorie = models.IntegerField(default=0)
@@ -30,7 +30,11 @@ class Food_data(models.Model):
     fat = models.FloatField(default=0)
     price = models.IntegerField()
     link = models.URLField(max_length=200)
-    
+    category = models.ForeignKey(Food_Categories, on_delete=models.CASCADE, null=True)
     # 끼니
     food_number = models.IntegerField()
     food_gram = models.IntegerField()
+
+    # 추후 통합 클래스로 뺴고 상속받자
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

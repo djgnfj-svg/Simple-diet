@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.Utils.Metabolic_rate_Calk import Calculation
+from diet_meals.Utils.Diet_Calcuation import Diet_Calculator
 
 class User_body_info_SZ(serializers.Serializer):
     age = serializers.IntegerField(min_value=20, max_value=100)
@@ -16,12 +16,10 @@ class User_body_info_SZ(serializers.Serializer):
     
     def create(self, request, validated_data):
         instance = {}
-        cal = Calculation(1.6, 0.28)
+        cal = Diet_Calculator(1.6, 0.28)
+        cal.set_total_data(validated_data)
         instance["total_data"] = {}
-        instance["total_data"]["total_kilo_calorie"] = cal.total_kilo_calorie(validated_data)
-        instance["total_data"]["total_protein"] = cal.total_protein(validated_data["weight"])
-        instance["total_data"]["total_fat"] =  cal.total_fat(instance["total_data"]["total_kilo_calorie"])
-        instance["total_data"]["total_carbohydrate"] = cal.total_carbohydrate(instance)
+        instance["total_data"] = cal.get_total_json_data()
 
         meals = validated_data["many_meals"]
         meals_ratio =  [0.25, 0.45, 0.3] if meals == 3 else [0.6, 0.4]

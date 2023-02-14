@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.Utils.Food_utils import Make_week_food_data
+from foods.Utils.Food_utils import Make_week_food_data
 
 
 def Classify_data(data):
