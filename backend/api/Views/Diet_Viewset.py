@@ -5,7 +5,7 @@ from api.Utils.msg_utils import error_msg
 
 from api.Serialzier.User_Metabolic import User_body_info_SZ
 
-class Diet_Managing_Viewset(viewsets.GenericViewSet, mixins.CreateModelMixin):
+class Diet_Viewset(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = User_body_info_SZ
 
     def create(self, request):
