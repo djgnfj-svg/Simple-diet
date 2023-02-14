@@ -14,7 +14,7 @@ class Food_Viewset(viewsets.ModelViewSet):
     serializer_class = Food_SZ
     queryset = Food_data.objects.order_by("-id")
     
-    # 음식을 쿼리로 받아서 정렬해서 보년다
+    # 음식을 쿼리로 받아서 정렬해서 보낸다
     # 탄단지를 선택해서 정렬을 선택 할 수 있다.
     def list(self, request, *args, **kwargs):
         if request.query_params:

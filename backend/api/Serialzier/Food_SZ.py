@@ -1,12 +1,8 @@
 from rest_framework import serializers
 
-from foods.models import Food_data
+from api.Serialzier.Food_Categories_SZ import Food_Categories_SZ
 
-NUTRIENT=(
-    ('P', '단백질'),
-    ('F', '지방'),
-    ('C', '탄수화물'),
-)
+from foods.models import Food_data
 
 MEALS = (
     ((0), "아침"),
@@ -18,29 +14,32 @@ MEALS = (
     ((0,1,2), "전부"),
 )
 
-
 class Food_SZ(serializers.ModelSerializer):
-    # 분류
-    meals_fucus = serializers.ChoiceField(choices=MEALS)
-    nutrient_fucus = serializers.ChoiceField(choices=NUTRIENT)
-
-    # 정보
+    # 기본 정보
     name = serializers.CharField(max_length=50)
+    link = serializers.URLField(max_length=200)
+    # category = Food_Categories_SZ(read_only=True)
+
+    # 영양소 정보
     kcalorie = serializers.IntegerField(default=0)
     carbohydrate = serializers.FloatField(default=0)
     protein = serializers.FloatField(default=0)
     fat = serializers.FloatField(default=0)
-    price = serializers.IntegerField()
-    link = serializers.URLField(max_length=200)
-    # 끼니
+
+    # 끼니별 정보
     food_number = serializers.IntegerField()
     food_gram = serializers.IntegerField()
     
+    meals_fucus = serializers.ChoiceField(choices=MEALS)
+
     class Meta:
         model = Food_data
-        fields = "__all__"
+        # exclude = ["id"]
+        fields = '__all__'
 
     def validate_meals_fucus(self, value):
+        print(f"여긴가 {type(value)}")
         if isinstance(value, int):
+            print(type([value]))
             return [value]
         return value
