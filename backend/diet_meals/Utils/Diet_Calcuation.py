@@ -1,3 +1,6 @@
+from diet_meals.Utils.Diet_excption import init_Diet_total_data
+
+
 class Diet_Calculator():
     def __init__(self, __protein_base_range=2.0, __fat_base_range=0.28) -> None:
         self.__protein_base_range = __protein_base_range
@@ -7,7 +10,6 @@ class Diet_Calculator():
         self.total_fat = 0
         self.total_carbohydrate = 0
 
-    
     def get_total_data(self):
         '''
         칼로리, 단백질, 지방, 탄수화물 순으로 리턴합니다.
@@ -16,6 +18,7 @@ class Diet_Calculator():
         self.total_kilo_calorie
         return  self.total_kilo_calorie, self.total_protein, \
                 self.total_fat, self.total_carbohydrate
+    
     def get_total_json_data(self):
         '''
         {
@@ -32,7 +35,22 @@ class Diet_Calculator():
         rtn["total_carbohydrate"] = self.total_carbohydrate
         return  rtn
 
-    
+    def Calk_diet(self, instance, meal_count, diet_status):
+        meal_ratio = [0.25, 0.45, 0.3] if meal_count == 3 else [0.6, 0.4]
+        meal_list = ["breakfast", "lunch", "dinner"] if meal_count == 3 else ["lunch", "dinner",]
+        instance["diet_status"] = "다이어트" if diet_status == 0.8 else "유지"
+
+        if not self.total_carbohydrate and not self.total_fat \
+            and not self.total_protein and not self.total_kilo_calorie:
+            raise init_Diet_total_data
+        for i, meal in enumerate(meal_list):
+            instance[meal] = {}
+            instance[meal]["kilo_calorie"] = round(self.total_kilo_calorie * meal_ratio[i])
+            instance[meal]["protein"] = round(self.total_protein * meal_ratio[i])
+            instance[meal]["fat"] = round(self.total_fat * meal_ratio[i])
+            instance[meal]["carbohydrate"] = round(self.total_carbohydrate * meal_ratio[i])
+     
+
     def set_total_data(self, validated_data):
         self.total_kilo_calorie = self._get_total_kilo_calorie(validated_data)
         self.total_protein = self._get_total_protein(validated_data["weight"])

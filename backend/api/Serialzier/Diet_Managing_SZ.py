@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from foods.Utils.Food_utils import Make_week_food_data
+from diet_meals.Utils.Diet_Managing_utils import Make_week_food_data
 
 
 def Classify_data(data):
@@ -13,7 +13,8 @@ def Classify_data(data):
     return total_data, breakfast, lunch, dinner
 
 
-class User_body_info_SZ(serializers.Serializer):
+class Diet_Managing_SZ(serializers.Serializer):
+    # todo 데이터로 받는게 맞나...?
     data = serializers.JSONField()
     def create(self, request, validated_data):
         total_data, breakfast, lunch, dinner = Classify_data(validated_data["data"])
