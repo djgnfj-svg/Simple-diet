@@ -1,8 +1,12 @@
-from rest_framework import serializers
+from django.shortcuts import get_object_or_404
 
+from rest_framework import serializers, status
+from rest_framework.response import Response
+
+from foods.models import Food_data, Food_Categories
+
+from api.Utils.msg_utils import error_msg
 from api.Serialzier.Food_Categories_SZ import Food_Categories_SZ
-
-from foods.models import Food_data
 
 MEALS = (
     ((0), "아침"),
@@ -18,7 +22,6 @@ class Food_SZ(serializers.ModelSerializer):
     # 기본 정보
     name = serializers.CharField(max_length=50)
     link = serializers.URLField(max_length=200)
-    # category = Food_Categories_SZ(read_only=True)
 
     # 영양소 정보
     kcalorie = serializers.IntegerField(default=0)
@@ -31,15 +34,20 @@ class Food_SZ(serializers.ModelSerializer):
     food_gram = serializers.IntegerField()
     
     meals_fucus = serializers.ChoiceField(choices=MEALS)
+    category = Food_Categories_SZ()
 
     class Meta:
         model = Food_data
-        # exclude = ["id"]
         fields = '__all__'
 
     def validate_meals_fucus(self, value):
-        print(f"여긴가 {type(value)}")
         if isinstance(value, int):
-            print(type([value]))
             return [value]
         return value
+    
+    def create(self, validated_data):
+        try:
+            validated_data["category"] = Food_Categories.objects.get(name=validated_data["category"]["name"])
+        except Food_Categories.DoesNotExist:
+            raise Food_Categories.DoesNotExist
+        return super().create(validated_data)

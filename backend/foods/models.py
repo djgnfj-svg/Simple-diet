@@ -16,7 +16,7 @@ class Food_data(models.Model):
     # 기본 정보
     name = models.CharField(max_length=50, unique=True)
     link = models.URLField(max_length=200)
-    # category = models.ForeignKey(Food_Categories, on_delete=models.CASCADE, null=True, related_name='category')
+    category = models.ForeignKey(Food_Categories, on_delete=models.CASCADE, null=True, related_name='category')
     meals_fucus = models.JSONField() # 구지 아침점심저녁을 나누어야하나?
 
     # 영양소 정보
