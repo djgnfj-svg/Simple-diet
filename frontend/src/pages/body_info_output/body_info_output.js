@@ -10,7 +10,7 @@ function Output_form() {
   const _data = { data: state }
 
   const navigateToOutput = () => {
-    axios.post("http://127.0.0.1:8000/api/diet_diet/", _data)
+    axios.post("http://127.0.0.1:8000/api/managing-diet/", _data)
       .then((e) => {
         navigate('/diet_meal_list', { state: e.data });
       })

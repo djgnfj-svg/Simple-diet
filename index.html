@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two-Line First Letter Card</title>
+    <style>
+      .card {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #ccc;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        box-shadow: 2px 2px 5px #ccc;
+      }
+
+      .card h2 {
+        margin-top: 20px;
+        font-size: 24px;
+        color: #555;
+      }
+
+      .card ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+      }
+
+      .card li {
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .card li span {
+        font-weight: bold;
+        font-size: 2.4em;
+      }
+
+      .card li:first-letter {
+        font-size: 48px;
+        line-height: 1;
+      }
+
+      .card li:first-letter::before {
+        content: "\00a0";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Example Card</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor sit amet</a> <span>| 1개</span><br>consectetur adipiscing elit. Sed sodales mauris eu ligula ullamcorper tristique.</li>
+        <li><a href="#">Proin auctor diam ut diam</a> <span>| 2개</span><br>volutpat at blandit sapien. Sed blandit laoreet ante, vel semper turpis facilisis vel.</li>
+        <li><a href="#">Pellentesque vel elit eget turpis</a> <span>| 3개</span><br>malesuada rutrum. Nam a odio sit amet risus tincidunt maximus.</li>
+      </ul>
+    </div>
+  </body>
+</html>

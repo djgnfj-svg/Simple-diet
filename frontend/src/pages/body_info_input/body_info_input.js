@@ -30,7 +30,7 @@ function Body_info_input() {
     }
   }
   const navigateToOutput = () => {
-    axios.post("http://127.0.0.1:8000/api/calk_metabolic_rate/", userInput)
+    axios.post("http://127.0.0.1:8000/api/calk-diet/", userInput)
       .then((e) => {
         navigate('/output', { state: e.data });
       })

@@ -1,4 +1,4 @@
-python manage.py loaddata foods/foods-data.json
+python manage.py loaddata master_data/foods-data.json
 
 
 전자레인지 -> 아침(닭가슴살)
