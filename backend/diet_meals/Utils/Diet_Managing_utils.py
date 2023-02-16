@@ -1,18 +1,12 @@
 from foods.models import Food_data
-from django.db.models import Q
 
-# todo :  manager라는 클래스를 만들어서 상속 받자
-# todo : manager, food_manager Dietmanager 로 상속으로 가자
+from diet_meals.Utils.Manager import Food_Manager, Meal_Manager
 
 
-class Diet_Manager():
+class Diet_Manager(Food_Manager, Meal_Manager):
     def __init__(self, breakfast, lunch, dinner) -> None:
         self._nutrient_list = ["protein", "fat", "carbohydrate"]
         # 영양소 체크
-        self._check_nutrient_full = False
-        self._protein_full = False
-        self._fat_full = False
-        self._carbohydrate_full = False
 
         self.breakfast = breakfast
         self.lunch = lunch
@@ -32,26 +26,7 @@ class Diet_Manager():
             self._meal_list = ["breakfast", "lunch", "dinner"]
             self._meal_data_list = [breakfast, lunch, dinner]
             self._start_meal = 1
-        pass
-
-    def _init_nutrient_data(self, meal):
-        meals_data = {}
-        meals_data[meal] = {}
-        meals_data[meal]["kcalorie"] = 0
-        meals_data[meal]["protein"] = 0
-        meals_data[meal]["fat"] = 0
-        meals_data[meal]["carbohydrate"] = 0
-        return meals_data
-
-    def _init_meal_nutrient_data(self):
-        meals_data = {}
-        meals_data["kcalorie"] = 0
-        meals_data["protein"] = 0
-        meals_data["fat"] = 0
-        meals_data["carbohydrate"] = 0
-        return meals_data
-    def 영양소채우기(nutrient):
-        pass
+        super().__init__()
 
     def _check_food_over_nutrient(self, food: Food_data, meal, meal_nutrient_data):
         '''
@@ -107,7 +82,6 @@ class Diet_Manager():
             self._check_nutrient_full = True
         return False
 
-    #
     def _check_nutrient(self, meal, meal_nutrient_data, food_focus):
         '''
         채워야하는양 * 버퍼 < 현재 채워진양  
@@ -131,7 +105,7 @@ class Diet_Manager():
             self._carbohydrate_full = True
             self._check_nutrient_full = True
             return 0
-        return food_focus+1 # todo : 여기서 0이 리턴되는 것도 문제이다.
+        return food_focus+1  # todo : 여기서 0이 리턴되는 것도 문제이다.
 
     def _set_meal_nutrient_data(self, meal_nutrient_data, food_data, big_size, double_value):
         meal_nutrient_data["kcalorie"] += round(
@@ -142,18 +116,6 @@ class Diet_Manager():
             food_data.carbohydrate / big_size) * double_value
         meal_nutrient_data["fat"] += round(food_data.fat /
                                            big_size, 1) * double_value
-
-    def _set_meal_food_data(self, food, big_size, food_number, double_value):
-        instance = {}
-        instance["food_name"] = food.name
-        instance["food_link"] = food.link
-        instance["kcalorie"] = round(food.kcalorie / big_size) * double_value
-        instance["protein"] = round(food.protein/big_size) * double_value
-        instance["fat"] = round(food.fat/big_size) * double_value
-        instance["carbohydrate"] = round(
-            food.carbohydrate/big_size) * double_value
-        instance["food_number"] = food_number * double_value
-        return instance
 
     def _add_meal_food_data(self, meal_food_data, meal_nutrient_data, food: Food_data,
                             meal, food_count, food_double):
@@ -183,9 +145,10 @@ class Diet_Manager():
             self._protein_full = False
             self._fat_full = False
             self._carbohydrate_full = False
-            self._check_nutrient_full =False
+            self._check_nutrient_full = False
             # 이번 식사에서 먹어야 영양소의양
-            meal_nutrient_data = self._init_nutrient_data(meal)
+            meal_nutrient_data = {}
+            meal_nutrient_data[meal] = self._init_meal_nutrient_data()
 
             # 대용량 음식여부(식단마다 대용량은 하나만 가능하다.)
             self._meal_have_bigsize_food = False
@@ -205,42 +168,20 @@ class Diet_Manager():
                 if self._check_food_over_nutrient(food, meal, meal_nutrient_data):
                     food_focus += 1
                     continue
-                food_double = self._check_food_double(food, meal, meal_nutrient_data)
+                food_double = self._check_food_double(
+                    food, meal, meal_nutrient_data)
 
                 # 현재음식을 추가
                 # 현재여기 무넺임
-                meal_food_data[str(food_count)] = self._init_meal_nutrient_data()
-                self._add_meal_food_data(meal_food_data, meal_nutrient_data, food, meal, food_count, food_double)
+                meal_food_data[str(food_count)
+                               ] = self._init_meal_nutrient_data()
+                self._add_meal_food_data(
+                    meal_food_data, meal_nutrient_data, food, meal, food_count, food_double)
                 food_count += 1
-                food_focus = self._check_nutrient(meal, meal_nutrient_data, food_focus)
-                
+                food_focus = self._check_nutrient(
+                    meal, meal_nutrient_data, food_focus)
+
             # 영양소를 만족한 식단을 diet_info에 추가한다.
             diet_info[meal] = meal_food_data
             diet_info[meal]["nutrient"] = meal_nutrient_data[meal]
         return diet_info
-
-    # todo : 카테고리 등 음식을 가져오는 기능이 추가 될 것이다.
-
-    def _get_food(self, meal, food_count):
-        if meal == "breakfast":
-            meal = 0
-        elif meal == "lunch":
-            meal = 1
-        else:
-            meal = 2
-
-        q = Q()
-        q &= Q(meals_fucus__icontains=meal)
-
-        rtn = Food_data.objects.filter(q)
-        sort_nutrient = ""
-        if not self._protein_full:
-            sort_nutrient = "-protein"
-        elif not self._fat_full:
-            sort_nutrient = "-fat"
-        elif not self._carbohydrate_full:
-            sort_nutrient = "-carbohydrate"
-        else:
-            self._check_nutrient_full = True
-        rtn = rtn.order_by(sort_nutrient)
-        return rtn[food_count]
