@@ -35,7 +35,7 @@ class Diet_Calculator():
         rtn["total_carbohydrate"] = self.total_carbohydrate
         return  rtn
 
-    def Calk_diet(self, instance, meal_count, diet_status):
+    def Cal_diet(self, instance, meal_count, diet_status):
         meal_ratio = [0.25, 0.45, 0.3] if meal_count == 3 else [0.6, 0.4]
         meal_list = ["breakfast", "lunch", "dinner"] if meal_count == 3 else ["lunch", "dinner",]
         instance["diet_status"] = "다이어트" if diet_status == 0.8 else "유지"

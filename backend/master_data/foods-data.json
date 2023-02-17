@@ -302,5 +302,101 @@
             "created_at": "2023-02-15",
             "updated_at": "2023-02-15"
         }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [2],
+            "name": "동원 고추 참치",
+            "kcalorie": 110,
+            "carbohydrate": 10,
+            "protein": 9,
+            "fat": 3.9,
+            "food_number": 12,
+            "food_gram": 85,
+            "link": "https://www.coupang.com/vp/products/1145100301",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [2],
+            "name": "동원 라이트 스탠다드 참치",
+            "kcalorie": 180,
+            "carbohydrate": 0,
+            "protein": 16,
+            "fat": 13,
+            "food_number": 12,
+            "food_gram": 85,
+            "link": "https://www.coupang.com/vp/products/2042132",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "농심 신라면 건면 사발 77g",
+            "kcalorie": 285,
+            "carbohydrate": 54,
+            "protein": 7,
+            "fat": 4.4,
+            "food_number": 8,
+            "food_gram": 77,
+            "link": "https://www.coupang.com/vp/products/1568884328",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "그릭데이 시그니처 떠먹는 요구르트",
+            "kcalorie": 160,
+            "carbohydrate": 4.8,
+            "protein": 11.4,
+            "fat": 10.7,
+            "food_number": 3,
+            "food_gram": 100,
+            "link": "https://www.coupang.com/vp/products/5463245022",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [2],
+            "name": "한우물 차돌짬뽕국밥 (냉동)",
+            "kcalorie": 410,
+            "carbohydrate": 53,
+            "protein": 11,
+            "fat": 17,
+            "food_number": 7,
+            "food_gram": 210,
+            "link": "https://www.coupang.com/vp/products/6382512830",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_data",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "덴마크 인포켓치즈 오리지널",
+            "kcalorie": 60,
+            "carbohydrate": 0,
+            "protein": 4,
+            "fat": 4.8,
+            "food_number": 10,
+            "food_gram": 20,
+            "link": "https://www.coupang.com/vp/products/1395521967",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
     }
 ]

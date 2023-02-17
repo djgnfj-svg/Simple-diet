@@ -13,5 +13,4 @@ class Diet_Calcuation_Viewset(viewsets.GenericViewSet, mixins.CreateModelMixin):
         if serializer.is_valid():
             rtn = serializer.create(request, serializer.data)
             return Response(rtn, status=status.HTTP_200_OK)
-        print(serializer.errors)
         return Response(error_msg(serializer=serializer), status=status.HTTP_400_BAD_REQUEST)

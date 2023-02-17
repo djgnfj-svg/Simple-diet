@@ -3,11 +3,15 @@ from rest_framework import serializers
 from diet_meals.Utils.Diet_Calcuation import Diet_Calculator
 
 class Diet_Calcuation_SZ(serializers.Serializer):
+    GENDER_CHOICES = (
+        ('M', 'M'),
+        ('F', 'F'),
+    )
     age = serializers.IntegerField(min_value=20, max_value=100)
     weight = serializers.FloatField(min_value=40, max_value=250)
     height = serializers.FloatField(min_value=140, max_value=250)
 
-    gender = serializers.CharField(max_length=2)
+    gender = serializers.ChoiceField(GENDER_CHOICES)
     general_activities = serializers.FloatField(min_value=1.2, max_value=1.6)
     excise_activity = serializers.FloatField(min_value=0, max_value=0.3)
 
@@ -21,6 +25,9 @@ class Diet_Calcuation_SZ(serializers.Serializer):
         cal.set_total_data(validated_data)
         instance["total_data"] = {}
         instance["total_data"] = cal.get_total_json_data()
-        cal.Calk_diet(instance, validated_data["many_meals"], validated_data["diet_status"])
+        cal._diet(instance, validated_data["many_meals"], validated_data["diet_status"])
 
         return instance
+    
+    def get_gender(self, obj):
+        return obj.get_gender_display()
