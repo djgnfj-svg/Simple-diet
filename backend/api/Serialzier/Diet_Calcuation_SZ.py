@@ -25,7 +25,7 @@ class Diet_Calcuation_SZ(serializers.Serializer):
         cal.set_total_data(validated_data)
         instance["total_data"] = {}
         instance["total_data"] = cal.get_total_json_data()
-        cal._diet(instance, validated_data["many_meals"], validated_data["diet_status"])
+        cal.Cal_diet(instance, validated_data["many_meals"], validated_data["diet_status"])
 
         return instance
     
