@@ -29,7 +29,7 @@ function Output_form() {
               <div className="card__details">
                 <ul>
                   <li>아침</li>
-                  <li>칼로리 : {state.breakfast.kilo_calorie}kcal</li>
+                  <li>칼로리 : {state.breakfast.kcalorie}kcal</li>
                   <li>탄수화물 : {state.breakfast.carbohydrate}g</li>
                   <li>단백질 : {state.breakfast.protein}g</li>
                   <li>지방 : {state.breakfast.fat}g</li>
@@ -46,7 +46,7 @@ function Output_form() {
               <div className="card__details">
                 <ul>
                   <li>점심</li>
-                  <li>칼로리 : {state.lunch.kilo_calorie}kcal</li>
+                  <li>칼로리 : {state.lunch.kcalorie}kcal</li>
                   <li>탄수화물 : {state.lunch.carbohydrate}g</li>
                   <li>단백질 : {state.lunch.protein}g</li>
                   <li>지방 : {state.lunch.fat}g</li>
@@ -63,7 +63,7 @@ function Output_form() {
               <div className="card__details">
                 <ul>
                   <li>저녁</li>
-                  <li>칼로리 : {state.dinner.kilo_calorie}kcal</li>
+                  <li>칼로리 : {state.dinner.kcalorie}kcal</li>
                   <li>탄수화물 : {state.dinner.carbohydrate}g</li>
                   <li>단백질 : {state.dinner.protein}g</li>
                   <li>지방 : {state.dinner.fat}g</li>

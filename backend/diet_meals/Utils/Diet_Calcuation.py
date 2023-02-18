@@ -5,7 +5,7 @@ class Diet_Calculator():
     def __init__(self, __protein_base_range=2.0, __fat_base_range=0.28) -> None:
         self.__protein_base_range = __protein_base_range
         self.__fat_base_range = __fat_base_range
-        self.total_kilo_calorie = 0
+        self.total_kcalorie = 0
         self.total_protein = 0
         self.total_fat = 0
         self.total_carbohydrate = 0
@@ -15,21 +15,21 @@ class Diet_Calculator():
         칼로리, 단백질, 지방, 탄수화물 순으로 리턴합니다.
         '''
 
-        self.total_kilo_calorie
-        return  self.total_kilo_calorie, self.total_protein, \
+        self.total_kcalorie
+        return  self.total_kcalorie, self.total_protein, \
                 self.total_fat, self.total_carbohydrate
     
     def get_total_json_data(self):
         '''
         {
-            "total_kilo_calorie" : self.total_kilo_calorie
+            "total_kcalorie" : self.total_kcalorie
             "total_protein" : self.total_protein
             "total_fat" :  self.total_fat
             "total_carbohydrate" : self.total_carbohydrate
         }
         '''
         rtn = {}
-        rtn["total_kilo_calorie"] = self.total_kilo_calorie
+        rtn["total_kcalorie"] = self.total_kcalorie
         rtn["total_protein"] = self.total_protein
         rtn["total_fat"] =  self.total_fat
         rtn["total_carbohydrate"] = self.total_carbohydrate
@@ -41,24 +41,24 @@ class Diet_Calculator():
         instance["diet_status"] = "다이어트" if diet_status == 0.8 else "유지"
 
         if not self.total_carbohydrate and not self.total_fat \
-            and not self.total_protein and not self.total_kilo_calorie:
+            and not self.total_protein and not self.total_kcalorie:
             raise init_Diet_total_data
         for i, meal in enumerate(meal_list):
             instance[meal] = {}
-            instance[meal]["kilo_calorie"] = round(self.total_kilo_calorie * meal_ratio[i])
+            instance[meal]["kcalorie"] = round(self.total_kcalorie * meal_ratio[i])
             instance[meal]["protein"] = round(self.total_protein * meal_ratio[i])
             instance[meal]["fat"] = round(self.total_fat * meal_ratio[i])
             instance[meal]["carbohydrate"] = round(self.total_carbohydrate * meal_ratio[i])
      
 
     def set_total_data(self, validated_data):
-        self.total_kilo_calorie = self._get_total_kilo_calorie(validated_data)
+        self.total_kcalorie = self._get_total_kcalorie(validated_data)
         self.total_protein = self._get_total_protein(validated_data["weight"])
-        self.total_fat = self._get_total_fat(self.total_kilo_calorie)
+        self.total_fat = self._get_total_fat(self.total_kcalorie)
         self.total_carbohydrate = self._get_total_carbohydrate()
 
-    def get_total_kilo_calorie(self):
-        return self.total_kilo_calorie
+    def get_total_kcalorie(self):
+        return self.total_kcalorie
 
     def get_total_protein(self):
         return self.total_protein
@@ -69,7 +69,7 @@ class Diet_Calculator():
     def get_total_carbohydrate(self):
         return self.total_carbohydrate
 
-    def _get_total_kilo_calorie(self,validated_data):
+    def _get_total_kcalorie(self,validated_data):
         gender = validated_data["gender"]
         weight = validated_data["weight"]
         height = validated_data["height"]
@@ -86,20 +86,20 @@ class Diet_Calculator():
 
         # 활동계수
         activity_coefficient = general_activities + excise_activity
-        total_kilo_calorie = basal_metabolic_rate * activity_coefficient
-        return round(total_kilo_calorie * diet_staus)
+        total_kcalorie = basal_metabolic_rate * activity_coefficient
+        return round(total_kcalorie * diet_staus)
 
     def _get_total_protein(self, weight):
         total_protein = weight * self.__protein_base_range
         return round(total_protein)
 
-    def _get_total_fat(self, total_kilo_calorie):
+    def _get_total_fat(self, total_kcalorie):
         extra_value = self.__fat_base_range
-        return round((total_kilo_calorie * extra_value) // 9)
+        return round((total_kcalorie * extra_value) // 9)
 
     def _get_total_carbohydrate(self):
         total_carbohydrate_kcal = \
-        (self.total_kilo_calorie - \
+        (self.total_kcalorie - \
             ((self.total_protein * 4) + (self.total_fat * 9)))
 
         total_carbohydrate_gram = total_carbohydrate_kcal / 4

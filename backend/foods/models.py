@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-import json
 
-# Create your models here.
 
 # todo : 선호를 표시할 수 있는 지표
 class Food_Categories(models.Model):

@@ -46,7 +46,6 @@ class Food_SZ(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        print("asdf")
         try:
             validated_data["category"] = Food_Categories.objects.get(name=validated_data["category"]["name"])
         except Food_Categories.DoesNotExist:

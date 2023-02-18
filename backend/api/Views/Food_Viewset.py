@@ -37,11 +37,9 @@ class Food_Viewset(viewsets.ModelViewSet):
         if serializer.is_valid():
             try:
                 serializer.create(serializer.data)
-                print(serializer.data)
             except IntegrityError:
                 return Response(error_msg(4041), status=status.HTTP_400_BAD_REQUEST)
             except Food_Categories.DoesNotExist:
                 return Response(error_msg(4042), status=status.HTTP_400_BAD_REQUEST)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print(serializer.errors)
         return Response(error_msg(serializer=serializer), status=status.HTTP_400_BAD_REQUEST)

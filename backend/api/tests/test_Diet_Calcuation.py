@@ -31,20 +31,20 @@ class DietCalutationsTestCase(APITestCase):
     def test_api_cal_returns_expected_data(self):
         expected_response = {
             "total_data": {
-                "total_kilo_calorie": 3151,
+                "total_kcalorie": 3151,
                 "total_protein": 176,
                 "total_fat": 98,
                 "total_carbohydrate": 391
             },
             "diet_status": "유지",
             "lunch": {
-                "kilo_calorie": 1891,
+                "kcalorie": 1891,
                 "protein": 106,
                 "fat": 59,
                 "carbohydrate": 235
             },
             "dinner": {
-                "kilo_calorie": 1260,
+                "kcalorie": 1260,
                 "protein": 70,
                 "fat": 39,
                 "carbohydrate": 156
