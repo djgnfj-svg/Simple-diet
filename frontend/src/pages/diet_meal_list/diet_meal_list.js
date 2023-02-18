@@ -53,14 +53,14 @@ function Diet_meal_list() {
             <div className="flip-body">
                 {/* flip-card-container */}
                 {
-                    Object.keys(state).length === 3
+                    Object.keys(state).length === 6
                         ?
                         <div className="flip-card-container" style={{ "-hue": 220 }}>
                             <h1 className="flip_title">아침</h1>
                             <div className="flip-card">
                                 <div className="card-front">
                                     <div className="nutrient_list">
-                                        <div className="nutrient_need">필요 영양소 : 단 : 100g 지 : 100g 탄 : 100g 칼 : 100kcal</div>
+                                        <div className="nutrient_need">필요 영양소 : 탄 : {state.breakfast_nutrient.carbohydrate}g 단 : {state.breakfast_nutrient.protein}g 지 : {state.breakfast_nutrient.fat}g 칼 : {state.breakfast_nutrient.kcalorie}kcal</div>
                                         <div className="nutrient_meal">식단 영양소 : 탄 : {state.breakfast["nutrient"].carbohydrate}g 단 : {state.breakfast["nutrient"].protein}g 지 : {state.breakfast["nutrient"].fat}g 칼 : {state.breakfast["nutrient"].kcalorie}kcal</div>
                                     </div>
                                     <ul>
@@ -79,8 +79,8 @@ function Diet_meal_list() {
                     <div className="flip-card">
                         <div className="card-front">
                             <div className="nutrient_list">
-                                <div className="nutrient_need">필요 영양소 : 단 : 100g 지 : 100g 탄 : 100g 칼 : 100kcal</div>
-                                <div className="nutrient_meal">식단 영양소 : 탄 : {state.lunch["nutrient"].carbohydrate}g 단 : {state.lunch["nutrient"].protein}g 지 : {state.lunch["nutrient"].fat}g 칼 : {state.lunch["nutrient"].kcalorie}kcal</div>
+                                <div className="nutrient_need">필요 영양소 | 탄 : {state.lunch_nutrient.carbohydrate}g 단 : {state.lunch_nutrient.protein}g 지 : {state.lunch_nutrient.fat}g 칼 : {state.lunch_nutrient.kcalorie}kcal</div>
+                                <div className="nutrient_meal">식단 영양소 | 탄 : {state.lunch["nutrient"].carbohydrate}g 단 : {state.lunch["nutrient"].protein}g 지 : {state.lunch["nutrient"].fat}g 칼 : {state.lunch["nutrient"].kcalorie}kcal</div>
                             </div>
                             <ul>
                                 {food_list("lunch")}
@@ -96,7 +96,7 @@ function Diet_meal_list() {
                     <div className="flip-card">
                         <div className="card-front">
                             <div className="nutrient_list">
-                                <div className="nutrient_need">필요 영양소 : 단 : 100g 지 : 100g 탄 : 100g 칼 : 100kcal</div>
+                                <div className="nutrient_need">필요 영양소 : 탄 : {state.dinner_nutrient.carbohydrate}g 단 : {state.dinner_nutrient.protein}g 지 : {state.dinner_nutrient.fat}g 칼 : {state.dinner_nutrient.kcalorie}kcal</div>
                                 <div className="nutrient_meal">식단 영양소 : 탄 : {state.dinner["nutrient"].carbohydrate}g 단 : {state.dinner["nutrient"].protein}g 지 : {state.dinner["nutrient"].fat}g 칼 : {state.dinner["nutrient"].kcalorie}kcal</div>
                             </div>
                             <ul>
