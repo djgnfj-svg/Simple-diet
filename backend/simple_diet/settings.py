@@ -49,7 +49,7 @@ if DEV:
     ALLOWED_HOSTS = []
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["simple-diet-manager.com"]
+    ALLOWED_HOSTS = ["http://simple-diet-manager.link"]
 
 # Application definition
 
@@ -165,8 +165,8 @@ if DEV:
     CORS_ALLOW_CREDENTIALS = True
 else :
     CORS_ORIGIN_WHITELIST = [
-        'simple-diet-manager.com',
-        'simple-diet-manager.com:8000',
+        'http://simple-diet-manager.link',
+        'http://simple-diet-manager.link:8000',
     ]
 
 
