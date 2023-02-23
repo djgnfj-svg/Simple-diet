@@ -108,14 +108,10 @@ class Diet_Manager(Food_Manager, Meal_Manager):
         return food_focus+1  # todo : 여기서 0이 리턴되는 것도 문제이다.
 
     def _set_meal_nutrient_data(self, meal_nutrient_data, food_data, big_size, double_value):
-        meal_nutrient_data["kcalorie"] += round(
-            food_data.kcalorie / big_size) * double_value
-        meal_nutrient_data["protein"] += round(
-            food_data.protein / big_size) * double_value
-        meal_nutrient_data["carbohydrate"] += round(
-            food_data.carbohydrate / big_size) * double_value
-        meal_nutrient_data["fat"] += round(food_data.fat /
-                                           big_size, 1) * double_value
+        meal_nutrient_data["kcalorie"] += round(food_data.kcalorie / big_size) * double_value
+        meal_nutrient_data["protein"] += round(food_data.protein / big_size) * double_value
+        meal_nutrient_data["fat"] += round(food_data.fat /big_size) * double_value 
+        meal_nutrient_data["carbohydrate"] += round(food_data.carbohydrate / big_size) * double_value
 
     def _add_meal_food_data(self, meal_food_data, meal_nutrient_data, food: Food_data,
                             meal, food_count, food_double):
@@ -131,10 +127,8 @@ class Diet_Manager(Food_Manager, Meal_Manager):
                 big_size = 2
                 food_number = 0.5
 
-        meal_food_data[str(food_count)] = self._set_meal_food_data(
-            food, big_size, food_number, double_value)
-        self._set_meal_nutrient_data(
-            meal_nutrient_data[meal], food, big_size, double_value)
+        meal_food_data[str(food_count)] = self._set_meal_food_data(food, big_size, food_number, double_value)
+        self._set_meal_nutrient_data(meal_nutrient_data[meal], food, big_size, double_value)
     # 식단 정보 데이타
 
     def get_diet_info(self):
@@ -168,18 +162,14 @@ class Diet_Manager(Food_Manager, Meal_Manager):
                 if self._check_food_over_nutrient(food, meal, meal_nutrient_data):
                     food_focus += 1
                     continue
-                food_double = self._check_food_double(
-                    food, meal, meal_nutrient_data)
+                food_double = self._check_food_double(food, meal, meal_nutrient_data)
 
                 # 현재음식을 추가
                 # 현재여기 무넺임
-                meal_food_data[str(food_count)
-                               ] = self._init_meal_nutrient_data()
-                self._add_meal_food_data(
-                    meal_food_data, meal_nutrient_data, food, meal, food_count, food_double)
+                meal_food_data[str(food_count)] = self._init_meal_nutrient_data()
+                self._add_meal_food_data(meal_food_data, meal_nutrient_data, food, meal, food_count, food_double)
                 food_count += 1
-                food_focus = self._check_nutrient(
-                    meal, meal_nutrient_data, food_focus)
+                food_focus = self._check_nutrient(meal, meal_nutrient_data, food_focus)
 
             # 영양소를 만족한 식단을 diet_info에 추가한다.
             diet_info[meal] = meal_food_data
