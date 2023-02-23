@@ -46,8 +46,7 @@
 }
 
 .btn--green {
-  background: -webkit-gradient(linear, left top, right top, from(#fc466b), to(#3f5efb));
-  background: linear-gradient(to right, #fc466b, #3f5efb);
+  background-color: #3537af;
   color: #fff;
 }
 
@@ -84,16 +83,10 @@
 }
 
 .card__side--front-1 {
-  background: linear-gradient(-45deg, #f403d1, #64b5f6);
+  background-color: #3537af;
+  color: #fff;
 }
 
-.card__side--front-2 {
-  background: linear-gradient(-45deg, #f321d7, #ffec61);
-}
-
-.card__side--front-3 {
-  background: linear-gradient(-45deg, #24ff72, #9a4eff);
-}
 
 .card__title {
   height: 20rem;
@@ -147,7 +140,7 @@
 }
 
 .card__details ul li:not(:last-child) {
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #eee;
 }
 
 .card__cta {
