@@ -39,31 +39,30 @@ def get_secret(setting):
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = get_secret("SECRET_KEY")
-ENV = get_secret("ENV")
-if ENV == 'dev':
-    DEBUG = False
-else:
-    DEBUG = True
-
-if ENV == 'dev':
-#     ALLOWED_HOSTS = ["도메인 적으면됨"]
-    ALLOWED_HOSTS = ["*"]
+if get_secret("ENV") == "DEV":
+    DEV = True
 else :
-    ALLOWED_HOSTS = ["*"]
+    DEV = False
 
-
+if DEV:
+    DEBUG = True
+    ALLOWED_HOSTS = []
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ["simple-diet-manager.com"]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'corsheaders',
 
     'foods',
     'drf_yasg',
@@ -86,7 +85,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'), # 경로 변경
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -157,11 +156,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:8000',
-]
-CORS_ALLOW_CREDENTIALS = True
+
+if DEV:
+    CORS_ORIGIN_WHITELIST = [
+        'http://localhost:3000',
+        'http://127.0.0.1:8000',
+    ]
+    CORS_ALLOW_CREDENTIALS = True
+else :
+    CORS_ORIGIN_WHITELIST = [
+        'simple-diet-manager.com',
+        'simple-diet-manager.com:8000',
+    ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',

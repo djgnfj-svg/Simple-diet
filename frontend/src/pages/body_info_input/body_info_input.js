@@ -30,7 +30,7 @@ function Body_info_input() {
     }
   }
   const navigateToOutput = () => {
-    axios.post("http://127.0.0.1:8000/api/cal-diet/", userInput)
+    axios.post(process.env.REACT_APP_API + "/api/cal-diet/", userInput)
       .then((e) => {
         navigate('/output', { state: e.data });
       })
