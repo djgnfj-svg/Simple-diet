@@ -1,5 +1,5 @@
 """
-ASGI config for simple_diet project.
+ASGI config for Simple_diet project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'simple_diet.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Simple_diet.settings')
 
 application = get_asgi_application()
