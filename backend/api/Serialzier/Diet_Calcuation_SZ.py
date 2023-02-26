@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from diet_meals.Utils.Diet_Calcuation import Diet_Calculator
+from meals.Utils.Diet_Calcuation import Diet_Calculator
 
 class Diet_Calcuation_SZ(serializers.Serializer):
     GENDER_CHOICES = (

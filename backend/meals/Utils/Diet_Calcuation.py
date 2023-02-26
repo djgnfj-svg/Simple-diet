@@ -1,4 +1,4 @@
-from diet_meals.Utils.Diet_excption import init_Diet_total_data
+from meals.Utils.Diet_excption import init_Diet_total_data
 
 
 class Diet_Calculator():

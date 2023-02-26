@@ -1,6 +1,6 @@
 from foods.models import Food_data
 
-from diet_meals.Utils.Manager import Food_Manager, Meal_Manager
+from meals.Utils.Manager import Food_Manager, Meal_Manager
 
 
 class Diet_Manager(Food_Manager, Meal_Manager):

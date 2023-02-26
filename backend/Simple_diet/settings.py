@@ -65,6 +65,10 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'foods',
+    'meals',
+    'managers',
+    'metabolic_calculator',
+
     'drf_yasg',
 ]
 

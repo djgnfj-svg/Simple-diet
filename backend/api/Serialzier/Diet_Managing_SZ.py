@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from diet_meals.Utils.Diet_Managing_utils import Diet_Manager
+from meals.Utils.Diet_Managing_utils import Diet_Manager
 
 
 def Classify_data(data):
