@@ -2,9 +2,12 @@ from diet_meals.Utils.Diet_excption import init_Diet_total_data
 
 
 class Diet_Calculator():
-    def __init__(self, __protein_base_range=2.0, __fat_base_range=0.28) -> None:
-        self.__protein_base_range = __protein_base_range
-        self.__fat_base_range = __fat_base_range
+    '''
+    
+    '''
+    def __init__(self, _protein_base_range=2.0, _fat_base_range=0.28) -> None:
+        self._protein_base_range = _protein_base_range
+        self._fat_base_range = _fat_base_range
         self.total_kcalorie = 0
         self.total_protein = 0
         self.total_fat = 0
@@ -90,11 +93,11 @@ class Diet_Calculator():
         return round(total_kcalorie * diet_staus)
 
     def _get_total_protein(self, weight):
-        total_protein = weight * self.__protein_base_range
+        total_protein = weight * self._protein_base_range
         return round(total_protein)
 
     def _get_total_fat(self, total_kcalorie):
-        extra_value = self.__fat_base_range
+        extra_value = self._fat_base_range
         return round((total_kcalorie * extra_value) // 9)
 
     def _get_total_carbohydrate(self):

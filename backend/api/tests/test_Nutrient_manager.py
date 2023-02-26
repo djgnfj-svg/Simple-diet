@@ -15,7 +15,7 @@ class Nutrient_ManagerTestCase(APITestCase):
     # 음식을 추가한다
     # 음식을 추가할떄도 매니져가 쿰쩍되는지 확인한다.
     
-    fixtures = ['master_data/foods-data.json']
+    fixtures = ['_master_data/foods-data.json']
     def setUp(self):
         self.basal_metabolic_rate_url = '/api/cal-diet/'
         self.diet_managing_url = "/api/managing-diet/"

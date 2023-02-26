@@ -6,7 +6,7 @@ from rest_framework import status
 from api.Utils.msg_utils import test_msg
 
 class ManagingDietTest(APITestCase):
-    fixtures = ['master_data/foods-data.json']
+    fixtures = ['_master_data/foods-data.json']
     def setUp(self) -> None:
         self.url = "/api/managing-diet/"
         self.sample_data = {
