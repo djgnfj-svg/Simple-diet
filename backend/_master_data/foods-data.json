@@ -1,6 +1,6 @@
 [
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "한끼통살 통살 닭가슴살 허니소이 (냉동)",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "햇살닭 저염훈제닭가슴살 플러스 (냉동)",
@@ -32,7 +32,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "햇살닭 흑마늘 수비드 닭가슴살 (냉동)",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [2],
             "name": "곰곰 납작한 떡갈비 (냉동)",
@@ -64,7 +64,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [2],
             "name": "곰곰 동그랑땡 (냉동)",
@@ -80,7 +80,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1, 2],
             "name": "하림 치킨너겟 (냉동)",
@@ -96,7 +96,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1, 2],
             "name": "곰곰 한입 돈까스 (냉동)",
@@ -112,7 +112,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,2],
             "name": "라이틀리 곤약즉석밥 현미퀴노아",
@@ -128,7 +128,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1,2],
             "name": "청정원 리치부어스트",
@@ -144,7 +144,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1, 2],
             "name": "동원 통그릴 비엔나",
@@ -160,7 +160,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "목우촌 닭가슴살 스테이크 구운갈릭 (냉동)",
@@ -176,7 +176,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "곰곰 흑미 닭가슴살 스테이크",
@@ -192,7 +192,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1],
             "name": "곰곰 프랑크 닭가슴살 소시지 꼬치형 (냉동)",
@@ -208,7 +208,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1,2],
             "name": "곰곰 새우 볶음밥 (냉동)",
@@ -224,7 +224,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1, 2],
             "name": "곰곰 닭갈비볶음밥 (냉동)",
@@ -240,7 +240,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1, 2],
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
@@ -256,7 +256,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "한우물 김치치즈 구운주먹밥 10개입 (냉동)",
@@ -272,7 +272,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [1],
             "name": "하림 닭가슴살 핫도그 8개입 (냉동)",
@@ -288,7 +288,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "롯데제과 퀘이커 마시는오트밀 오트&그레인",
@@ -304,7 +304,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [2],
             "name": "동원 고추 참치",
@@ -320,7 +320,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [2],
             "name": "동원 라이트 스탠다드 참치",
@@ -336,7 +336,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "농심 신라면 건면 사발 77g",
@@ -352,7 +352,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "그릭데이 시그니처 떠먹는 요구르트",
@@ -368,7 +368,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [2],
             "name": "한우물 차돌짬뽕국밥 (냉동)",
@@ -384,7 +384,7 @@
         }
     },
     {
-        "model": "foods.Food_data",
+        "model": "foods.Food",
         "fields": {
             "meals_fucus": [0,1,2],
             "name": "덴마크 인포켓치즈 오리지널",

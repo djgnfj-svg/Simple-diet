@@ -1,4 +1,4 @@
-from foods.models import Food_data
+from foods.models import Food
 
 from meals.Utils.Manager import Food_Manager, Meal_Manager
 
@@ -28,7 +28,7 @@ class Diet_Manager(Food_Manager, Meal_Manager):
             self._start_meal = 1
         super().__init__()
 
-    def _check_food_over_nutrient(self, food: Food_data, meal, meal_nutrient_data):
+    def _check_food_over_nutrient(self, food: Food, meal, meal_nutrient_data):
         '''
         음식을 추가했을시 너무 높게 초과된다면 다음 음식을 추가한다.
         현재영양소 + 추가할 음식 영양소 > 채워야하는 영양소 * 버퍼
@@ -55,7 +55,7 @@ class Diet_Manager(Food_Manager, Meal_Manager):
         return False
 
     # todo : 간단한 음식인가에 대한 여부도 체크해야한다.~
-    def _check_food_double(self, food: Food_data, meal, meal_nutrient_data):
+    def _check_food_double(self, food: Food, meal, meal_nutrient_data):
         '''
         음식영양소 * 버퍼, < 목표영양소 - 현재영양소
         '''
@@ -113,7 +113,7 @@ class Diet_Manager(Food_Manager, Meal_Manager):
         meal_nutrient_data["fat"] += round(food_data.fat /big_size) * double_value 
         meal_nutrient_data["carbohydrate"] += round(food_data.carbohydrate / big_size) * double_value
 
-    def _add_meal_food_data(self, meal_food_data, meal_nutrient_data, food: Food_data,
+    def _add_meal_food_data(self, meal_food_data, meal_nutrient_data, food: Food,
                             meal, food_count, food_double):
         double_value = 2 if food_double else 1
         big_size = 1

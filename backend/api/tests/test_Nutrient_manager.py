@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from api.tests.manager_sample_data import BODY_INFO_DATA
 from nutrient_manager.models import Nutrient_manager
-from foods.models import Food_Categories, Food_data
+from foods.models import Food_Categories, Food
 
 
 global over_range

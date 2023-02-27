@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import serializers, status
 from rest_framework.response import Response
 
-from foods.models import Food_data, Food_Categories
+from foods.models import Food, Food_Categories
 
 from api.Utils.msg_utils import error_msg
 from api.Serialzier.Food_Categories_SZ import Food_Categories_SZ
@@ -37,7 +37,7 @@ class Food_SZ(serializers.ModelSerializer):
     category = Food_Categories_SZ()
 
     class Meta:
-        model = Food_data
+        model = Food
         fields = '__all__'
 
     def validate_meals_fucus(self, value):

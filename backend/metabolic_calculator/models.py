@@ -14,8 +14,6 @@ class Body_info(TimeStampedModel):
     general_activities = models.FloatField(null=False)
     excise_activity = models.FloatField(null=False)
 
-    diet_status = models.FloatField(null=False)
-    many_meals = models.IntegerField(null=False)
     count = models.IntegerField(default=0)
 
 

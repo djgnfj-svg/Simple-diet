@@ -61,15 +61,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework',
+    #옵션
+    'drf_yasg',
     'corsheaders',
+    'rest_framework',
 
+    #앱
     'foods',
     'meals',
     'managers',
     'metabolic_calculator',
 
-    'drf_yasg',
 ]
 
 MIDDLEWARE = [

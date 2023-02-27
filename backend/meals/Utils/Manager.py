@@ -1,6 +1,6 @@
 from django.db.models import Q
 
-from foods.models import Food_data
+from foods.models import Food
 
 
 class Manager():
@@ -25,7 +25,7 @@ class Food_Manager(Manager):
         q = Q()
         q &= Q(meals_fucus__icontains=meal)
 
-        rtn = Food_data.objects.filter(q)
+        rtn = Food.objects.filter(q)
 
         # todo : 위의 정렬에따라서 정렬이 바뀔 수도 있다.
         sort_nutrient = ""

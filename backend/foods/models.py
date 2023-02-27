@@ -10,7 +10,7 @@ class Food_Categories(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Food_data(models.Model):
+class Food(models.Model):
     # 기본 정보
     name = models.CharField(max_length=50, unique=True)
     link = models.URLField(max_length=200)

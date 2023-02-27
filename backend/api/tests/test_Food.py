@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from foods.models import Food_Categories, Food_data
+from foods.models import Food_Categories, Food
 
 # 테스트 할 목록
 # 기초대사량테스트
@@ -42,12 +42,12 @@ class FoodTestCase(APITestCase):
         url = "/api/food/"
         response = self.client.post(url, self.valid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Food_data.objects.count(), 1)
-        self.assertEqual(Food_data.objects.get().name, 'Test Food')
-        self.assertEqual(Food_data.objects.get().category.name, 'Test Category')
+        self.assertEqual(Food.objects.count(), 1)
+        self.assertEqual(Food.objects.get().name, 'Test Food')
+        self.assertEqual(Food.objects.get().category.name, 'Test Category')
 
     def test_create_invalid_food_data(self):
         url = "/api/food/"
         response = self.client.post(url, self.invalid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(Food_data.objects.count(), 0)
+        self.assertEqual(Food.objects.count(), 0)
