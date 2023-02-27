@@ -14,7 +14,7 @@ class Meals_Custom(models.Model):
     many_meals = models.IntegerField(null=False)
 
 class Meal(models.Model):
-    foods = models.ManyToManyField(Food, on_delete=models.DO_NOTHING, null=True)
+    foods = models.ManyToManyField(Food, null=True)
     meal_custom = models.ForeignKey(Meals_Custom, on_delete=models.SET_NULL, null=True)
     protien = models.IntegerField(null=True)
     fat = models.IntegerField(null=True)

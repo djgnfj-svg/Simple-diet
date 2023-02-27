@@ -1,8 +1,13 @@
 from rest_framework import serializers
+from metabolic_calculator.models import Body_info
 
-from meals.Utils.Diet_Calcuation import Diet_Calculator
+from meals.Utils.Diet_Calcuation import Metabolic_Calculator
 
-class Diet_Calcuation_SZ(serializers.Serializer):
+class Body_info_SZ(serializers.ModelSerializer):
+    class Meta:
+        model = Body_info
+        exclude = ("id", "count", "created_at", "updated_at")
+    
     GENDER_CHOICES = (
         ('M', 'M'),
         ('F', 'F'),
@@ -10,24 +15,41 @@ class Diet_Calcuation_SZ(serializers.Serializer):
     age = serializers.IntegerField(min_value=20, max_value=100)
     weight = serializers.FloatField(min_value=40, max_value=250)
     height = serializers.FloatField(min_value=140, max_value=250)
-
     gender = serializers.ChoiceField(GENDER_CHOICES)
     general_activities = serializers.FloatField(min_value=1.2, max_value=1.6)
     excise_activity = serializers.FloatField(min_value=0, max_value=0.3)
-
-    diet_status = serializers.FloatField(min_value=0.8, max_value=1.0)
-    many_meals = serializers.IntegerField(min_value=2, max_value=3)
     
-    def create(self, request, validated_data):
-        instance = {}
-        # todo 단백질계수와 지방 기본계수에대한 입력을 받자
-        cal = Diet_Calculator(1.6, 0.28)
-        cal.set_total_data(validated_data)
-        instance["total_data"] = {}
-        instance["total_data"] = cal.get_total_json_data()
-        cal.Cal_diet(instance, validated_data["many_meals"], validated_data["diet_status"])
-
-        return instance
+    def create(self, validated_data):
+        try :
+            instnace = Body_info.objects.get(
+                age = validated_data["age"],
+                weight = validated_data["weight"],
+                height = validated_data["height"],
+                gender = validated_data["gender"],
+                general_activities = validated_data["general_activities"],
+                excise_activity = validated_data["excise_activity"],
+            )
+        except Body_info.DoesNotExist as e:
+            instnace = Body_info.objects.create(
+                age = validated_data["age"],
+                weight = validated_data["weight"],
+                height = validated_data["height"],
+                gender = validated_data["gender"],
+                general_activities = validated_data["general_activities"],
+                excise_activity = validated_data["excise_activity"],
+            )
+        else:
+            instnace.count += 1
+        instnace.save()
+        return instnace
     
-    def get_gender(self, obj):
-        return obj.get_gender_display()
+
+class Metabolic_Output_SZ(serializers.Serializer):
+    def to_representation(self, instance):
+        ret = {}
+        cal = Metabolic_Calculator(instance, 1.6, 0.28)
+        ret["total_kcal"] = cal.total_kcalorie
+        ret["total_protein"] = cal.total_protein
+        ret["total_fat"] = cal.total_fat
+        ret["total_carbohydrate"] = cal.total_carbohydrate
+        return ret
