@@ -40,8 +40,8 @@ class Metabolic_Calculator():
     
     def _cal_carbohydrate(self):
         self._total_kcalorie
-        self._total_carbohydrate = self._total_kcalorie - \
-            (self._total_protein * 4) - (self._total_fat * 9)
+        self._total_carbohydrate = round((self._total_kcalorie - \
+            (self._total_protein * 4) - (self._total_fat * 9)) // 4)
 
     @property
     def protein_base_range(self):

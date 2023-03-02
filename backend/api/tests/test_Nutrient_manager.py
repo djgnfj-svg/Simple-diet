@@ -1,7 +1,6 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from api.tests.manager_sample_data import BODY_INFO_DATA
-from nutrient_manager.models import Nutrient_manager
 from foods.models import Food_Categories, Food
 
 
@@ -37,21 +36,6 @@ class Nutrient_ManagerTestCase(APITestCase):
         }
         self.sample_body_info_datas = BODY_INFO_DATA
     
-    def test_make_manager(self):
-        # 기초대사량 계산 실행
-        basal_metabolic_rate_data = self.client.post(self.basal_metabolic_rate_url, self.sample_body_info_datas[0], format='json')
-        # 식단만들기 계산 실행
-        diet_data = {"data" : basal_metabolic_rate_data.data}
-        response = self.client.post(self.diet_managing_url, diet_data, format="json")
-
-        # # 이떄 매니져가 만들었는지 확인
-        self.assertTrue(Nutrient_manager.objects.count(), 1)
-        temp_num = Nutrient_manager.objects.get(id=1).food_number
-        # # 만들어졌다면 식품을 추가해보고
-        food_data = self.client.post(self.food_url, self.food_data, format='json')
-        # # 식품추가시 매니져가 업데이트 되었느지 체크
-        self.assertFalse(temp_num, Nutrient_manager.objects.get(id=1).food_number)
-    
     # 식품이 얼마나 오버하는지 알고 싶을때 사용
     def test_over_nutrient(self):
         count = 0
@@ -61,7 +45,6 @@ class Nutrient_ManagerTestCase(APITestCase):
             response = self.client.post(self.diet_managing_url, diet_data, format="json")
             if self.check_over_nutrient(response.data, i+1):
                 count += 1
-        print(self.aver)
 
 
     def check_over_nutrient(self,response, body_info_count):

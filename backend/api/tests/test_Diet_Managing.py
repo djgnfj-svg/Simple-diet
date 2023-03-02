@@ -10,32 +10,13 @@ class ManagingDietTest(APITestCase):
     def setUp(self) -> None:
         self.url = "/api/managing-diet/"
         self.sample_data = {
-            "data": {
-                "total_data": {
-                    "total_kcalorie": 2161,
-                    "total_protein": 176,
-                    "total_fat": 67,
-                    "total_carbohydrate": 214
-                },
-                "breakfast": {
-                    "kcalorie": 540,
-                    "protein": 44,
-                    "fat": 17,
-                    "carbohydrate": 54
-                },
-                "lunch": {
-                    "kcalorie": 972,
-                    "protein": 79,
-                    "fat": 30,
-                    "carbohydrate": 96
-                },
-                "dinner": {
-                    "kcalorie": 648,
-                    "protein": 53,
-                    "fat": 20,
-                    "carbohydrate": 64
-                }
-            }
+            "total_kcalorie": 3151,
+            "total_protein": 176,
+            "total_fat": 98,
+            "total_carbohydrate": 391,
+
+            "diet_status" : True,
+            "meal_count" : 3
         }
 
         # need 와 meal 차이가 30%이상 차이나면 에러

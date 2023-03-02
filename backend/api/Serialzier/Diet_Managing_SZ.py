@@ -1,26 +1,21 @@
 from rest_framework import serializers
-from meals.Utils.Diet_Managing_utils import Diet_Manager
 
+from meals.Utils.Diet_Manager import Diet_Meal_Calculation_Manager
 
-def Classify_data(data):
-    total_data = data["total_data"]
-    try :
-        breakfast = data["breakfast"]
-    except KeyError:
-        breakfast = None
-    lunch = data["lunch"]
-    dinner = data["dinner"]
-    return total_data, breakfast, lunch, dinner
-
-# todo : 현재는 프론트에서 어떡게 받는지 몰라서 data라는 형태로 받았지만
-# 추후 수정예정이다.
 class Diet_Managing_SZ(serializers.Serializer):
-    data = serializers.JSONField()
+    total_kcalorie = serializers.IntegerField()
+    total_protein = serializers.IntegerField()
+    total_fat = serializers.IntegerField()
+    total_carbohydrate = serializers.IntegerField()
+
+    # todo : choice형태를 만들어서 카테고리중 한개를 고를수 있게 만들기 serialzier 를 만들면 가능하다...
+    # protein_option = serializers.IntegerField()
+    # fat_option = serializers.IntegerField()
+    # carbohydrate_option = serializers.IntegerField()
+
+    diet_status = serializers.BooleanField()
+    meal_count = serializers.IntegerField()
     def create(self, request, validated_data):
-        total_data, breakfast, lunch, dinner = Classify_data(validated_data["data"])
-        diet_manager = Diet_Manager(breakfast, lunch, dinner)
-        managing_diet = diet_manager.get_diet_info()
-        managing_diet["breakfast_nutrient"] = breakfast
-        managing_diet["lunch_nutrient"] = lunch
-        managing_diet["dinner_nutrient"] = dinner
-        return managing_diet
+        diet_manager = Diet_Meal_Calculation_Manager(validated_data)
+        temp = diet_manager.calc_meal()
+        return {}

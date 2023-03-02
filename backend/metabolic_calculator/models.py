@@ -17,7 +17,6 @@ class Body_info(TimeStampedModel):
     count = models.IntegerField(default=0)
 
 
-
 class Metabolic(TimeStampedModel):
     total_kcalorie= models.FloatField(null=False)
     total_protein= models.FloatField(null=False)

@@ -9,7 +9,7 @@ from rest_framework.exceptions import ErrorDetail
 
 class DietCalutationsTestCase(APITestCase):
     def setUp(self) -> None:
-        self.url = '/api/cal-diet/'
+        self.url = '/api/calc_metabolic/'
         self.body_info = {
             "age": 25,
             "weight": 110,
@@ -19,8 +19,6 @@ class DietCalutationsTestCase(APITestCase):
             "general_activities": 1.2,
             "excise_activity": 0.2,
 
-            "diet_status": 1,
-            "many_meals": 2
         }
         return super().setUp()
     # 테스트할 목록
@@ -30,25 +28,10 @@ class DietCalutationsTestCase(APITestCase):
 
     def test_api_cal_returns_expected_data(self):
         expected_response = {
-            "total_data": {
                 "total_kcalorie": 3151,
                 "total_protein": 176,
                 "total_fat": 98,
                 "total_carbohydrate": 391
-            },
-            "diet_status": "유지",
-            "lunch": {
-                "kcalorie": 1891,
-                "protein": 106,
-                "fat": 59,
-                "carbohydrate": 235
-            },
-            "dinner": {
-                "kcalorie": 1260,
-                "protein": 70,
-                "fat": 39,
-                "carbohydrate": 156
-            }
         }
         response = self.client.post(self.url, self.body_info, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -137,32 +120,5 @@ class DietCalutationsTestCase(APITestCase):
         response = self.client.post(self.url, self.body_info, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(response.data, expected_response_None_excise_activity)
-
-    def test_api_cal_returns_error_msg_diet_status(self):
-        expected_response_over_diet_status = {'error_msg': {'diet_status': [ErrorDetail(string='Ensure this value is less than or equal to 1.0.', code='max_value')]}}
-        expected_response_None_diet_status = {'error_msg': {'diet_status': [ErrorDetail(string='This field may not be null.', code='null')]}}
-
-        self.body_info["diet_status"] = 2.0
-        response = self.client.post(self.url, self.body_info, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data, expected_response_over_diet_status)
-
-        self.body_info["diet_status"] = None
-        response = self.client.post(self.url, self.body_info, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data, expected_response_None_diet_status)
-        
-    def test_api_cal_returns_error_msg_many_meals(self):
-        expected_response_over_many_meals = {'error_msg': {'many_meals': [ErrorDetail(string='Ensure this value is less than or equal to 3.', code='max_value')]}}
-        expected_response_under_many_meals = {'error_msg': {'many_meals': [ErrorDetail(string='Ensure this value is greater than or equal to 2.', code='min_value')]}}
-
-        self.body_info["many_meals"] = 4
-        response = self.client.post(self.url, self.body_info, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data, expected_response_over_many_meals)
-
-        self.body_info["many_meals"] = 1
-        response = self.client.post(self.url, self.body_info, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data, expected_response_under_many_meals)
+    
         

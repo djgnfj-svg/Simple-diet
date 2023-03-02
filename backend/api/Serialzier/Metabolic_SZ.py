@@ -13,7 +13,7 @@ class Body_info_SZ(serializers.ModelSerializer):
         ('F', 'F'),
     )
     age = serializers.IntegerField(min_value=20, max_value=100)
-    weight = serializers.FloatField(min_value=40, max_value=250)
+    weight = serializers.FloatField(min_value=40, max_value=150)
     height = serializers.FloatField(min_value=140, max_value=250)
     gender = serializers.ChoiceField(GENDER_CHOICES)
     general_activities = serializers.FloatField(min_value=1.2, max_value=1.6)
@@ -45,10 +45,11 @@ class Body_info_SZ(serializers.ModelSerializer):
     
 
 class Metabolic_Output_SZ(serializers.Serializer):
+    # todo 이렇게 만든 데이터를 세이브...?
     def to_representation(self, instance):
         ret = {}
         cal = Metabolic_Calculator(instance, 1.6, 0.28)
-        ret["total_kcal"] = cal.total_kcalorie
+        ret["total_kcalorie"] = cal.total_kcalorie
         ret["total_protein"] = cal.total_protein
         ret["total_fat"] = cal.total_fat
         ret["total_carbohydrate"] = cal.total_carbohydrate
