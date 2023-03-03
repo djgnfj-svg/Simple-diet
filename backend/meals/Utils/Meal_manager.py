@@ -1,7 +1,7 @@
 from meals.Utils.Food_Manager import Food_Manager
 
 from foods.models import Food
-
+from time import sleep
 
 class Meals_Assign:
     def __init__(self, diet_custom_data) -> None:
@@ -22,9 +22,9 @@ class Meals_Assign:
 
     def _assign_total_data(self, diet_cut, diet_custom_data):
         self.total_kcalorie = diet_custom_data["total_kcalorie"] * diet_cut
-        self.total_protein = diet_custom_data["total_kcalorie"] * diet_cut
-        self.total_fat = diet_custom_data["total_kcalorie"] * diet_cut
-        self.total_carbohydrate = diet_custom_data["total_kcalorie"] * diet_cut
+        self.total_protein = diet_custom_data["total_protein"] * diet_cut
+        self.total_fat = diet_custom_data["total_fat"] * diet_cut
+        self.total_carbohydrate = diet_custom_data["total_carbohydrate"] * diet_cut
 
     def _assign_meals_nutrient(self):
         self.meals = {}
@@ -78,6 +78,7 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
 
         meal_food_data[str(food_count)] = self._assign_meal_food_data(
             food, big_size, food_number, double_value)
+
         self._assign_food_nutrient(
             meal_nutrient_data[meal], food, big_size, double_value)
 
@@ -90,31 +91,31 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
             self._carbohydrate_full = False
             self._meal_have_bigsize_food = False
 
-            meal_nutrient_data = {}
-            meal_nutrient_data[meal_name] = self._init_nutrient()
+            current_meal_nutrient = {}
+            current_meal_nutrient[meal_name] = self._init_nutrient()
 
             food_count = 0
             food_focus = 0
             while not self._carbohydrate_full:
                 food = self._get_food(meal_name, food_focus)
-
+                # sleep(0.8)
                 if (food.food_gram > 500 and self._meal_have_bigsize_food):
                     food_focus += 1
                     continue
                 
-                if self._check_food_over_nutrient(food, meal_name, meal_nutrient_data):
+                if self._check_food_over_nutrient(food, meal_name, current_meal_nutrient):
                     food_focus += 1
                     continue
 
                 food_double = self._check_food_double(
-                    food, meal_name, meal_nutrient_data)
+                    food, meal_name, current_meal_nutrient)
                 meal_food_data[str(food_count)] = self._init_nutrient()
                 self._add_meal_food_data(
-                    meal_food_data, meal_nutrient_data, food, meal_name, food_count, food_double)
+                    meal_food_data, current_meal_nutrient, food, meal_name, food_count, food_double)
                 food_count += 1
-                if not self._check_nutrient_all_full(meal_name, meal_nutrient_data[meal_name],
+                if not self._check_nutrient_all_full(meal_name, current_meal_nutrient[meal_name],
                                              protein_buff, fat_buff, carbohydrate_buff):
                     food_focus = 0
             diet_info[meal_name] = meal_food_data
-            diet_info[meal_name]["nutrient"] = meal_nutrient_data[meal_name]
+            diet_info[meal_name]["nutrient"] = current_meal_nutrient[meal_name]
         return diet_info

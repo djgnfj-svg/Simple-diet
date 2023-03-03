@@ -11,46 +11,45 @@ class Food_Calculator(Nutrient_Checker):
         self._food_over_buffer = 1.5
         self._food_double_buffer = 2.0
 
-    def _check_food_over_nutrient(self, food: Food, meal_name, meal_nutrient_data):
+    def _check_food_over_nutrient(self, food: Food, meal_name, current_meal_nutrient):
         '''
         음식을 추가했을시 너무 높게 초과된다면 다음 음식을 추가한다.
         현재영양소 + 추가할 음식 영양소 > 채워야하는 영양소 * 버퍼
         '''
-        nutrient_data = getattr(self, f"{meal_name}_need_nutrient", None)
-        if nutrient_data is None:
+        need_nutrient = getattr(self, f"{meal_name}_need_nutrient", None)
+        if need_nutrient is None:
             return False
 
-        # 채워야하는 영양소 확인
-        temp = meal_nutrient_data[meal_name]
+        temp = current_meal_nutrient[meal_name]
         if not self._protein_full:
             return food.protein + temp["protein"] > \
-                nutrient_data["protein"] * self._food_over_buffer
+                need_nutrient["protein"] * self._food_over_buffer
         elif not self._fat_full:
             return food.fat + temp["fat"] > \
-                nutrient_data["fat"] * self._food_over_buffer
+                need_nutrient["fat"] * self._food_over_buffer
         elif not self._carbohydrate_full:
             return food.carbohydrate + temp["carbohydrate"] > \
-                nutrient_data["carbohydrate"] * self._food_over_buffer
+                need_nutrient["carbohydrate"] * self._food_over_buffer
         return False
 
-    def _check_food_double(self, food: Food, meal_name, meal_nutrient_data):
+    def _check_food_double(self, food: Food, meal_name, current_meal_nutrient):
         '''
         음식영양소 * 버퍼, < 목표영양소 - 현재영양소
         '''
-        nutrient_data = getattr(self, f"{meal_name}_need_nutrient", None)
-        if nutrient_data is None:
+        need_nutrient = getattr(self, f"{meal_name}_need_nutrient", None)
+        if need_nutrient is None:
             return False
 
-        temp = meal_nutrient_data[meal_name]
+        temp = current_meal_nutrient[meal_name]
         if not self._protein_full:
             return food.protein * self._food_double_buffer < \
-                nutrient_data["protein"] - temp["protein"]
+                need_nutrient["protein"] - temp["protein"]
         elif not self._fat_full:
             return food.fat * self._food_double_buffer < \
-                nutrient_data["fat"] - temp["fat"]
+                need_nutrient["fat"] - temp["fat"]
         elif not self._carbohydrate_full:
             return food.carbohydrate * self._food_double_buffer < \
-                nutrient_data["carbohydrate"] - temp["carbohydrate"]
+                need_nutrient["carbohydrate"] - temp["carbohydrate"]
         return False
 
     def _assign_meal_food_data(self, food, big_size, food_number, double_value):
