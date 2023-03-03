@@ -45,7 +45,7 @@ class Body_info_SZ(serializers.ModelSerializer):
     
 
 class Metabolic_Output_SZ(serializers.Serializer):
-    # todo 이렇게 만든 데이터를 세이브...?
+    # todo_ver0.7 이렇게 만든 데이터를 세이브...?
     def to_representation(self, instance):
         ret = {}
         cal = Metabolic_Calculator(instance, 1.6, 0.28)

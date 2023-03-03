@@ -77,22 +77,3 @@ class Metabolic_Calculator():
     def total_kcalorie(self):
         return self._total_kcalorie
 
-class Diet_Calculator():
-    def __init__(self) -> None:
-        pass
-
-    def Cal_diet(self, instance, meal_count, diet_status):
-        meal_ratio = [0.25, 0.45, 0.3] if meal_count == 3 else [0.6, 0.4]
-        meal_list = ["breakfast", "lunch", "dinner"] if meal_count == 3 else ["lunch", "dinner",]
-        instance["diet_status"] = "다이어트" if diet_status == 0.8 else "유지"
-
-        if not self.total_carbohydrate and not self.total_fat \
-            and not self.total_protein and not self.total_kcalorie:
-            raise init_Diet_total_data
-        for i, meal in enumerate(meal_list):
-            instance[meal] = {}
-            instance[meal]["kcalorie"] = round(self.total_kcalorie * meal_ratio[i])
-            instance[meal]["protein"] = round(self.total_protein * meal_ratio[i])
-            instance[meal]["fat"] = round(self.total_fat * meal_ratio[i])
-            instance[meal]["carbohydrate"] = round(self.total_carbohydrate * meal_ratio[i])
-    

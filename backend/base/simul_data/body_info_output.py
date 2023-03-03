@@ -27,8 +27,6 @@ for i in range(100):
     # Send a POST request with the input data and receive the response in JSON format
     response = requests.post(url, json=input_data, headers={'Content-Type': 'application/json'})
     output_data[i] = response.json()
-    print(input_data)
-    print(response.json())
 
 # Save the output data as a JSON file
 with open('meal_output.json', 'w') as f:

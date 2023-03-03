@@ -8,7 +8,7 @@ class Diet_Managing_SZ(serializers.Serializer):
     total_fat = serializers.IntegerField()
     total_carbohydrate = serializers.IntegerField()
 
-    # todo : choice형태를 만들어서 카테고리중 한개를 고를수 있게 만들기 serialzier 를 만들면 가능하다...
+    # todo_Ver0.7 : choice형태를 만들어서 카테고리중 한개를 고를수 있게 만들기 serialzier 를 만들면 가능하다...
     # protein_option = serializers.IntegerField()
     # fat_option = serializers.IntegerField()
     # carbohydrate_option = serializers.IntegerField()
@@ -17,5 +17,8 @@ class Diet_Managing_SZ(serializers.Serializer):
     meal_count = serializers.IntegerField()
     def create(self, request, validated_data):
         diet_manager = Diet_Meal_Calculation_Manager(validated_data)
-        temp = diet_manager.calc_meal()
-        return {}
+        diet_data = diet_manager.get_diet_meal()
+        diet_data["need_nutrient"] = {}
+        for meal in diet_manager._meal_list:
+            diet_data["need_nutrient"][meal] = diet_manager.get_meal(meal)
+        return diet_data

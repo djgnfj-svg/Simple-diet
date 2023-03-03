@@ -45,17 +45,6 @@ class ManagingDietTest(APITestCase):
         need_dinner_nutrient = data["dinner_nutrient"]
         self.assertTrue(self._compare_nutrients(meal_dinner_nutrient, need_dinner_nutrient))
 
-    # def test_식단_잘못된값_보냈을떄_에러확인(self):
-    #     self.sample_data = {
-    #         "data" : {
-    #             "test" : 1
-    #         }
-    #     }
-    #     response = self.client.post(self.url, self.sample_data, format="json")
-    #     print(response.status_code)
-    #     self.assertEqual(response.status_code,
-    #                      status.HTTP_405_METHOD_NOT_ALLOWED)
-
     def test_식단_아점저_출력결과_체크(self):
         response = self.client.post(self.url, self.sample_data, format="json")
         #기본 출력확인
