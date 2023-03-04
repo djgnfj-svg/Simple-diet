@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Body_info_input />} />
         <Route path="*" element={ <div>없는페이지임</div> } />
         <Route path="output" element={<Output_form />} />
-        <Route path="diet_meal_list" element={<Diet_meal_list />} />
+        <Route path="diet-meal-list" element={<Diet_meal_list />} />
         <Route path="food_list" element={<Food_list />} />
       </Routes>
     </div>

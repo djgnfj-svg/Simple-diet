@@ -29,6 +29,7 @@
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
+  margin-top: 1rem;
   display: inline-block;
   border-radius: 0.5rem;
   -webkit-transition: all 0.2s;
@@ -37,6 +38,14 @@
   font-size: 1.6rem;
   border: none;
   cursor: pointer;
+
+}
+.label-text{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 25px;
+  color: wheat;
+  text-align: center;
 }
 
 .btn:hover {
@@ -175,6 +184,7 @@
 
 .row [class^="col-"] {
   float: left;
+  text-align: center;
 }
 
 .row [class^="col-"]:not(:last-child) {

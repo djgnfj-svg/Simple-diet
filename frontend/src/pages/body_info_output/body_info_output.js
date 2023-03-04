@@ -21,10 +21,9 @@ function Output_form() {
   const navigateToOutput = () => {
     axios.post(process.env.REACT_APP_API + "/api/managing-diet/", diet_cusom)
       .then((e) => {
-        navigate('/diet-meal_list', { state: e.data });
+        navigate('/diet-meal-list', { state: e.data });
       })
       .catch((e) => {
-        alert(e.response.data.error_msg)
         alert("실패")
       })
   }
@@ -77,7 +76,7 @@ function Output_form() {
               <input type="radio" name="meal_count" id="option-13" onChange={handleChangeInput} value={3} />
               <label for="option-12" class="option option-12">
                 <div class="dot"></div>
-                <span>2끼</span>
+                <span className="heading-secondary">2끼</span>
               </label>
               <label for="option-13" class="option option-13">
                 <div class="dot"></div>

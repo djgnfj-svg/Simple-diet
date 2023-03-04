@@ -32,7 +32,4 @@ class Diet_Meal_Calculation_Manager(Diet_Manager):
         Diet_Manager.__init__(self, validated_data)
 
     def get_diet_meal(self):
-        print(self.protein_buffer)
-        print(self.fat_buffer)
-        print(self.carbohydrate_buffer)
         return super().calc_meal(self.protein_buffer, self.fat_buffer, self.carbohydrate_buffer)
