@@ -1,6 +1,8 @@
 from django.db.models import Q
-from meals.Utils.Nutrient_Manager import Nutrient_Checker
+
 from foods.models import Food
+
+from meals.Utils.Nutrient_Manager import Nutrient_Checker
 
 
 # 음식 계산용

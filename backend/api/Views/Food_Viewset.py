@@ -1,14 +1,15 @@
-from rest_framework import status, viewsets, mixins
+from django.db import IntegrityError
+from django.db.models import Q
+
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 
 from foods.models import Food_Categories, Food
 
-from django.db import IntegrityError
-from django.db.models import Q
-
 from api.Serialzier.Food_SZ import Food_SZ
 
 from api.Utils.msg_utils import error_msg
+
 
 class Food_Viewset(viewsets.ModelViewSet):
     serializer_class = Food_SZ

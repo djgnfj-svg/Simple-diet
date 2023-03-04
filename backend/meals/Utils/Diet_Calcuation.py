@@ -1,5 +1,5 @@
-from metabolic_calculator.models import Body_info, Metabolic
-from meals.Utils.Diet_excption import init_Diet_total_data
+from metabolic_calculator.models import Body_info
+
 
 class Metabolic_Calculator():
     def __init__(self, instance:Body_info, _protein_base_range=2.0, _fat_base_range=0.28) -> None:

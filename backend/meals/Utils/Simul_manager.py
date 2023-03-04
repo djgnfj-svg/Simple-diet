@@ -61,7 +61,7 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
             if self._check_buffer_twenty(carbohydrate_buff_aver):
                 self.carbohydrate_buffer -= 0.01
             simul_count += 1
-            print(f"P : {protein_buff_aver} | F : {fat_buff_aver} | C : {carbohydrate_buff_aver}")
+            # print(f"P : {protein_buff_aver} | F : {fat_buff_aver} | C : {carbohydrate_buff_aver}")
 
 
     def _check_buffer_twenty(self, buff):

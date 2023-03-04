@@ -1,7 +1,9 @@
 from rest_framework import serializers
+
 from metabolic_calculator.models import Body_info
 
 from meals.Utils.Diet_Calcuation import Metabolic_Calculator
+
 
 class Body_info_SZ(serializers.ModelSerializer):
     class Meta:

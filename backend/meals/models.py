@@ -1,8 +1,8 @@
 from django.db import models
+
 from foods.models import Food
 
 from base.model_base.Time_model_base import TimeStampedModel
-
 
 
 class Meals_Custom(models.Model):

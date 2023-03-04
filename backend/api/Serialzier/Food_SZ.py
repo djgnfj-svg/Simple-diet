@@ -1,11 +1,7 @@
-from django.shortcuts import get_object_or_404
-
-from rest_framework import serializers, status
-from rest_framework.response import Response
+from rest_framework import serializers
 
 from foods.models import Food, Food_Categories
 
-from api.Utils.msg_utils import error_msg
 from api.Serialzier.Food_Categories_SZ import Food_Categories_SZ
 
 MEALS = (

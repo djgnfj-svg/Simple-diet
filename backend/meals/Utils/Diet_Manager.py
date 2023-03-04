@@ -1,7 +1,6 @@
+from managers.models import Diet_nutrient_manager
 
 from meals.Utils.Simul_manager import Nutrient_Buffer_Calculation
-
-from managers.models import Diet_nutrient_manager
 
 
 # 버퍼 확인용

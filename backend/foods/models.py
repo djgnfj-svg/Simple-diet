@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 from base.model_base.Time_model_base import TimeStampedModel
 

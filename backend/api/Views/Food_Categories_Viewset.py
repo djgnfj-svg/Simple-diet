@@ -1,4 +1,4 @@
-from rest_framework import status, viewsets, mixins
+from rest_framework import viewsets
 
 from foods.models import Food_Categories
 

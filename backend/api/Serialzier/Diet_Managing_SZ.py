@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from meals.Utils.Diet_Manager import Diet_Meal_Calculation_Manager
 
+
 class Diet_Managing_SZ(serializers.Serializer):
     total_kcalorie = serializers.IntegerField()
     total_protein = serializers.IntegerField()

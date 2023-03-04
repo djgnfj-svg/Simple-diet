@@ -17,6 +17,7 @@ SUCCESS_MSG = {
 	204 : "데이터가 없습니다",
 }
 
+
 def error_msg(error_code : int = 0, serializer = None,):
 	if serializer:
 		return {'error_msg' : serializer.errors}

@@ -1,7 +1,7 @@
+from foods.models import Food
+
 from meals.Utils.Food_Manager import Food_Manager
 
-from foods.models import Food
-from time import sleep
 
 class Meals_Assign:
     def __init__(self, diet_custom_data) -> None:
