@@ -54,17 +54,17 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
                     self._simul_carbohydrate_len += 1
 
             # todo : 만약 이전값과 똑같아면 계산안의 로직을 교체하지 않는이상 무리이다.
-            if self._check_buffer_20up(protein_buff_aver):
+            if self._check_buffer_twenty(protein_buff_aver):
                 self.protein_buffer -= 0.01
-            if self._check_buffer_20up(fat_buff_aver):
+            if self._check_buffer_twenty(fat_buff_aver):
                 self.fat_buffer -= 0.01
-            if self._check_buffer_20up(carbohydrate_buff_aver):
+            if self._check_buffer_twenty(carbohydrate_buff_aver):
                 self.carbohydrate_buffer -= 0.01
             simul_count += 1
             print(f"P : {protein_buff_aver} | F : {fat_buff_aver} | C : {carbohydrate_buff_aver}")
 
 
-    def _check_buffer_20up(self, buff):
+    def _check_buffer_twenty(self, buff):
         if buff > 20:
             return True
         else :

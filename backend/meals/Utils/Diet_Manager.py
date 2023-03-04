@@ -13,11 +13,11 @@ class Diet_Manager(Nutrient_Buffer_Calculation):
             self.fat_buffer = 1
             self.carbohydrate_buffer = 1
             self.simul_buffer()
-            # Diet_nutrient_manager.objects.create(
-            #     protein_buffer = self.protein_buffer,
-            #     fat_buffer = self.fat_buffer,
-            #     carbohydrate_buffer = self.carbohydrate_buffer
-            # )
+            Diet_nutrient_manager.objects.create(
+                protein_buffer = self.protein_buffer,
+                fat_buffer = self.fat_buffer,
+                carbohydrate_buffer = self.carbohydrate_buffer
+            )
         else:
             instance = Diet_nutrient_manager.objects.get(id=1)
             self.protein_buffer = instance.protein_buffer

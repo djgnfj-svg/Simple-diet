@@ -66,9 +66,7 @@
   height: 25rem;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -186,10 +184,6 @@
   margin-right: 6rem;
 }
 
-.row .col-1-of-3 {
-  width: calc((100% - 2 * 6rem) / 3);
-}
-
 .row .col-1-of-2 {
-  width: calc((100% - 2 * 6rem) / 2);
+  width : 40rem;
 }
