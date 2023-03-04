@@ -19,6 +19,7 @@
   font-weight: 400;
   color: #eee;
 }
+
 .heading-secondary ~span{
 	font-size: 20px;
 	color: #eee;
@@ -77,10 +78,6 @@
 }
 
 .card__side--front {
-  background-color: #fff;
-}
-
-.card__side--front-1 {
   background-color: #3537af;
   color: #fff;
 }

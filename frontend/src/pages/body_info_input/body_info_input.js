@@ -30,7 +30,7 @@ function Body_info_input() {
     }
   }
   const navigateToOutput = () => {
-    axios.post(process.env.REACT_APP_API + "/api/cal-diet/", userInput)
+    axios.post(process.env.REACT_APP_API + "/api/calc-metabolic/", userInput)
       .then((e) => {
         navigate('/output', { state: e.data });
       })
@@ -157,33 +157,8 @@ function Body_info_input() {
                     <span>7+회</span>
                   </label>
                 </div>
-                <label className="label-text" for="diet_status">다이어트 여부</label>
-                <div class="wrapper">
-                  <input type="radio" name="diet_status" id="option-10" onChange={handleChangeInput} value={0.8} />
-                  <input type="radio" name="diet_status" id="option-11" onChange={handleChangeInput} value={1.0} />
-                  <label for="option-10" class="option option-10">
-                    <div class="dot"></div>
-                    <span>다이어트</span>
-                  </label>
-                  <label for="option-11" class="option option-11">
-                    <div class="dot"></div>
-                    <span>유지</span>
-                  </label>
-                </div>
               </div>
-              <label className="label-text" for="many_meals">끼니</label>
-              <div class="wrapper">
-                <input type="radio" name="many_meals" id="option-12" onChange={handleChangeInput} value={2} />
-                <input type="radio" name="many_meals" id="option-13" onChange={handleChangeInput} value={3} />
-                <label for="option-12" class="option option-12">
-                  <div class="dot"></div>
-                  <span>2끼</span>
-                </label>
-                <label for="option-13" class="option option-13">
-                  <div class="dot"></div>
-                  <span>3끼</span>
-                </label>
-              </div>
+              
               <div className="form-group">
                 <button type="submit" className="form-control-submit-button"
                   onClick={navigateToOutput}>제출</button>
