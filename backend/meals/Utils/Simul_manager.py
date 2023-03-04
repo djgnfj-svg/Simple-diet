@@ -11,10 +11,6 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
         self._simul_carbohydrate_len = 1
 
     def simul_buffer(self):
-        protein_buff_aver = 100
-        fat_buff_aver = 100
-        carbohydrate_buff_aver = 100
-    
         meal_list = ["breakfast", "lunch", "dinner"]
         # list out of range가 나오면 여기를 의심해야됨
         # todo : 현재는 음식의 양이 적어서 너무 적게먹는사람들의 

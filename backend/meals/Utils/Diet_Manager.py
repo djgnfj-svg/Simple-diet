@@ -18,7 +18,7 @@ class Diet_Manager(Nutrient_Buffer_Calculation):
                 carbohydrate_buffer = self.carbohydrate_buffer
             )
         else:
-            instance = Diet_nutrient_manager.objects.get(id=1)
+            instance = Diet_nutrient_manager.objects.first()
             self.protein_buffer = instance.protein_buffer
             self.fat_buffer = instance.fat_buffer
             self.carbohydrate_buffer = instance.carbohydrate_buffer

@@ -59,9 +59,8 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
         else:
             self.breakfast_need_nutrient = self.meals["breakfast"]
 
-    # todo : 이름 + 구조 변경
-    def _add_meal_food_data(self, meal_food_data, meal_nutrient_data, food: Food,
-                            meal, food_count, isdouble):
+    def _add_meal_food_data(self, meal_food_data, current_meal_nutrient, food: Food,
+                            meal_name, food_count, isdouble):
 
         double_value = 2 if isdouble else 1
         big_size = 1
@@ -80,7 +79,7 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
             food, big_size, food_number, double_value)
 
         self._assign_food_nutrient(
-            meal_nutrient_data[meal], food, big_size, double_value)
+            current_meal_nutrient[meal_name], food, big_size, double_value)
 
     def calc_meal(self, protein_buff, fat_buff, carbohydrate_buff):
         diet_info = {}

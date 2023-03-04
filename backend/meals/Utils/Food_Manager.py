@@ -56,6 +56,7 @@ class Food_Calculator(Nutrient_Checker):
 
     def _assign_meal_food_data(self, food, big_size, food_number, double_value):
         instance = {}
+        temp =food_number * double_value
         instance["food_name"] = food.name
         instance["food_link"] = food.link
         instance["kcalorie"] = round(food.kcalorie / big_size) * double_value
