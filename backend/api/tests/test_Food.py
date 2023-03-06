@@ -3,13 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from foods.models import Food_Categories, Food
 
-# 테스트 할 목록
-# 기초대사량테스트
-    # 추후 코드를 리팩토링 할떄 용의하게 사용하기 위해서
-        # 1. 
-# 식단 영양소와 거시기를 비고
-    # 10개의 다른 데이터를 비교해서 심하게 넘어가는게 5개 이상이면 막는다.
-
+# 음식 테스트
 class FoodTestCase(APITestCase):
     def setUp(self):
         self.category = Food_Categories.objects.create(name='Test Category')

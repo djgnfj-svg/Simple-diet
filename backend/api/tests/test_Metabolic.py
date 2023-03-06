@@ -7,9 +7,10 @@ from rest_framework.exceptions import ErrorDetail
 # 1.
 
 
-class DietCalutationsTestCase(APITestCase):
+# 기초대사량 테스트
+class Basal_Metabolic_Rate_TestCase(APITestCase):
     def setUp(self) -> None:
-        self.url = '/api/calc_metabolic/'
+        self.url = '/api/calc-metabolic/'
         self.body_info = {
             "age": 25,
             "weight": 110,
@@ -18,13 +19,8 @@ class DietCalutationsTestCase(APITestCase):
             "gender": "M",
             "general_activities": 1.2,
             "excise_activity": 0.2,
-
         }
         return super().setUp()
-    # 테스트할 목록
-    # 결과가 옳케 나오나
-    # 에러가 옳케 나오나
-    # 그정도네
 
     def test_api_cal_returns_expected_data(self):
         expected_response = {
@@ -52,7 +48,7 @@ class DietCalutationsTestCase(APITestCase):
         self.assertEqual(response.data, expected_response_under_age)
     
     def test_api_cal_returns_error_msg_weight(self):
-        expected_response_over_weight = {'error_msg': {'weight': [ErrorDetail(string='Ensure this value is less than or equal to 250.', code='max_value')]}}
+        expected_response_over_weight = {'error_msg': {'weight': [ErrorDetail(string='Ensure this value is less than or equal to 150.', code='max_value')]}}
         expected_response_under_weight = {'error_msg': {'weight': [ErrorDetail(string='Ensure this value is greater than or equal to 40.', code='min_value')]}}
 
         self.body_info["weight"] = 9999

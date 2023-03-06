@@ -36,15 +36,15 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
                     need = need_data[meal_list[i]]
 
                     protein_gep = self._cal_diff_persent(meal["protein"], need["protein"])
-                    protein_buff_aver = self._cal_aver(protein_buff_aver, protein_gep, self._simul_protein_len)
+                    protein_buff_aver = self._cal_aver(protein_buff_aver, protein_gep, _simul_protein_len)
                     _simul_protein_len += 1
 
                     fat_gep = self._cal_diff_persent(meal["fat"], need["fat"])
-                    fat_buff_aver = self._cal_aver(fat_buff_aver, fat_gep, self._simul_fat_len)
+                    fat_buff_aver = self._cal_aver(fat_buff_aver, fat_gep, _simul_fat_len)
                     _simul_fat_len += 1
 
                     carbohydrate_gep = self._cal_diff_persent(meal["carbohydrate"], need["carbohydrate"])
-                    carbohydrate_buff_aver = self._cal_aver(carbohydrate_buff_aver, carbohydrate_gep, self._simul_carbohydrate_len)
+                    carbohydrate_buff_aver = self._cal_aver(carbohydrate_buff_aver, carbohydrate_gep, _simul_carbohydrate_len)
                     _simul_carbohydrate_len += 1
 
             # todo : 만약 이전값과 똑같아면 계산안의 로직을 교체하지 않는이상 무리이다.
