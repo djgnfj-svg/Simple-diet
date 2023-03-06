@@ -6,10 +6,8 @@ from meals.Utils.Meal_manager import Meal_Calculation
 class Nutrient_Buffer_Calculation(Meal_Calculation):
     def __init__(self, total_data) -> None:
         super().__init__(total_data)
-        self._simul_protein_len = 1
-        self._simul_fat_len = 1
-        self._simul_carbohydrate_len = 1
-
+        self.nutrient_negative_value = 0.05
+        self.simul_max_count = 10
     def simul_buffer(self):
         meal_list = ["breakfast", "lunch", "dinner"]
         # list out of range가 나오면 여기를 의심해야됨
@@ -17,10 +15,10 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
         # 버퍼를 만족시킬수 없다 (무조건 단백질은 20%가 넘는다.)
         # while (protein_buff_aver > 20 or fat_buff_aver > 20 or carbohydrate_buff_aver > 20):
         simul_count = 0
-        while simul_count < 50:
-            self._simul_protein_len = 1
-            self._simul_fat_len = 1
-            self._simul_carbohydrate_len = 1
+        while simul_count < self.simul_max_count:
+            _simul_protein_len = 1
+            _simul_fat_len = 1
+            _simul_carbohydrate_len = 1
             protein_buff_aver = 1
             fat_buff_aver = 1
             carbohydrate_buff_aver = 1
@@ -39,23 +37,23 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
 
                     protein_gep = self._cal_diff_persent(meal["protein"], need["protein"])
                     protein_buff_aver = self._cal_aver(protein_buff_aver, protein_gep, self._simul_protein_len)
-                    self._simul_protein_len += 1
+                    _simul_protein_len += 1
 
                     fat_gep = self._cal_diff_persent(meal["fat"], need["fat"])
                     fat_buff_aver = self._cal_aver(fat_buff_aver, fat_gep, self._simul_fat_len)
-                    self._simul_fat_len += 1
+                    _simul_fat_len += 1
 
                     carbohydrate_gep = self._cal_diff_persent(meal["carbohydrate"], need["carbohydrate"])
                     carbohydrate_buff_aver = self._cal_aver(carbohydrate_buff_aver, carbohydrate_gep, self._simul_carbohydrate_len)
-                    self._simul_carbohydrate_len += 1
+                    _simul_carbohydrate_len += 1
 
             # todo : 만약 이전값과 똑같아면 계산안의 로직을 교체하지 않는이상 무리이다.
             if self._check_buffer_twenty(protein_buff_aver):
-                self.protein_buffer -= 0.01
+                self.protein_buffer -= self.nutrient_negative_value
             if self._check_buffer_twenty(fat_buff_aver):
-                self.fat_buffer -= 0.01
+                self.fat_buffer -= self.nutrient_negative_value
             if self._check_buffer_twenty(carbohydrate_buff_aver):
-                self.carbohydrate_buffer -= 0.01
+                self.carbohydrate_buffer -= self.nutrient_negative_value
             simul_count += 1
             # print(f"P : {protein_buff_aver} | F : {fat_buff_aver} | C : {carbohydrate_buff_aver}")
 

@@ -13,7 +13,7 @@ class Food_Calculator(Nutrient_Checker):
         self._food_over_buffer = 1.5
         self._food_double_buffer = 2.0
 
-    def _check_food_over_nutrient(self, food: Food, meal_name, current_meal_nutrient):
+    def _check_food_over_nutrient(self, food: Food, meal_name, current_meals_nutrient):
         '''
         음식을 추가했을시 너무 높게 초과된다면 다음 음식을 추가한다.
         현재영양소 + 추가할 음식 영양소 > 채워야하는 영양소 * 버퍼
@@ -22,15 +22,15 @@ class Food_Calculator(Nutrient_Checker):
         if need_nutrient is None:
             return False
 
-        temp = current_meal_nutrient[meal_name]
+        current_meal_nutrient = current_meals_nutrient[meal_name]
         if not self._protein_full:
-            return food.protein + temp["protein"] > \
+            return food.protein + current_meal_nutrient["protein"] > \
                 need_nutrient["protein"] * self._food_over_buffer
         elif not self._fat_full:
-            return food.fat + temp["fat"] > \
+            return food.fat + current_meal_nutrient["fat"] > \
                 need_nutrient["fat"] * self._food_over_buffer
         elif not self._carbohydrate_full:
-            return food.carbohydrate + temp["carbohydrate"] > \
+            return food.carbohydrate + current_meal_nutrient["carbohydrate"] > \
                 need_nutrient["carbohydrate"] * self._food_over_buffer
         return False
 

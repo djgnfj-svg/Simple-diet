@@ -17,12 +17,10 @@
 .heading-secondary {
   font-size: 2.5rem;
   font-weight: 400;
-  color: #eee;
 }
 
 .heading-secondary ~span{
 	font-size: 20px;
-	color: #eee;
 }
 
 .btn, .btn:link, .btn:visited {
@@ -44,7 +42,6 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-size: 25px;
-  color: wheat;
   text-align: center;
 }
 
@@ -57,7 +54,6 @@
 
 .btn--green {
   background-color: #3537af;
-  color: #fff;
 }
 
 .section-plans {

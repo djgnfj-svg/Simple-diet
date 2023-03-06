@@ -37,7 +37,7 @@ function Output_form() {
   return (
     <section className="section-plans" id="section-plans">
       <div className="u-center-text u-margin-bottom-big">
-        <h2 className="heading-secondary">
+        <h2 className="heading-secondary" style={{"color" : "white"}}>
           영양소 정보
         </h2>
       </div>
@@ -57,7 +57,7 @@ function Output_form() {
                 </div>
               </div>
             </div>
-            <label className="label-text" for="diet_status">다이어트 여부</label>
+            <label className="label-text" for="diet_status" style={{"color" : "white"}}>다이어트 여부</label>
             <div class="wrapper">
               <input type="radio" name="diet_status" id="option-10" onChange={handleChangeInput} value={true} />
               <input type="radio" name="diet_status" id="option-11" onChange={handleChangeInput} value={false} />
@@ -70,7 +70,7 @@ function Output_form() {
                 <span>유지</span>
               </label>
             </div>
-            <label className="label-text" for="meal_count">끼니</label>
+            <label className="label-text" for="meal_count" style={{"color" : "white"}}>끼니</label>
             <div class="wrapper">
               <input type="radio" name="meal_count" id="option-12" onChange={handleChangeInput} value={2} />
               <input type="radio" name="meal_count" id="option-13" onChange={handleChangeInput} value={3} />
@@ -87,7 +87,7 @@ function Output_form() {
         </div>
       </div>
       <div className="u-center-text u-margin-top-huge">
-        <a onClick={navigateToOutput} className="btn btn--green">쿠팡 식단 계산</a>
+        <a onClick={navigateToOutput} className="btn btn--green" style={{"color" : "white"}}>쿠팡 식단 계산</a>
       </div>
     </section>
   )
