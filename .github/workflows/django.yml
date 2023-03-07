@@ -33,10 +33,10 @@ jobs:
     - name : Secrets setting
       run : |
         touch backend/.secrets.json
-        sed -i "1s/.*/{" backend/.secrets.json
-        sed -i '2s/.*/"SECRET_KEY" : "${{env.SECRET_KEY}}",' backend/.secrets.json
-        sed -i '3s/.*/"ENV" : "DEV"' backend/.secrets.json
-        sed -i '4s/.*/}' backend/.secrets.json
+        sed -i "1s/.*/{/g" backend/.secrets.json
+        sed -i '2s/.*/"SECRET_KEY" : "${{env.SECRET_KEY}}",/g' backend/.secrets.json
+        sed -i '3s/.*/"ENV" : "DEV"/g' backend/.secrets.json
+        sed -i '4s/.*/}/g' backend/.secrets.json
     - name: Run Tests
       run: |
         cd backend/
