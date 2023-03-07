@@ -9,10 +9,14 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-import os, json, sys
+import os
+import json
+import sys
 
 from pathlib import Path
+
 from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,11 +42,13 @@ def get_secret(setting):
         raise ImproperlyConfigured(error_msg)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = get_secret("SECRET_KEY")
+
 if get_secret("ENV") == "DEV":
     DEV = True
+    SECRET_KEY = get_secret("SECRET_KEY")
 else :
     DEV = False
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
 if DEV:
     DEBUG = True
