@@ -42,13 +42,12 @@ def get_secret(setting):
         raise ImproperlyConfigured(error_msg)
 
 # SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = get_secret("SECRET_KEY")
 
 if get_secret("ENV") == "DEV":
     DEV = True
-    SECRET_KEY = get_secret("SECRET_KEY")
 else :
     DEV = False
-    SECRET_KEY = os.environ.get("SECRET_KEY")
 
 if DEV:
     DEBUG = True
