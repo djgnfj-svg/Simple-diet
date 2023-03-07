@@ -51,7 +51,7 @@ else :
 
 if DEV:
     DEBUG = True
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["*"]
 else:
     DEBUG = False
     ALLOWED_HOSTS = ["http://simple-diet-manager.link"]
