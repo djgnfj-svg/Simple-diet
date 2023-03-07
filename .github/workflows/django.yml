@@ -12,6 +12,7 @@ env :
   S3_BUCKET_NAME : ${{secrets.S3_BUCKET_NAME}}
   CODE_DEPLOY_APPLICATION_NAME : ${{secrets.CODE_DEPLOY_APPLICATION_NAME}}
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME : ${{secrets.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME}}
+  DEPLOY_PACKAGE_NAME: "django-app-${{ github.sha }}.zip"
 
 jobs:
   build_test:
@@ -51,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps : 
       - name: Make zip file
-        run: zip -r ./$GITHUB_SHA.zip .
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
         shell: bash
 
       - name: Configure AWS credentials
@@ -63,7 +64,7 @@ jobs:
 
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip
-        
+
       - name: Code Deploy
         run: | 
           aws deploy create-deployment \
