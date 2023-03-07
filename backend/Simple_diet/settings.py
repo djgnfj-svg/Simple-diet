@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 SECRET_BASE_FILE = os.path.join(BASE_DIR, '.secrets.json')
 
-with open(SECRET_BASE_FILE) as f:
+with open(SECRET_BASE_FILE, encoding="UTF-8") as f:
     secrets = json.loads(f.read())
 
 def get_secret(setting):
