@@ -9,9 +9,12 @@ on:
 
 env :
   SECRET_KEY : ${{secrets.SECRET_KEY}}
-jobs:
-  build:
+  S3_BUCKET_NAME : ${{secrets.S3_BUCKET_NAME}}
+  CODE_DEPLOY_APPLICATION_NAME : ${{secrets.CODE_DEPLOY_APPLICATION_NAME}}
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME : ${{secrets.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME}}
 
+jobs:
+  build_test:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -42,3 +45,29 @@ jobs:
       run: |
         cd backend/
         python manage.py test -v 2
+  
+  CD :
+    needs : build_test
+    runs-on: ubuntu-latest
+    steps : 
+      - name: Make zip file
+        run: zip -r ./$GITHUB_SHA.zip .
+        shell: bash
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CD_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CD_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload to S3
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip
+        
+      - name: Code Deploy
+        run: | 
+          aws deploy create-deployment \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
+          --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$GITHUB_SHA.zip
