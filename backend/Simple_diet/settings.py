@@ -23,15 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-secret_file = os.path.join(BASE_DIR, '.secrets.json')
 SECRET_BASE_FILE = os.path.join(BASE_DIR, '.secrets.json')
-with open(secret_file) as f:
+
+with open(SECRET_BASE_FILE) as f:
     secrets = json.loads(f.read())
-secrets = json.loads(open(SECRET_BASE_FILE).read())
-
-
-for key, value in secrets.items():
-    setattr(sys.modules[__name__], key, value)
 
 def get_secret(setting):
     """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
