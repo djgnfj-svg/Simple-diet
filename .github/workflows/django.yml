@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+
+env :
+  DJANGO_SECRET_KEY : ${{secret.SECRET_KEY}}
 jobs:
   build:
 
@@ -27,6 +30,8 @@ jobs:
     - name : Secrets setting
       run : |
         touch backend/.secrets.json
+        echo { >> backend/.secrets.json
+        echo } >> backend/.secrets.json
     - name: Run Tests
       run: |
         cd backend/
