@@ -28,8 +28,11 @@ jobs:
       run : |
         touch backend/secrets.json
         echo { >> backend/secrets.json
+        cat backend/secrets.json
         echo \"SECRET_KEY\" : \"${{ secrets.SECRET_KEY }}\", >> backend/secrets.json
+        cat backend/secrets.json
         echo \"DEV\" : \"None\" >> backend/secrets.json
+        cat backend/secrets.json
         echo } >> backend/secrets.json
         cat backend/secrets.json
     - name: Run Tests
