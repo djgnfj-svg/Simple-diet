@@ -27,8 +27,6 @@ jobs:
     - name : Secrets setting
       run : |
         touch backend/.secrets.json
-        cat backend/.secrets.json
-        cat ${{secrets.SECRET_KEY}}
     - name: Run Tests
       run: |
         cd backend/
