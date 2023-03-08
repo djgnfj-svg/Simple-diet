@@ -1,1 +1,0 @@
-python backend/manage.py loaddata backend/master_data/foods-data.json 
