@@ -5,32 +5,34 @@ DEPLOY_PATH=/home/ubuntu
 PROJECT_PATH=$DEPLOY_PATH/$PROJECT_NAME
 
 # 깃 클론
-git clone https://github.com/djgnfj-svg/Simple-diet.git
-pwd >> pwd.txt
+cd $PROJECT_PATH/
 
-ls >> ls_test.txt
+git clone https://github.com/djgnfj-svg/Simple-diet.git
+
 # 시크릿 파일 이동
-mv .secrets.json $PROJECT_PATH/backend/.secrets.json
+mv .secrets.json $PROJECT_NAME/backend/.secrets.json
+
 
 # requirements.txt 설치
-pip install -r requirements.txt
+pip install -r $PROJECT_NAME/backend/requirements.txt
 #static file
-python3 $PROJECT_PATH/backend/manage.py collectstatic
+python3 $PROJECT_NAME/backend/manage.py collectstatic
 #migrate
-python3 $PROJECT_PATH/backend/manage.py makemigrations
-python3 $PROJECT_PATH/backend/manage.py migrate
+python3 $PROJECT_NAME/backend/manage.py makemigrations
+python3 $PROJECT_NAME/backend/manage.py migrate
 
 # load data
-python3 $PROJECT_PATH/backend/manage.py load_data $PROJECT_PATH/backend/_master_data/foods-data.json
+python3 $PROJECT_NAME/backend/manage.py load_data $PROJECT_NAME/backend/_master_data/foods-data.json
 
 
 # 구니콘 설정 설치
 sudo pip3 install gunicorn django
 sudo apt-get install supervisor
 # 구니콘 설정 이동
-cp $PROJECT_PATH/web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django.conf
+cp $PROJECT_NAME/web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
 
 # npm 설치
+cd frontend
 sudo apt install -y npm
 sudo npm update
 sudo npm install -g npm
@@ -41,19 +43,19 @@ sudo apt-get install -y nodejs
 sudo apt-get install nodejs
 
 # npm build
-cd $PROJECT_PATH/front/
 npm i
 npm run build
-cd ~
 
+
+cd ../
 # nginx 설치
 sudo apt-get install -y nginx
 # nginx 설정 이동
-cp $PROJECT_PATH/web/nginx/django_nginx.conf /etc/nginx/sites-available/django.conf
-cp $PROJECT_PATH/web/nginx/react_nginx.conf /etc/nginx/sites-available/react.conf
+cp $PROJECT_NAME/web/nginx/django_nginx.conf /etc/nginx/sites-available/django_nginx.conf
+cp $PROJECT_NAME/web/nginx/react_nginx.conf /etc/nginx/sites-available/react_nginx.conf
 # nginx 링크
-sudo ln /etc/nginx/sites-available/django.conf /etc/nginx/sites-enabled/
-sudo ln /etc/nginx/sites-available/react.conf /etc/nginx/sites-enabled/
+sudo ln /etc/nginx/sites-available/django_nginx.conf /etc/nginx/sites-enabled/
+sudo ln /etc/nginx/sites-available/react_nginx.conf /etc/nginx/sites-enabled/
 
 # 구니콘 실행
 sudo mkdir /logs
