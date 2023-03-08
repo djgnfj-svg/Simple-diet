@@ -9,25 +9,24 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-import os, json, sys
+import os
+import json
+import sys
 
 from pathlib import Path
+
 from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-secret_file = os.path.join(BASE_DIR, '.secrets.json')
 SECRET_BASE_FILE = os.path.join(BASE_DIR, '.secrets.json')
-with open(secret_file) as f:
+
+with open(SECRET_BASE_FILE, encoding="UTF-8") as f:
     secrets = json.loads(f.read())
-secrets = json.loads(open(SECRET_BASE_FILE).read())
-
-
-for key, value in secrets.items():
-    setattr(sys.modules[__name__], key, value)
 
 def get_secret(setting):
     """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
@@ -39,6 +38,7 @@ def get_secret(setting):
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = get_secret("SECRET_KEY")
+
 if get_secret("ENV") == "DEV":
     DEV = True
 else :
@@ -46,7 +46,7 @@ else :
 
 if DEV:
     DEBUG = True
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["*"]
 else:
     DEBUG = False
     ALLOWED_HOSTS = ["http://simple-diet-manager.link"]
