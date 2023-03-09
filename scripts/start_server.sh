@@ -10,26 +10,26 @@ cd $PROJECT_PATH/
 git clone https://github.com/djgnfj-svg/Simple-diet.git
 
 # 시크릿 파일 이동
-cp DEPLOY_PATH/.secrets.json $PROJECT_NAME/backend/.secrets.json
+cp $DEPLOY_PATH/.secrets.json backend/.secrets.json
 
 
 # requirements.txt 설치
-pip install -r $PROJECT_NAME/backend/requirements.txt
+pip install -r backend/requirements.txt
 #static file
-python3 $PROJECT_NAME/backend/manage.py collectstatic
+python3 backend/manage.py collectstatic
 #migrate
-python3 $PROJECT_NAME/backend/manage.py makemigrations
-python3 $PROJECT_NAME/backend/manage.py migrate
+python3 backend/manage.py makemigrations
+python3 backend/manage.py migrate
 
 # load data
-python3 $PROJECT_NAME/backend/manage.py load_data $PROJECT_NAME/backend/_master_data/foods-data.json
+python3 backend/manage.py load_data backend/_master_data/foods-data.json
 
 
 # 구니콘 설정 설치
 sudo pip3 install gunicorn django
 sudo apt-get install supervisor
 # 구니콘 설정 이동
-cp $PROJECT_NAME/web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
+cp web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
 
 # npm 설치
 cd frontend
@@ -42,8 +42,16 @@ sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install nodejs
 
-# npm build
+# npm install
 npm i
+
+# npm buffer add
+set NODE_OPTIONS=--max_old_space_size=4096
+
+sudo dd if=/dev/zero of=/mnt/swapfile bs=1M count=2048
+sudo mkswap /mnt/swapfile
+sudo swapon /mnt/swapfile
+# npm build
 npm run build
 
 
@@ -62,5 +70,6 @@ sudo mkdir /logs
 sudo supervisorctl reread
 sudo supervisorctl update
 sudo supervisorctl start gunicorn
+
 # nginx 실행
 sudo service nginx start
