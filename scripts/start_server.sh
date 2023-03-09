@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECT_NAME="Simple_diet"
+PROJECT_NAME="Simple-diet"
 DEPLOY_PATH=/home/ubuntu
 
 PROJECT_PATH=$DEPLOY_PATH/$PROJECT_NAME

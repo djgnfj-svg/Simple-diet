@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source:  /
-    destination: /home/ubuntu/Simple_diet
+    destination: /home/ubuntu/Simple-diet
     overwrite: yes
 
 permissions:
