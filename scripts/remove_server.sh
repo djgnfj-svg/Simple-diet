@@ -8,7 +8,10 @@ PROJECT_PATH=$DEPLOY_PATH/$PROJECT_NAME
 GUNICORN_FILE="/etc/supervisor/conf.d/django_gunicorn.conf"
 # nginx 파일
 NGINX_DJANGO_FILE="/etc/nginx/sites-available/django_nginx.conf"
-NGINX_REACT_FILE="/etc/nginx/sites-available/django_nginx.conf"
+NGINX_REACT_FILE="/etc/nginx/sites-available/react_nginx.conf"
+
+NGINX_DJANGO_FILE_ENABLE="/etc/nginx/sites-enabled/django_nginx.conf"
+NGINX_REACT_FILE_ENABLE="/etc/nginx/sites-enabled/react_nginx.conf"
 
 # 구니콘 파일 제거
 if [ -e $GUNICORN_FILE ]; then
@@ -24,6 +27,12 @@ if [ -e $NGINX_REACT_FILE ] ; then
     rm -rf $NGINX_REACT_FILE
 fi
 
+if [ -e $NGINX_DJANGO_FILE_ENABLE ]; then
+    rm -rf $NGINX_DJANGO_FILE
+fi
+if [ -e $NGINX_REACT_FILE_ENABLE ] ; then
+    rm -rf $NGINX_REACT_FILE
+fi
 
 # 프로젝트 파일삭제
 if [ -e $PROJECT_PATH ]; then
@@ -41,3 +50,4 @@ if [ -z $SERVICE_NIGNX ]; then
     sudo service nginx stop
 fi
 
+# nginx + guniconr 설정파일 삭제

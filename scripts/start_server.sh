@@ -25,12 +25,8 @@ python3 backend/manage.py migrate
 python3 backend/manage.py loaddata backend/_master_data/foods-data.json
 
 
-# 구니콘 설정 설치
-sudo pip3 install gunicorn django
-sudo apt-get install supervisor
 # 구니콘 설정 이동
 cp web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
-
 # npm 설치
 cd frontend
 sudo apt install -y npm

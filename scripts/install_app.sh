@@ -15,3 +15,7 @@ wget https://aws-codedeploy-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/lates
 chmod +x ./install
 sudo ./install auto
 sudo service codedeploy-agent start
+
+# 구니콘 설정 설치
+sudo pip3 install gunicorn django
+sudo apt-get install supervisor
