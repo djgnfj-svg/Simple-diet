@@ -6,11 +6,9 @@ PROJECT_PATH=$DEPLOY_PATH/$PROJECT_NAME
 
 # 깃 클론
 pwd >> pwd1.txt
-cd $PROJECT_PATH/
+cd $DEPLOY_PATH/
 
 git clone https://github.com/djgnfj-svg/Simple-diet.git
-echo test >> temp.txt
-pwd >> pwd.txt
 # 시크릿 파일 이동
 cp $DEPLOY_PATH/.secrets.json backend/.secrets.json
 

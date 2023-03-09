@@ -28,15 +28,15 @@ if [ -e $NGINX_REACT_FILE ] ; then
 fi
 
 if [ -e $NGINX_DJANGO_FILE_ENABLE ]; then
-    rm -rf $NGINX_DJANGO_FILE
+    rm -rf $NGINX_DJANGO_FILE_ENABLE
 fi
 if [ -e $NGINX_REACT_FILE_ENABLE ] ; then
-    rm -rf $NGINX_REACT_FILE
+    rm -rf $NGINX_REACT_FILE_ENABLE
 fi
 
 # 프로젝트 파일삭제
 if [ -e $PROJECT_PATH ]; then
-    rm -rf $PROJECT_PATH
+    sudo rm -rf $PROJECT_PATH
 fi
 
 # 서비스 중지
