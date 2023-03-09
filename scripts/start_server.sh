@@ -68,4 +68,4 @@ sudo supervisorctl update
 sudo supervisorctl start gunicorn
 
 # nginx 실행
-sudo service nginx restart
+sudo service nginx start
