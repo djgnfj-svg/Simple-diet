@@ -22,7 +22,7 @@ python3 backend/manage.py makemigrations
 python3 backend/manage.py migrate
 
 # load data
-python3 backend/manage.py load_data backend/_master_data/foods-data.json
+python3 backend/manage.py loaddata backend/_master_data/foods-data.json
 
 
 # 구니콘 설정 설치
