@@ -40,7 +40,7 @@ if [ -e $PROJECT_PATH ]; then
 fi
 
 # 서비스 중지
-SERVICE_GUNICONR=$(pgrep guniconr)
+SERVICE_GUNICONR=$(pgrep gunicorn)
 if [ -z $SERVICE_GUNICONR ]; then
     sudo supervisorctl stop gunicorn
 fi
@@ -50,4 +50,4 @@ if [ -z $SERVICE_NIGNX ]; then
     sudo service nginx stop
 fi
 
-# nginx + guniconr 설정파일 삭제
+# nginx + gunicorn 설정파일 삭제
