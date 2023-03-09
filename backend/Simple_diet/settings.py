@@ -45,11 +45,11 @@ else :
     DEV = False
 
 if DEV:
-    DEBUG = True
     ALLOWED_HOSTS = ["*"]
+    DEBUG = True
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["http://simple-diet-manager.link"]
+    ALLOWED_HOSTS = ["simple-diet-manager.link"]
 
 # Application definition
 
