@@ -10,7 +10,7 @@ cd $PROJECT_PATH/
 git clone https://github.com/djgnfj-svg/Simple-diet.git
 
 # 시크릿 파일 이동
-mv .secrets.json $PROJECT_NAME/backend/.secrets.json
+cp DEPLOY_PATH/.secrets.json $PROJECT_NAME/backend/.secrets.json
 
 
 # requirements.txt 설치
