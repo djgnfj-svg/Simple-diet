@@ -1,34 +1,35 @@
 #!/bin/bash
 PROJECT_NAME="Simple-diet"
+PROJECT_BACKEND_NAME="backend"
+PROJECT_BACKEND_PATH=$PROJECT_NAME/$PROJECT_BACKEND_NAME
+
 DEPLOY_PATH=/home/ubuntu
 
 PROJECT_PATH=$DEPLOY_PATH/$PROJECT_NAME
 
 # 깃 클론
-pwd >> pwd1.txt
 cd $DEPLOY_PATH/
 
 git clone https://github.com/djgnfj-svg/Simple-diet.git
 # 시크릿 파일 이동
-cp $DEPLOY_PATH/.secrets.json backend/.secrets.json
+cp $DEPLOY_PATH/.secrets.json $PROJECT_BACKEND_PATH/.secrets.json
 
 
 # requirements.txt 설치
-pip install -r backend/requirements.txt
+pip install -r $PROJECT_BACKEND_PATH/requirements.txt
 #static file
-python3 backend/manage.py collectstatic
+python3 $PROJECT_BACKEND_PATH/manage.py collectstatic
 #migrate
-python3 backend/manage.py makemigrations
-python3 backend/manage.py migrate
+python3 $PROJECT_BACKEND_PATH/manage.py makemigrations
+python3 $PROJECT_BACKEND_PATH/manage.py migrate
 
 # load data
-python3 backend/manage.py loaddata backend/_master_data/foods-data.json
+python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/foods-data.json
 
 
-# 구니콘 설정 이동
-cp web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
 # npm 설치
-cd frontend
+# /home/ubuntu/Simple-diet/frontend
+cd $PROJECT_NAME/frontend
 sudo apt install -y npm
 sudo npm update
 sudo npm install -g npm
@@ -51,12 +52,15 @@ sudo swapon /mnt/swapfile
 npm run build
 
 
-cd ../
+# 구니콘 설정 이동
+cd ..
+cp web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
+
 # nginx 설치
 sudo apt-get install -y nginx
 # nginx 설정 이동
-cp $PROJECT_NAME/web/nginx/django_nginx.conf /etc/nginx/sites-available/django_nginx.conf
-cp $PROJECT_NAME/web/nginx/react_nginx.conf /etc/nginx/sites-available/react_nginx.conf
+cp web/nginx/django_nginx.conf /etc/nginx/sites-available/django_nginx.conf
+cp web/nginx/react_nginx.conf /etc/nginx/sites-available/react_nginx.conf
 # nginx 링크
 sudo ln /etc/nginx/sites-available/django_nginx.conf /etc/nginx/sites-enabled/
 sudo ln /etc/nginx/sites-available/react_nginx.conf /etc/nginx/sites-enabled/
@@ -68,4 +72,4 @@ sudo supervisorctl update
 sudo supervisorctl start gunicorn
 
 # nginx 실행
-sudo service nginx start
+sudo service nginx restart
