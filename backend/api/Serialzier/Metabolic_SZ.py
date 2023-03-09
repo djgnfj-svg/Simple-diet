@@ -12,7 +12,7 @@ class Body_info_SZ(serializers.ModelSerializer):
     
     GENDER_CHOICES = (
         ('M', 'M'),
-        ('F', 'F'),
+        ('W', 'W'),
     )
     age = serializers.IntegerField(min_value=20, max_value=100)
     weight = serializers.FloatField(min_value=40, max_value=150)
