@@ -12,7 +12,8 @@
             "food_gram": 100,
             "link": "https://www.coupang.com/vp/products/6081081115?itemId=11273250763",
             "created_at": "2023-02-15",
-            "updated_at": "2023-02-15"
+            "updated_at": "2023-02-15",
+            "category" : 1
         }
     },
     {

@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 
 # UI 테스트
 class metabolic_diet_UI_TestCase(APITestCase):
-    fixtures = ['_master_data/foods-data.json']
+    fixtures = ['_master_data/food-Category.json', '_master_data/foods-data.json',]
     def setUp(self) -> None:
         self.metabolic_url = '/api/calc-metabolic/'
         self.body_info = {

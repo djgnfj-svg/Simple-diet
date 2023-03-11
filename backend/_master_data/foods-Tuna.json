@@ -1,0 +1,34 @@
+[
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [2],
+            "name": "동원 고추 참치",
+            "kcalorie": 110,
+            "carbohydrate": 10,
+            "protein": 9,
+            "fat": 3.9,
+            "food_number": 12,
+            "food_gram": 85,
+            "link": "https://www.coupang.com/vp/products/1145100301",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [2],
+            "name": "동원 라이트 스탠다드 참치",
+            "kcalorie": 180,
+            "carbohydrate": 0,
+            "protein": 16,
+            "fat": 13,
+            "food_number": 12,
+            "food_gram": 85,
+            "link": "https://www.coupang.com/vp/products/2042132",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    }
+]

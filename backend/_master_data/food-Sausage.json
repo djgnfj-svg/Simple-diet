@@ -1,0 +1,34 @@
+[
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [1,2],
+            "name": "청정원 리치부어스트",
+            "kcalorie": 325,
+            "carbohydrate": 2,
+            "protein": 15,
+            "fat": 28,
+            "food_number": 1,
+            "food_gram": 1000,
+            "link": "https://www.coupang.com/vp/products/346980667",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [1, 2],
+            "name": "동원 통그릴 비엔나",
+            "kcalorie": 280,
+            "carbohydrate": 1,
+            "protein": 11,
+            "fat": 26,
+            "food_number": 1,
+            "food_gram": 1000,
+            "link": "https://www.coupang.com/vp/products/1756604528?",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    }
+]

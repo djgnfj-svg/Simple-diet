@@ -1,0 +1,50 @@
+[
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "그릭데이 시그니처 떠먹는 요구르트",
+            "kcalorie": 160,
+            "carbohydrate": 4.8,
+            "protein": 11.4,
+            "fat": 10.7,
+            "food_number": 3,
+            "food_gram": 100,
+            "link": "https://www.coupang.com/vp/products/5463245022",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "덴마크 인포켓치즈 오리지널",
+            "kcalorie": 60,
+            "carbohydrate": 0,
+            "protein": 4,
+            "fat": 4.8,
+            "food_number": 10,
+            "food_gram": 20,
+            "link": "https://www.coupang.com/vp/products/1395521967",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [0,1,2],
+            "name": "남양유업 떠먹는 불가리스 세트",
+            "kcalorie": 75,
+            "carbohydrate": 10,
+            "protein": 3,
+            "fat": 2.6,
+            "food_number": 10,
+            "food_gram": 85,
+            "link": "https://www.coupang.com/vp/products/1395521967",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    }
+]

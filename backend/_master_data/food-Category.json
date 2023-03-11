@@ -1,0 +1,82 @@
+[
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "닭가슴살",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "볶음밥",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "주먹밥",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "면",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "소세지",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "냉동식품",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "밥",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "유산균",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "참치",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food_Categories",
+        "fields": {
+            "name": "기타",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    }
+]

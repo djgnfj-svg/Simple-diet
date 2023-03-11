@@ -5,7 +5,7 @@ from base.model_base.Time_model_base import TimeStampedModel
 
 # todo : 선호를 표시할 수 있는 지표
 class Food_Categories(TimeStampedModel):
-    name = models.CharField(max_length=30, null=False)
+    name = models.CharField(max_length=30, null=False, unique=True)
     
 
 class Food(TimeStampedModel):

@@ -1,0 +1,66 @@
+[
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [0,2],
+            "name": "라이틀리 곤약즉석밥 현미퀴노아",
+            "kcalorie": 90,
+            "carbohydrate": 21,
+            "protein": 2,
+            "fat": 0,
+            "food_number": 10,
+            "food_gram": 150,
+            "link": "https://www.coupang.com/vp/products/1391921882?itemId=2427315006",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [1,2],
+            "name": "곰곰 새우 볶음밥 (냉동)",
+            "kcalorie": 492,
+            "carbohydrate": 86,
+            "protein": 10,
+            "fat": 12,
+            "food_number": 6,
+            "food_gram": 300,
+            "link": "https://www.coupang.com/vp/products/1915681699",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [1, 2],
+            "name": "고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
+            "kcalorie": 435,
+            "carbohydrate": 66,
+            "protein": 12,
+            "fat": 14,
+            "food_number": 4,
+            "food_gram": 210,
+            "link": "https://www.coupang.com/vp/products/343228726",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    },
+    {
+        "model": "foods.Food",
+        "fields": {
+            "meals_fucus": [1, 2],
+            "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
+            "kcalorie": 492,
+            "carbohydrate": 86,
+            "protein": 9.9,
+            "fat": 12,
+            "food_number": 6,
+            "food_gram": 300,
+            "link": "https://www.coupang.com/vp/products/343228726",
+            "created_at": "2023-02-15",
+            "updated_at": "2023-02-15"
+        }
+    }
+]

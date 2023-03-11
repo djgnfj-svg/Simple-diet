@@ -6,7 +6,7 @@ from api.Utils.msg_utils import test_msg
 
 # 식단 제작 테스트
 class DietTest(APITestCase):
-    fixtures = ['_master_data/foods-data.json']
+    fixtures = ['_master_data/food-Category.json', '_master_data/foods-data.json',]
     def setUp(self) -> None:
         self.buffer = 0.5
         self.url = "/api/managing-diet/"
