@@ -47,10 +47,9 @@ class Body_info_SZ(serializers.ModelSerializer):
     
 
 class Metabolic_Output_SZ(serializers.Serializer):
-    # todo_ver0.7 이렇게 만든 데이터를 세이브...?
     def to_representation(self, instance):
         ret = {}
-        cal = Metabolic_Calculator(instance, 1.6, 0.28)
+        cal = Metabolic_Calculator(instance)
         ret["total_kcalorie"] = cal.total_kcalorie
         ret["total_protein"] = cal.total_protein
         ret["total_fat"] = cal.total_fat
