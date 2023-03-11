@@ -4,8 +4,6 @@ from metabolic_calculator.models import Body_info
 class Metabolic_Calculator:
     def __init__(self, instance:Body_info, _protein_base_range=2.0, _fat_base_range=0.28) -> None:
         
-        #todo : 만약 값이 안들어왔으면 
-        # 매니져에서 값을 가져온다 매니져가 없다면 에러를 벴는다.
         self._protein_base_range = _protein_base_range
         self._fat_base_range = _fat_base_range
     

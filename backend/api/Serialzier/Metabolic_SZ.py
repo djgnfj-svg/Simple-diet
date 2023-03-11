@@ -5,11 +5,11 @@ from metabolic_calculator.models import Body_info
 from meals.Utils.Diet_Calcuation import Metabolic_Calculator
 
 
-class Body_info_SZ(serializers.ModelSerializer):
+class Metabolic_SZ(serializers.ModelSerializer):
     class Meta:
         model = Body_info
         exclude = ("id", "count", "created_at", "updated_at")
-    
+
     GENDER_CHOICES = (
         ('M', 'M'),
         ('W', 'W'),
@@ -22,32 +22,21 @@ class Body_info_SZ(serializers.ModelSerializer):
     excise_activity = serializers.FloatField(min_value=0, max_value=0.3)
     
     def create(self, validated_data):
-        try :
-            instnace = Body_info.objects.get(
-                age = validated_data["age"],
-                weight = validated_data["weight"],
-                height = validated_data["height"],
-                gender = validated_data["gender"],
-                general_activities = validated_data["general_activities"],
-                excise_activity = validated_data["excise_activity"],
-            )
-        except Body_info.DoesNotExist as e:
-            instnace = Body_info.objects.create(
-                age = validated_data["age"],
-                weight = validated_data["weight"],
-                height = validated_data["height"],
-                gender = validated_data["gender"],
-                general_activities = validated_data["general_activities"],
-                excise_activity = validated_data["excise_activity"],
-            )
-        else:
-            instnace.count += 1
-        instnace.save()
-        return instnace
-    
+        _age = validated_data.get("age")
+        _weight = validated_data.get("weight")
+        _height = validated_data.get("height")
+        _gender = validated_data.get("gender")
+        _general_activities = validated_data.get("general_activities")
+        _excise_activity = validated_data.get("excise_activity")
 
-class Metabolic_Output_SZ(serializers.Serializer):
-    def to_representation(self, instance):
+        instance = Body_info(
+            age = _age,
+            weight = _weight,
+            height = _height,
+            gender = _gender,
+            general_activities = _general_activities,
+            excise_activity = _excise_activity
+        )
         ret = {}
         cal = Metabolic_Calculator(instance)
         ret["total_kcalorie"] = cal.total_kcalorie
