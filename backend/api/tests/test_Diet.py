@@ -9,7 +9,7 @@ class DietTest(APITestCase):
     fixtures = ['_master_data/food-Category.json', '_master_data/foods-data.json',]
     def setUp(self) -> None:
         self.buffer = 0.5
-        self.url = "/api/managing-diet/"
+        self.url = "/api/diet/"
         self.sample_data = {
             "total_kcalorie": 3151,
             "total_protein": 176,

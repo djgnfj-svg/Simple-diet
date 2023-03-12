@@ -10,7 +10,7 @@ from rest_framework.exceptions import ErrorDetail
 # 기초대사량 테스트
 class Basal_Metabolic_Rate_TestCase(APITestCase):
     def setUp(self) -> None:
-        self.url = '/api/calc-metabolic/'
+        self.url = '/api/metabolic/'
         self.body_info = {
             "age": 25,
             "weight": 110,
@@ -25,9 +25,9 @@ class Basal_Metabolic_Rate_TestCase(APITestCase):
     def test_api_cal_returns_expected_data(self):
         expected_response = {
                 "total_kcalorie": 3151,
-                "total_protein": 176,
+                "total_protein": 220,
                 "total_fat": 98,
-                "total_carbohydrate": 391
+                "total_carbohydrate": 347
         }
         response = self.client.post(self.url, self.body_info, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)

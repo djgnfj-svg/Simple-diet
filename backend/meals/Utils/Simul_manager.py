@@ -16,15 +16,11 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
         # while (protein_buff_aver > 20 or fat_buff_aver > 20 or carbohydrate_buff_aver > 20):
         simul_count = 0
         while simul_count < self.simul_max_count:
-            _simul_protein_len = 1
-            _simul_fat_len = 1
-            _simul_carbohydrate_len = 1
-            protein_buff_aver = 1
-            fat_buff_aver = 1
-            carbohydrate_buff_aver = 1
+            _simul_protein_len, _simul_fat_len, _simul_carbohydrate_len = 1,1,1
+            protein_buff_aver, fat_buff_aver, carbohydrate_buff_aver = 1,1,1
 
             # todo 파일이 없다면 base파일에 만드는 파일을 실행하는 로직
-            with open('base/simul_data/diet_output.json') as f :
+            with open('simul_data/diet_output.json') as f :
                 simul_data = json.load(f)
 
             for data in simul_data.values():

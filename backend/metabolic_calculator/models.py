@@ -1,6 +1,6 @@
 from django.db import models
 
-from base.model_base.Time_model_base import TimeStampedModel
+from Simple_diet.Time_model_base import TimeStampedModel
 
 # Create your models here.
 

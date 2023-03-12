@@ -4,7 +4,7 @@ from rest_framework.test import APITestCase
 class metabolic_diet_UI_TestCase(APITestCase):
     fixtures = ['_master_data/food-Category.json', '_master_data/foods-data.json',]
     def setUp(self) -> None:
-        self.metabolic_url = '/api/calc-metabolic/'
+        self.metabolic_url = '/api/metabolic/'
         self.body_info = {
             "age": 25,
             "weight": 100,
@@ -15,7 +15,7 @@ class metabolic_diet_UI_TestCase(APITestCase):
             "excise_activity": 0.0,
         }
 
-        self.diet_url = "/api/managing-diet/"
+        self.diet_url = "/api/diet/"
         self.diet_custom = {
             "diet_status" : True,
             "meal_count" : 3 
