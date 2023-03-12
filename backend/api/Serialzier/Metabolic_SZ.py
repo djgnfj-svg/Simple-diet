@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from metabolic_calculator.models import Body_info
+from metabolic.models import Body_info
 
 from meals.Utils.Diet_Calcuation import Metabolic_Calculator
 

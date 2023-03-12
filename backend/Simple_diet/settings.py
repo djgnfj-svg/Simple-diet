@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     'foods',
     'meals',
     'managers',
-    'metabolic_calculator',
+    'metabolic',
 
 ]
 

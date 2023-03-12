@@ -1,4 +1,4 @@
-from metabolic_calculator.models import Body_info
+from metabolic.models import Body_info
 
 
 class Metabolic_Calculator:

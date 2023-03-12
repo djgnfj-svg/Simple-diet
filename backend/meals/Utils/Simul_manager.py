@@ -8,6 +8,7 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
         super().__init__(total_data)
         self.nutrient_negative_value = 0.05
         self.simul_max_count = 10
+
     def simul_buffer(self):
         meal_list = ["breakfast", "lunch", "dinner"]
         # list out of range가 나오면 여기를 의심해야됨
