@@ -35,11 +35,11 @@ class Metabolic_TestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, expected_response)
     
-    # def test_body_countup(self):
-    #     _ = self.client.post(self.url, self.body_info, format='json')
-    #     temp = Body_info.objects.first().count
-    #     _ = self.client.post(self.url, self.body_info, format='json')
-    #     self.assertEqual(temp, Body_info.objects.first().count-1)
+    def test_body_countup(self):
+        _ = self.client.post(self.url, self.body_info, format='json')
+        temp = Body_info.objects.first().count
+        _ = self.client.post(self.url, self.body_info, format='json')
+        self.assertEqual(temp, Body_info.objects.first().count-1)
 
     def test_api_cal_returns_error_msg_age(self):
         expected_response_over_age = {'error_msg': {'age': [ErrorDetail(string='Ensure this value is less than or equal to 100.', code='max_value')]}}
