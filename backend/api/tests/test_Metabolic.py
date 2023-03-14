@@ -1,6 +1,8 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework.exceptions import ErrorDetail
+
+from metabolic.models import Body_info
 # 테스트 할 목록
 # 기초대사량테스트
 # 추후 코드를 리팩토링 할떄 용의하게 사용하기 위해서
@@ -8,7 +10,7 @@ from rest_framework.exceptions import ErrorDetail
 
 
 # 기초대사량 테스트
-class Basal_Metabolic_Rate_TestCase(APITestCase):
+class Metabolic_TestCase(APITestCase):
     def setUp(self) -> None:
         self.url = '/api/metabolic/'
         self.body_info = {
@@ -33,6 +35,12 @@ class Basal_Metabolic_Rate_TestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, expected_response)
     
+    # def test_body_countup(self):
+    #     _ = self.client.post(self.url, self.body_info, format='json')
+    #     temp = Body_info.objects.first().count
+    #     _ = self.client.post(self.url, self.body_info, format='json')
+    #     self.assertEqual(temp, Body_info.objects.first().count-1)
+
     def test_api_cal_returns_error_msg_age(self):
         expected_response_over_age = {'error_msg': {'age': [ErrorDetail(string='Ensure this value is less than or equal to 100.', code='max_value')]}}
         expected_response_under_age = {'error_msg': {'age': [ErrorDetail(string='Ensure this value is greater than or equal to 20.', code='min_value')]}}

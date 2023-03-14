@@ -9,12 +9,6 @@ class Nutrient_Assign:
         nuturient["fat"] = 0
         nuturient["carbohydrate"] = 0
         return nuturient
-
-    def _set_nutrient(self, instance):
-        instance["kcalorie"] = 0
-        instance["protein"] = 0
-        instance["fat"] = 0
-        instance["carbohydrate"] = 0
     
 class Nutrient_Checker(Nutrient_Assign):
     def __init__(self) -> None:

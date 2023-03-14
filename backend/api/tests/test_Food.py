@@ -31,17 +31,16 @@ class FoodTestCase(APITestCase):
             'food_number': -1,
             'food_gram': -1,
         }
+        self.url = "/api/foods/"
         
     def test_create_valid_food_data(self):
-        url = "/api/food/"
-        response = self.client.post(url, self.valid_payload, format='json')
+        response = self.client.post(self.url, self.valid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Food.objects.count(), 1)
         self.assertEqual(Food.objects.get().name, 'Test Food')
         self.assertEqual(Food.objects.get().category.name, 'Test Category')
 
     def test_create_invalid_food_data(self):
-        url = "/api/food/"
-        response = self.client.post(url, self.invalid_payload, format='json')
+        response = self.client.post(self.url, self.invalid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Food.objects.count(), 0)

@@ -16,6 +16,9 @@ class Body_info(TimeStampedModel):
 
     count = models.IntegerField(default=0)
 
+    def countUp(self):
+        self.count += 1
+        self.save()
 
 class Metabolic(TimeStampedModel):
     total_kcalorie= models.FloatField(null=False)
