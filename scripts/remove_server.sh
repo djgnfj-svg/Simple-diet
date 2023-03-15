@@ -12,6 +12,8 @@ NGINX_REACT_FILE="/etc/nginx/sites-available/react_nginx.conf"
 
 NGINX_DJANGO_FILE_ENABLE="/etc/nginx/sites-enabled/django_nginx.conf"
 NGINX_REACT_FILE_ENABLE="/etc/nginx/sites-enabled/react_nginx.conf"
+SERVICE_GUNICONR=$(pgrep gunicorn)
+SERVICE_NIGNX=$(pgrep nginx)
 
 # 구니콘 파일 제거
 if [ -e $GUNICORN_FILE ]; then
@@ -40,13 +42,11 @@ if [ -e $PROJECT_PATH ]; then
 fi
 
 # 서비스 중지
-SERVICE_GUNICONR=$(pgrep gunicorn)
-if [ -z $SERVICE_GUNICONR ]; then
+if [ -z "$SERVICE_GUNICONR" ]; then
     sudo supervisorctl stop gunicorn
 fi
 
-SERVICE_NIGNX=$(pgrep nginx)
-if [ -z $SERVICE_NIGNX ]; then
+if [ -z "$SERVICE_NIGNX" ]; then
     sudo service nginx stop
 fi
 
