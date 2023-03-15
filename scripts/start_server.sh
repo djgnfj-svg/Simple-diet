@@ -40,9 +40,9 @@ python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_d
 # npm 설치
 # /home/ubuntu/Simple-diet/frontend
 cd $PROJECT_NAME/frontend
-sudo apt install -y npm
-sudo npm update
-sudo npm install -g npm
+# sudo apt install -y npm
+# sudo npm update
+# sudo npm install -g npm
 
 # node update
 sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
