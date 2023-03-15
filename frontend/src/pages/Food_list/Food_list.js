@@ -7,7 +7,7 @@ function Food_list() {
   const [food_list, setFood_list] = useState();
 
   const getfood_list = (e) => {
-    axios.get(process.env.REACT_APP_API + "/api/food/")
+    axios.get(process.env.REACT_APP_API + "/api/foods/")
       .then((e) => {
         setFood_list(e.data)
       })

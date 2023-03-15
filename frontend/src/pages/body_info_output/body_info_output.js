@@ -19,7 +19,7 @@ function Output_form() {
   const { total_kcalorie, total_protein, total_fat, total_carbohydrate, diet_status, meal_count } = diet_cusom
 
   const navigateToOutput = () => {
-    axios.post(process.env.REACT_APP_API + "/api/managing-diet/", diet_cusom)
+    axios.post(process.env.REACT_APP_API + "/api/diet/", diet_cusom)
       .then((e) => {
         navigate('/diet-meal-list', { state: e.data });
       })

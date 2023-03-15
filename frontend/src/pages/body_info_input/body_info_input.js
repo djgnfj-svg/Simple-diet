@@ -30,7 +30,7 @@ function Body_info_input() {
     }
   }
   const navigateToOutput = () => {
-    axios.post(process.env.REACT_APP_API + "/api/calc-metabolic/", userInput)
+    axios.post(process.env.REACT_APP_API + "/api/metabolic/", userInput)
       .then((e) => {
         navigate('/output', { state: e.data });
       })
