@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "롯데제과 퀘이커 마시는오트밀 오트&그레인",
             "kcalorie": 222,
             "carbohydrate": 29,

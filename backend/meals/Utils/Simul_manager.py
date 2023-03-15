@@ -6,8 +6,8 @@ from meals.Utils.Meal_manager import Meal_Calculation
 class Nutrient_Buffer_Calculation(Meal_Calculation):
     def __init__(self, total_data) -> None:
         super().__init__(total_data)
-        self.nutrient_negative_value = 0.05
-        self.simul_max_count = 10
+        self.nutrient_negative_value = 0.1
+        self.simul_max_count = 5
         
     def simul_buffer(self):
         meal_list = ["breakfast", "lunch", "dinner"]

@@ -97,7 +97,6 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
             food_focus = 0
             while not self._carbohydrate_full:
                 food = self._get_food(meal_name, food_focus)
-                # sleep(0.8)
                 if (food.food_gram > 500 and self._meal_have_bigsize_food):
                     food_focus += 1
                     continue
@@ -109,8 +108,7 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
                 food_double = self._check_food_double(
                     food, meal_name, current_meal_nutrient)
                 meal_food_data[str(food_count)] = self._init_nutrient()
-                self._add_meal_food_data(
-                    meal_food_data, current_meal_nutrient, food, meal_name, food_count, food_double)
+                self._add_meal_food_data(meal_food_data, current_meal_nutrient, food, meal_name, food_count, food_double)
                 food_count += 1
                 if not self._check_nutrient_all_full(meal_name, current_meal_nutrient[meal_name],
                                              protein_buff, fat_buff, carbohydrate_buff):

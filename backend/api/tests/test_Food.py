@@ -6,12 +6,12 @@ from foods.models import Food_Categories, Food
 # 음식 테스트
 class FoodTestCase(APITestCase):
     def setUp(self):
+        self.url = "/api/foods/"
         self.category = Food_Categories.objects.create(name='Test Category')
         self.valid_payload = {
             'name': 'Test Food',
             'link': 'https://www.example.com/test-food',
             'category': {"name" : self.category.name},
-            'meals_fucus': "(0, 1)",
             'kcalorie': 100,
             'protein': 10.5,
             'fat': 5.0,
@@ -23,7 +23,6 @@ class FoodTestCase(APITestCase):
             'name': '',
             'link': 'invalid_url',
             'category': '',
-            'meals_fucus': 'not_an_array',
             'kcalorie': -1,
             'protein': -1,
             'fat': -1,
@@ -31,7 +30,6 @@ class FoodTestCase(APITestCase):
             'food_number': -1,
             'food_gram': -1,
         }
-        self.url = "/api/foods/"
         
     def test_create_valid_food_data(self):
         response = self.client.post(self.url, self.valid_payload, format='json')

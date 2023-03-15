@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "그릭데이 시그니처 떠먹는 요구르트",
             "kcalorie": 160,
             "carbohydrate": 4.8,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "덴마크 인포켓치즈 오리지널",
             "kcalorie": 60,
             "carbohydrate": 0,
@@ -34,7 +32,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "남양유업 떠먹는 불가리스 세트",
             "kcalorie": 75,
             "carbohydrate": 10,

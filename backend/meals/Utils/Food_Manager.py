@@ -87,7 +87,6 @@ class Food_Manager(Food_Calculator):
             meal = 2
 
         q = Q()
-        q &= Q(meals_fucus__icontains=meal)
 
         rtn = Food.objects.filter(q)
 

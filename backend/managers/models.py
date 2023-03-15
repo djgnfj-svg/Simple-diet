@@ -29,4 +29,4 @@ class Diet_nutrient_manager(TimeStampedModel):
     protein_buffer = models.FloatField(default=0)
     fat_buffer = models.FloatField(default=0)
     carbohydrate_buffer = models.FloatField(default=0)
-    custom_manager = models.ForeignKey(Meal_Food_Type, on_delete=models.CASCADE)
+    custom_manager = models.ForeignKey(Meal_Food_Type, on_delete=models.CASCADE, null=True)

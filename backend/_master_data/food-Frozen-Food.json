@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [2],
             "name": "곰곰 납작한 떡갈비 (냉동)",
             "kcalorie": 220,
             "carbohydrate": 9,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [2],
             "name": "곰곰 동그랑땡 (냉동)",
             "kcalorie": 194,
             "carbohydrate": 15,
@@ -34,7 +32,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1, 2],
             "name": "하림 치킨너겟 (냉동)",
             "kcalorie": 226,
             "carbohydrate": 9,
@@ -50,7 +47,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1, 2],
             "name": "곰곰 한입 돈까스 (냉동)",
             "kcalorie": 372,
             "carbohydrate": 9,
@@ -66,7 +62,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [2],
             "name": "한우물 차돌짬뽕국밥 (냉동)",
             "kcalorie": 410,
             "carbohydrate": 53,

@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [2],
             "name": "동원 고추 참치",
             "kcalorie": 110,
             "carbohydrate": 10,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [2],
             "name": "동원 라이트 스탠다드 참치",
             "kcalorie": 180,
             "carbohydrate": 0,

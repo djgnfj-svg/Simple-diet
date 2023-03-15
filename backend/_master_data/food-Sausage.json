@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1,2],
             "name": "청정원 리치부어스트",
             "kcalorie": 325,
             "carbohydrate": 2,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1, 2],
             "name": "동원 통그릴 비엔나",
             "kcalorie": 280,
             "carbohydrate": 1,

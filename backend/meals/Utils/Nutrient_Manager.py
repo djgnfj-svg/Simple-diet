@@ -23,18 +23,17 @@ class Nutrient_Checker(Nutrient_Assign):
         if need_nutrient is None:
             return False
         
-        if self._check_nutrient_full(self._protein_full, need_nutrient["protein"], protein_buff, current_meal_nutrient["protein"]):
+        # todo : 깔끔하게
+        if self._check_nutrient_full(need_nutrient["protein"], protein_buff, current_meal_nutrient["protein"]):
             self._protein_full = True
-            return False
-        elif self._check_nutrient_full(self._fat_full, need_nutrient["fat"], fat_buff, current_meal_nutrient["fat"]):
-            self._fat_full = True
-            return False
-        elif self._check_nutrient_full(self._carbohydrate_full, need_nutrient["carbohydrate"], carbohydrate_buff, current_meal_nutrient["carbohydrate"]):
-            self._carbohydrate_full = True
+            if self._check_nutrient_full(need_nutrient["fat"], fat_buff, current_meal_nutrient["fat"]):
+                self._fat_full = True
+                if self._check_nutrient_full(need_nutrient["carbohydrate"], carbohydrate_buff, current_meal_nutrient["carbohydrate"]):
+                    self._carbohydrate_full = True
             return False
         return True
 
-    def _check_nutrient_full(self, isnutrient_full, need_nutrient, buff, current_meal_nutrient):
-        if not isnutrient_full and need_nutrient * buff < current_meal_nutrient:
+    def _check_nutrient_full(self, need_nutrient, buff, current_meal_nutrient):
+        if need_nutrient * buff < current_meal_nutrient:
             return True
         return False

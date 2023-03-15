@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,2],
             "name": "라이틀리 곤약즉석밥 현미퀴노아",
             "kcalorie": 90,
             "carbohydrate": 21,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1,2],
             "name": "곰곰 새우 볶음밥 (냉동)",
             "kcalorie": 492,
             "carbohydrate": 86,
@@ -34,7 +32,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1, 2],
             "name": "고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 435,
             "carbohydrate": 66,
@@ -50,7 +47,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1, 2],
             "name": "풀무원 고슬고슬 계란코팅 황금밥알 포크 스크램블 볶음밥 (냉동)",
             "kcalorie": 492,
             "carbohydrate": 86,

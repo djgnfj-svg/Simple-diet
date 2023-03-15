@@ -4,16 +4,6 @@ from foods.models import Food, Food_Categories
 
 from api.Serialzier.Food_Categories_SZ import Food_Categories_SZ
 
-MEALS = (
-    ((0), "아침"),
-    ((1), "점심"),
-    ((2), "저녁"),
-    ((0,1), "아침, 점심"),
-    ((0,2), "아침, 저녁"),
-    ((1,2), "점심, 저녁"),
-    ((0,1,2), "전부"),
-)
-
 class Food_SZ(serializers.ModelSerializer):
     # 기본 정보
     name = serializers.CharField(max_length=50)
@@ -29,21 +19,15 @@ class Food_SZ(serializers.ModelSerializer):
     food_number = serializers.IntegerField()
     food_gram = serializers.IntegerField()
     
-    meals_fucus = serializers.ChoiceField(choices=MEALS)
     category = Food_Categories_SZ()
 
     class Meta:
         model = Food
         fields = '__all__'
 
-    def validate_meals_fucus(self, value):
-        if isinstance(value, int):
-            return [value]
-        return value
-
     def create(self, validated_data):
         try:
-            validated_data["category"] = Food_Categories.objects.get(name=validated_data["category"]["name"])
+            validated_data["category"] = Food_Categories.objects.filter(name=validated_data["category"]["name"])
         except Food_Categories.DoesNotExist:
             raise Food_Categories.DoesNotExist
         return super().create(validated_data)

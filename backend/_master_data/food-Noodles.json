@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "농심 신라면 건면 사발 77g",
             "kcalorie": 285,
             "carbohydrate": 54,

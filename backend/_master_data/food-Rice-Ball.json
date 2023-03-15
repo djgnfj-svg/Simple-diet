@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "한우물 김치치즈 구운주먹밥 10개입 (냉동)",
             "kcalorie": 165,
             "carbohydrate": 31,

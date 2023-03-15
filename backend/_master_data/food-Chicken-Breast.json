@@ -2,7 +2,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "한끼통살 통살 닭가슴살 허니소이 (냉동)",
             "kcalorie": 135,
             "carbohydrate": 9,
@@ -18,7 +17,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "햇살닭 저염훈제닭가슴살 플러스 (냉동)",
             "kcalorie": 121,
             "carbohydrate": 2,
@@ -34,7 +32,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "햇살닭 흑마늘 수비드 닭가슴살 (냉동)",
             "kcalorie": 172.5,
             "carbohydrate": 9,
@@ -50,7 +47,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "목우촌 닭가슴살 스테이크 구운갈릭 (냉동)",
             "kcalorie": 142,
             "carbohydrate": 10,
@@ -66,7 +62,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [0,1,2],
             "name": "곰곰 흑미 닭가슴살 스테이크",
             "kcalorie": 155,
             "carbohydrate": 10,
@@ -82,7 +77,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1],
             "name": "곰곰 프랑크 닭가슴살 소시지 꼬치형 (냉동)",
             "kcalorie": 122,
             "carbohydrate": 7,
@@ -98,7 +92,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1],
             "name": "하림 닭가슴살 핫도그 8개입 (냉동)",
             "kcalorie": 235,
             "carbohydrate": 27,
@@ -114,7 +107,6 @@
     {
         "model": "foods.Food",
         "fields": {
-            "meals_fucus": [1],
             "name": "곰곰 오리지날 닭가슴살 슬라이스 (냉동)",
             "kcalorie": 146,
             "carbohydrate": 2.4,
