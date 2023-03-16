@@ -1,122 +1,136 @@
+from meals.Utils.Nutrient_Manager import Nutrient_Manager
 from foods.models import Food
 
 from meals.Utils.Food_Manager import Food_Manager
 
 
 class Meals_Assign:
-    def __init__(self, diet_custom_data) -> None:
-        _diet_cut = 0.8 if diet_custom_data["diet_status"] else 1
-        self._assign_total_data(_diet_cut, diet_custom_data)
+    def __init__(self, nutrient_diet_data) -> None:
 
-        if diet_custom_data["meal_count"] == 3:
+        # 끼니 별로 데이터 나누기 좋은방법이 안떠올라 아래처럼 코딩하였다.
+        if nutrient_diet_data["meal_count"] == 3:
             self._meal_ratio = [0.25, 0.45, 0.3]
             self._meal_list = ["breakfast", "lunch", "dinner"]
-        elif diet_custom_data["meal_count"] == 2:
+        elif nutrient_diet_data["meal_count"] == 2:
             self._meal_ratio = [0.6, 0.4]
             self._meal_list = ["breakfast", "lunch"]
         else:
             self._meal_ratio = [1]
             self._meal_list = ["breakfast"]
 
-        self._assign_meals_nutrient()
+        _diet_cut = 0.8 if nutrient_diet_data["diet_status"] else 1
+        total_kcalorie = nutrient_diet_data["total_kcalorie"] * _diet_cut
+        total_protein = nutrient_diet_data["total_protein"] * _diet_cut
+        total_fat = nutrient_diet_data["total_fat"] * _diet_cut
+        total_carbohydrate = nutrient_diet_data["total_carbohydrate"] * _diet_cut
 
-    def _assign_total_data(self, diet_cut, diet_custom_data):
-        self.total_kcalorie = diet_custom_data["total_kcalorie"] * diet_cut
-        self.total_protein = diet_custom_data["total_protein"] * diet_cut
-        self.total_fat = diet_custom_data["total_fat"] * diet_cut
-        self.total_carbohydrate = diet_custom_data["total_carbohydrate"] * diet_cut
-
-    def _assign_meals_nutrient(self):
         self.meals = {}
         for i, meal in enumerate(self._meal_list):
             self.meals[meal] = {}
-            self.meals[meal]["kcalorie"] = round(
-                self.total_kcalorie * self._meal_ratio[i])
-            self.meals[meal]["protein"] = round(
-                self.total_protein * self._meal_ratio[i])
-            self.meals[meal]["fat"] = round(
-                self.total_fat * self._meal_ratio[i])
-            self.meals[meal]["carbohydrate"] = round(
-                self.total_carbohydrate * self._meal_ratio[i])
+            self.meals[meal]["kcalorie"] = round(total_kcalorie * self._meal_ratio[i])
+            self.meals[meal]["protein"] = round(total_protein * self._meal_ratio[i])
+            self.meals[meal]["fat"] = round(total_fat * self._meal_ratio[i])
+            self.meals[meal]["carbohydrate"] = round(total_carbohydrate * self._meal_ratio[i])
 
     def get_meal(self, meal):
         return self.meals[meal]
 
 
-class Meal_Calculation(Meals_Assign, Food_Manager):
-    def __init__(self, diet_custom_data) -> None:
-        Meals_Assign.__init__(self, diet_custom_data)
-        Food_Manager.__init__(self)
+class Meal_Calculation(Meals_Assign):
+    def __init__(self, nutrient_diet_data) -> None:
+        Meals_Assign.__init__(self, nutrient_diet_data)
 
-        if diet_custom_data["meal_count"] == 3:
+        if nutrient_diet_data["meal_count"] == 3:
             self.breakfast_need_nutrient = self.meals["breakfast"]
             self.lunch_need_nutrient = self.meals["lunch"]
             self.dinner_need_nutrient = self.meals["dinner"]
 
-        elif diet_custom_data["meal_count"] == 2:
+        elif nutrient_diet_data["meal_count"] == 2:
             self.breakfast_need_nutrient = self.meals["breakfast"]
             self.lunch_need_nutrient = self.meals["lunch"]
         else:
             self.breakfast_need_nutrient = self.meals["breakfast"]
 
-    def _add_meal_food_data(self, meal_food_data, current_meal_nutrient, food: Food,
-                            meal_name, food_count, isdouble):
-
-        double_value = 2 if isdouble else 1
-        big_size = 1
+    def _add_food_meal(self, meal_food_data, current_meal_nutrient, food: Food,
+                            food_count, isdouble):
+        # TODO : 좀더 정교한 로직이 필요할꺼라고 생각한다.(ver0.9)
+        nutrient_cut = 1
         food_number = 1
-
-        if food.food_gram > 500:
+        # TODO : 클래스 메서드 정적 메서드
+        food_manager = Food_Manager()
+        if isdouble:
+            meal_food_data[str(food_count)] = food_manager.assign_food_data(
+            food, food_number, isdouble, nutrient_cut)
+            
+        elif food.food_gram > 500:
             self._meal_have_bigsize_food = True
             if food.food_gram > 800:
-                big_size = 3
+                nutrient_cut = 3
                 food_number = 0.3
             else:
-                big_size = 2
+                nutrient_cut = 2
                 food_number = 0.5
+        
+        # 음식데이터 추가
+        meal_food_data[str(food_count)] = food_manager.assign_food_data(
+            food, food_number, isdouble, nutrient_cut)
+        # 식단영양소에 추가
+        food_manager.add_food_nutrient(current_meal_nutrient, food, nutrient_cut, isdouble)
 
-        meal_food_data[str(food_count)] = self._assign_meal_food_data(
-            food, big_size, food_number, double_value)
 
-        self._assign_food_nutrient(
-            current_meal_nutrient[meal_name], food, big_size, double_value)
-
-
-    # todo : 대대적인 객체지향 수정
     def calc_meal(self, protein_buff, fat_buff, carbohydrate_buff):
         diet_info = {}
+        nutrient_list = ["protein", "fat", "carbohydrate"]
+        food_manager = Food_Manager()
         for _, meal_name in enumerate(self._meal_list):
             meal_food_data = {}
-            self._protein_full = False
-            self._fat_full = False
-            self._carbohydrate_full = False
-            self._meal_have_bigsize_food = False
+
+            _protein_full = False
+            _fat_full = False
+            _carbohydrate_full = False
+            _meal_have_bigsize_food = False
 
             current_meal_nutrient = {}
-            current_meal_nutrient[meal_name] = self._init_nutrient()
+            current_meal_nutrient[meal_name] = Nutrient_Manager.init_nutrient()
 
             food_count = 0
-            food_focus = 0
-            while not self._carbohydrate_full:
-                food = self._get_food(meal_name, food_focus)
-                if (food.food_gram > 500 and self._meal_have_bigsize_food):
-                    food_focus += 1
+            food_number = 0
+            nutrient_focus = 0
+            need_nutrient = getattr(self, f"{meal_name}_need_nutrient")
+            while not _carbohydrate_full:
+                food = food_manager.get_food(food_number,nutrient_list[nutrient_focus])
+
+                if (food.food_gram > 500 and _meal_have_bigsize_food):
+                    food_number += 1
                     continue
-                
-                if self._check_food_over_nutrient(food, meal_name, current_meal_nutrient):
-                    food_focus += 1
+  
+                if food_manager._check_over_nutrient(food, current_meal_nutrient[meal_name], need_nutrient, nutrient_list[nutrient_focus]):
+                    food_number += 1
                     continue
 
-                food_double = self._check_food_double(food, meal_name, current_meal_nutrient)
+                if  (food.food_gram < 500 and \
+                    food_manager._check_double(food, current_meal_nutrient[meal_name], \
+                    need_nutrient, nutrient_list[nutrient_focus])):
+                    is_double = True
+                else:
+                    is_double = False
 
-                meal_food_data[str(food_count)] = self._init_nutrient()
-                
-                self._add_meal_food_data(meal_food_data, current_meal_nutrient, food, meal_name, food_count, food_double)
-                
+                #음식 추가
+                meal_food_data[str(food_count)] = Nutrient_Manager.init_nutrient()
+                self._add_food_meal(meal_food_data, current_meal_nutrient[meal_name], food, food_count, is_double)
                 food_count += 1
                 
-                if not self._check_nutrient_all_full(meal_name, current_meal_nutrient[meal_name],protein_buff, fat_buff, carbohydrate_buff):
-                    food_focus = 0
+                # 영양소가 만족했는가
+                if Nutrient_Manager.check_nutrient_full(need_nutrient[nutrient_list[nutrient_focus]], protein_buff, current_meal_nutrient[meal_name][nutrient_list[nutrient_focus]]):
+                    _protein_full=True
+                    nutrient_focus = 1
+                    if Nutrient_Manager.check_nutrient_full(need_nutrient[nutrient_list[nutrient_focus]], fat_buff, current_meal_nutrient[meal_name][nutrient_list[nutrient_focus]]):
+                        _fat_full=True
+                        nutrient_focus = 2
+                        if Nutrient_Manager.check_nutrient_full(need_nutrient[nutrient_list[nutrient_focus]], carbohydrate_buff, current_meal_nutrient[meal_name][nutrient_list[nutrient_focus]]):
+                            _carbohydrate_full=True
+                            break
+                    food_number = 0
             
             diet_info[meal_name] = meal_food_data
             diet_info[meal_name]["nutrient"] = current_meal_nutrient[meal_name]

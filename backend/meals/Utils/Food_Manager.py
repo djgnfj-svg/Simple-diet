@@ -2,100 +2,82 @@ from django.db.models import Q
 
 from foods.models import Food
 
-from meals.Utils.Nutrient_Manager import Nutrient_Checker
 
-
-# 음식 계산용
-class Food_Calculator(Nutrient_Checker):
+class Food_Assign:
     def __init__(self) -> None:
-        super().__init__()
-        # todo : 매니져로 거시기 할 수 있음
-        self._food_over_buffer = 1.5
-        self._food_double_buffer = 2.0
+        pass
 
-    def _check_food_over_nutrient(self, food: Food, meal_name, current_meals_nutrient):
-        '''
-        음식을 추가했을시 너무 높게 초과된다면 다음 음식을 추가한다.
-        현재영양소 + 추가할 음식 영양소 > 채워야하는 영양소 * 버퍼
-        '''
-        need_nutrient = getattr(self, f"{meal_name}_need_nutrient", None)
-        if need_nutrient is None:
-            return False
+    def _assign_food_nutrient(self, instance, food:Food, nutrient_cut, isdouble):
+        if isdouble:
+            instance["kcalorie"] = round(food.kcalorie * nutrient_cut)
+            instance["protein"] = round(food.protein * nutrient_cut)
+            instance["fat"] = round(food.fat * nutrient_cut)
+            instance["carbohydrate"] = round(food.carbohydrate * nutrient_cut)
+        else:
+            instance["kcalorie"] = round(food.kcalorie / nutrient_cut)
+            instance["protein"] = round(food.protein / nutrient_cut)
+            instance["fat"] = round(food.fat / nutrient_cut)
+            instance["carbohydrate"] = round(food.carbohydrate / nutrient_cut)
 
-        current_meal_nutrient = current_meals_nutrient[meal_name]
-        if not self._protein_full:
-            return food.protein + current_meal_nutrient["protein"] > \
-                need_nutrient["protein"] * self._food_over_buffer
-        elif not self._fat_full:
-            return food.fat + current_meal_nutrient["fat"] > \
-                need_nutrient["fat"] * self._food_over_buffer
-        elif not self._carbohydrate_full:
-            return food.carbohydrate + current_meal_nutrient["carbohydrate"] > \
-                need_nutrient["carbohydrate"] * self._food_over_buffer
-        return False
-
-    def _check_food_double(self, food: Food, meal_name, current_meal_nutrient):
-        '''
-        음식영양소 * 버퍼, < 목표영양소 - 현재영양소
-        '''
-        need_nutrient = getattr(self, f"{meal_name}_need_nutrient", None)
-        if need_nutrient is None:
-            return False
-
-        temp = current_meal_nutrient[meal_name]
-        if not self._protein_full:
-            return food.protein * self._food_double_buffer < \
-                need_nutrient["protein"] - temp["protein"]
-        elif not self._fat_full:
-            return food.fat * self._food_double_buffer < \
-                need_nutrient["fat"] - temp["fat"]
-        elif not self._carbohydrate_full:
-            return food.carbohydrate * self._food_double_buffer < \
-                need_nutrient["carbohydrate"] - temp["carbohydrate"]
-        return False
-
-    def _assign_meal_food_data(self, food, big_size, food_number, double_value):
+    def assign_food_data(self, food:Food, food_number, isdouble, nutrient_cut):
         instance = {}
-        temp =food_number * double_value
         instance["food_name"] = food.name
         instance["food_link"] = food.link
-        instance["kcalorie"] = round(food.kcalorie / big_size) * double_value
-        instance["protein"] = round(food.protein/big_size) * double_value
-        instance["fat"] = round(food.fat/big_size) * double_value
-        instance["carbohydrate"] = round(
-            food.carbohydrate/big_size) * double_value
-        instance["food_number"] = food_number * double_value
+        if isdouble:
+            instance["food_number"] = food_number * 2
+        else:
+            instance["food_number"] = food_number
+        self._assign_food_nutrient(instance, food, nutrient_cut, isdouble)
         return instance
 
-    def _assign_food_nutrient(self, meal_nutrient_data, food_data, big_size, double_value):
-        meal_nutrient_data["kcalorie"] += round(food_data.kcalorie / big_size) * double_value
-        meal_nutrient_data["protein"] += round(food_data.protein / big_size) * double_value
-        meal_nutrient_data["fat"] += round(food_data.fat /big_size) * double_value 
-        meal_nutrient_data["carbohydrate"] += round(food_data.carbohydrate / big_size) * double_value
+    def add_food_nutrient(self, instance, food:Food, nutrient_cut, isdouble):
+        double_value = 2 if isdouble else 1
 
-# 음식 가져오기용
-class Food_Manager(Food_Calculator):
+        instance["kcalorie"] += round(food.kcalorie / nutrient_cut) * double_value
+        instance["protein"] += round(food.protein / nutrient_cut) * double_value
+        instance["fat"] += round(food.fat /nutrient_cut) * double_value 
+        instance["carbohydrate"] += round(food.carbohydrate / nutrient_cut) * double_value
+
+
+class Food_Checker(Food_Assign):
+    def __init__(self) -> None:
+        super().__init__()
+        # TODO : ver0.9 매니져로 관리할 예정
+        self._over_buffer = 1.2
+        self._double_buffer = 2.0
+
+    def _check_over_nutrient(self, food: Food, current_meal_nutrient,need_nutrient, nutrient):
+        '''
+        음식 영양소 + 현재식사 영양소 > 필요영양소 * 오버버퍼
+        너무 많이 초과하면 다음 음식으로 넘어가는 로직
+        '''
+        food_nutrient = getattr(food, nutrient)
+        if food_nutrient + current_meal_nutrient[nutrient] > \
+            need_nutrient[nutrient] * self._over_buffer:
+            return True
+        return False
+
+    def _check_double(self, food: Food, current_meal_nutrient,need_nutrient,  nutrient):
+        '''
+        음식영양소 * 버퍼, < 목표영양소 - 현재영양소
+        음식을 2개로 해도 되는지 계산하는 로직입니다.
+        '''
+        food_nutrient = getattr(food, nutrient)
+        if food_nutrient* self._double_buffer < \
+            need_nutrient[nutrient] * current_meal_nutrient[nutrient]:
+            return True
+        return False
+
+
+class Food_Manager(Food_Checker):
     def __init__(self) -> None:
         super().__init__()
 
-    def _get_food(self, meal, food_count):
-        if meal == "breakfast":
-            meal = 0
-        elif meal == "lunch":
-            meal = 1
-        else:
-            meal = 2
-
+    #TODO : ver0.9에 음식을 가져오는 로직 고도화
+    def get_food(self, food_number, sort_nutrient):
         q = Q()
 
         rtn = Food.objects.filter(q)
 
-        sort_nutrient = ""
-        if not self._protein_full:
-            sort_nutrient = "-protein"
-        elif not self._fat_full:
-            sort_nutrient = "-fat"
-        elif not self._carbohydrate_full:
-            sort_nutrient = "-carbohydrate"
-        rtn = rtn.order_by(sort_nutrient)
-        return rtn[food_count]
+        rtn = rtn.order_by("-"+sort_nutrient)
+        return rtn[food_number]

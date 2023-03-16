@@ -3,13 +3,17 @@ import json
 from meals.Utils.Meal_manager import Meal_Calculation
 
 
-class Nutrient_Buffer_Calculation(Meal_Calculation):
-    def __init__(self, total_data) -> None:
-        super().__init__(total_data)
+class Nutrient_Simuler():
+    def __init__(self) -> None:
         self.nutrient_negative_value = 0.1
         self.simul_max_count = 5
-        
-    def simul_buffer(self):
+
+        self.protein_buffer = 1
+        self.fat_buffer = 1
+        self.carbohydrate_buffer = 1
+        self._simul_buffer()   
+     
+    def _simul_buffer(self):
         meal_list = ["breakfast", "lunch", "dinner"]
         simul_count = 0
         while simul_count < self.simul_max_count:
@@ -20,9 +24,9 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
                 simul_data = json.load(f)
 
             for data in simul_data.values():
-                test_data = Meal_Calculation(data)
-                meals_data = test_data.calc_meal(self.protein_buffer, self.fat_buffer, self.carbohydrate_buffer)
-                need_data = test_data.meals
+                meal_calc = Meal_Calculation(data)
+                meals_data = meal_calc.calc_meal(self.protein_buffer, self.fat_buffer, self.carbohydrate_buffer)
+                need_data = meal_calc.meals
                 for i in range(len(meals_data)):
                     meal = meals_data[meal_list[i]]["nutrient"]
                     need = need_data[meal_list[i]]
@@ -61,4 +65,13 @@ class Nutrient_Buffer_Calculation(Meal_Calculation):
         old_weight = (len - 1) / len
         new_weight = 1 / len
         return (preAver * old_weight) + (new_value * new_weight)
+    
+    def get_protein_buffer(self):
+        return self.protein_buffer
+    
+    def get_fat_buffer(self):
+        return self.fat_buffer
+    
+    def get_carbohydrate_buffer(self):
+        return self.carbohydrate_buffer
 

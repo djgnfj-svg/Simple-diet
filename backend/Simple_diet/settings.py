@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'meals',
     'managers',
     'metabolic',
-
+    #스케줄러
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -189,3 +190,8 @@ REST_FRAMEWORK = {
         'user': '100/day'
     }
 }
+
+# 스케줄러 업데이트
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Default
+
+SCHEDULER_DEFAULT = True

@@ -29,7 +29,7 @@ class Diet_SZ(serializers.Serializer):
             foods = Food.objects.filter(name__in = food_name_list)
             instance = Meal.objects.create(
                 meal_name = meal_name,
-
+                # TODO : 필요 영양소 + 식단영양소 저장
             )
             instance.foods.set(foods)
             # meal_list.append(instance.id)
