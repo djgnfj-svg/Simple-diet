@@ -24,7 +24,6 @@ class Diet_SZ(serializers.Serializer):
         for meal_name in diet:
             # 음식의 id들을 구한다.
             # filter를 통해서 음식 리스트를 구한다.
-            # 삽입하여서
             food_name_list = diet_manager.get_meal_foods(meal_name)
             foods = Food.objects.filter(name__in = food_name_list)
             instance = Meal.objects.create(
