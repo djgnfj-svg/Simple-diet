@@ -27,7 +27,7 @@ class Food_SZ(serializers.ModelSerializer):
 
     def create(self, validated_data):
         try:
-            validated_data["category"] = Food_Categories.objects.filter(name=validated_data["category"]["name"])
+            validated_data["category"] = Food_Categories.objects.get(name=validated_data["category"]["name"])
         except Food_Categories.DoesNotExist:
             raise Food_Categories.DoesNotExist
         return super().create(validated_data)

@@ -81,6 +81,8 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
         self._assign_food_nutrient(
             current_meal_nutrient[meal_name], food, big_size, double_value)
 
+
+    # todo : 대대적인 객체지향 수정
     def calc_meal(self, protein_buff, fat_buff, carbohydrate_buff):
         diet_info = {}
         for _, meal_name in enumerate(self._meal_list):
@@ -105,14 +107,17 @@ class Meal_Calculation(Meals_Assign, Food_Manager):
                     food_focus += 1
                     continue
 
-                food_double = self._check_food_double(
-                    food, meal_name, current_meal_nutrient)
+                food_double = self._check_food_double(food, meal_name, current_meal_nutrient)
+
                 meal_food_data[str(food_count)] = self._init_nutrient()
+                
                 self._add_meal_food_data(meal_food_data, current_meal_nutrient, food, meal_name, food_count, food_double)
+                
                 food_count += 1
-                if not self._check_nutrient_all_full(meal_name, current_meal_nutrient[meal_name],
-                                             protein_buff, fat_buff, carbohydrate_buff):
+                
+                if not self._check_nutrient_all_full(meal_name, current_meal_nutrient[meal_name],protein_buff, fat_buff, carbohydrate_buff):
                     food_focus = 0
+            
             diet_info[meal_name] = meal_food_data
             diet_info[meal_name]["nutrient"] = current_meal_nutrient[meal_name]
         return diet_info

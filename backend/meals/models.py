@@ -1,26 +1,33 @@
 from django.db import models
+# from managers.models import Meal_Food_Type
 
 from foods.models import Food
 
 from Simple_diet.Time_model_base import TimeStampedModel
 
 
-class Meals_Custom(models.Model):
-    protein_option = models.IntegerField(null=True)
-    fat_option = models.IntegerField(null=True)
-    carbohydrate_option = models.IntegerField(null=True)
-
-    diet_status = models.FloatField(null=False)
-    many_meals = models.IntegerField(null=False)
+# TODO : ver0.9 너무 크다 할것이 넘쳐흐른다.ㅋㅋㅋㅋ
+# class Meals(TimeStampedModel):
+#     편차_평균 = models.FloatField(null=True)
+#     유져 = models.ForeignKey(user, on_delete=models.CASCADE)
+    
+#     pass
 
 class Meal(models.Model):
     foods = models.ManyToManyField(Food, null=True)
-    meal_custom = models.ForeignKey(Meals_Custom, on_delete=models.SET_NULL, null=True)
-    protien = models.IntegerField(null=True)
-    fat = models.IntegerField(null=True)
-    carbohydrate = models.IntegerField(null=True)
-    pass
 
-class Meals(TimeStampedModel):
-    meal_list = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    meal_name = models.CharField(max_length=10)
+
+    meal_kcalorie = models.IntegerField(null=True)
+    meal_protien = models.IntegerField(null=True)
+    meal_fat = models.IntegerField(null=True)
+    meal_carbohydrate = models.IntegerField(null=True)
+
+    need_kcalorie = models.IntegerField(null=True)
+    need_protien = models.IntegerField(null=True)
+    need_fat = models.IntegerField(null=True)
+    need_carbohydrate = models.IntegerField(null=True)
+    
+    # meal_food_type = models.ForeignKey(Meal_Food_Type, on_delete=models.SET_NULL)
+    # meals = models.ForeignKey(Meals, on_delete=models.CASCADE)
     pass

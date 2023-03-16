@@ -24,11 +24,20 @@ class Diet_Manager(Nutrient_Buffer_Calculation):
             self.carbohydrate_buffer = instance.carbohydrate_buffer
 
 
+import json
 
-# 출력용..?
-class Diet_Meal_Calculation_Manager(Diet_Manager):
+class Diet_Maker(Diet_Manager):
     def __init__(self, validated_data) -> None:
         Diet_Manager.__init__(self, validated_data)
-
-    def get_diet_meal(self):
-        return super().calc_meal(self.protein_buffer, self.fat_buffer, self.carbohydrate_buffer)
+        self.diet = self.calc_meal(self.protein_buffer, self.fat_buffer, self.carbohydrate_buffer)
+    def get_diet(self):
+        return self.diet
+    
+    def get_meal_foods(self, meal_name):
+        rtn = []
+        #식사 수만큼 반복함
+        for test in self.diet[meal_name]:
+            if test == "nutrient":
+                break
+            rtn.append(self.diet[meal_name][test]["food_name"])
+        return rtn

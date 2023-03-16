@@ -87,7 +87,7 @@ function Output_form() {
         </div>
       </div>
       <div className="u-center-text u-margin-top-huge">
-        <a onClick={navigateToOutput} className="btn btn--green" style={{"color" : "white"}}>쿠팡 식단 계산</a>
+        <a onClick={navigateToOutput} className="btn btn--green" style={{"color" : "white"}}>식단 계산</a>
       </div>
     </section>
   )

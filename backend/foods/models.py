@@ -19,5 +19,5 @@ class Food(TimeStampedModel):
     food_number = models.IntegerField()
     food_gram = models.IntegerField()
 
-    category = models.ManyToManyField(Food_Categories, null=True)
+    category = models.ForeignKey(Food_Categories,on_delete=models.SET_NULL, null=True)
     
