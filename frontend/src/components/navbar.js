@@ -16,9 +16,9 @@ function MyNavbar() {
                             {/* <li className="nav-item">
                                 <a className="nav-link mx-2 text-white" href="#">후기</a>
                             </li> */}
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link mx-2 text-white" href="/food_list">음식리스트</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

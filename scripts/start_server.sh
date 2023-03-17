@@ -25,16 +25,7 @@ python3 $PROJECT_BACKEND_PATH/manage.py migrate
 
 # load data RDS일 경우 조금 거시기해짐...
 python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Category.json
-
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Chicken-Breast.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Dairy-Products.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Frozen-Food.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Noodles.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Oatmeal.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Rice-Ball.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Rice.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Sausage.json
-python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/food-Tuna.json
+python3 $PROJECT_BACKEND_PATH/manage.py loaddata $PROJECT_BACKEND_PATH/_master_data/foods-data.json
 
 
 # npm 설치
@@ -66,6 +57,10 @@ npm run build
 cd ..
 cp web/gunicorn/django_gunicorn.conf /etc/supervisor/conf.d/django_gunicorn.conf
 
+# robots.txt sitemap.xml
+cp web/robots.txt /etc/nginx/sites-available/robots.txt
+cp web/sitemap.xml /etc/nginx/sites-available/sitemap.xml
+
 # nginx 설치
 sudo apt-get install -y nginx
 # nginx 설정 이동
@@ -79,7 +74,7 @@ sudo ln /etc/nginx/sites-available/react_nginx.conf /etc/nginx/sites-enabled/
 sudo mkdir /logs
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start gunicorn
+sudo supervisorctl restart gunicorn
 
 # nginx 실행
 sudo service nginx restart
