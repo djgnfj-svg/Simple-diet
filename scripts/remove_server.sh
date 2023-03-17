@@ -51,3 +51,6 @@ if [ -z "$SERVICE_NIGNX" ]; then
 fi
 
 # nginx + gunicorn 설정파일 삭제
+
+
+sudo apt autoremove
